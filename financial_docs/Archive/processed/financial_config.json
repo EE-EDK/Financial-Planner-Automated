@@ -1,0 +1,128 @@
+{
+  "recurring_expenses": {
+    "mortgages_and_loans": {
+      "primary_mortgage": {
+        "name": "Primary Mortgage",
+        "amount": 1500.00,
+        "category": "Housing",
+        "frequency": "monthly"
+      },
+      "auto_loan": {
+        "name": "Auto Loan",
+        "amount": 350.00,
+        "category": "Auto & Transport",
+        "frequency": "monthly"
+      }
+    },
+    "subscriptions": {
+      "streaming_service": {
+        "name": "Streaming Service",
+        "amount": 15.99,
+        "category": "Entertainment & Rec.",
+        "frequency": "monthly"
+      },
+      "mobile_phone": {
+        "name": "Mobile Phone",
+        "amount": 80.00,
+        "category": "Bills & Utilities",
+        "frequency": "monthly"
+      },
+      "insurance": {
+        "name": "Life Insurance",
+        "amount": 50.00,
+        "category": "Insurance",
+        "frequency": "monthly"
+      }
+    },
+    "utilities": {
+      "natural_gas": {
+        "name": "Natural Gas",
+        "amount": 75.00,
+        "category": "Bills & Utilities",
+        "frequency": "monthly",
+        "variable": true
+      },
+      "electricity": {
+        "name": "Electricity",
+        "amount": 120.00,
+        "category": "Bills & Utilities",
+        "frequency": "monthly",
+        "variable": true
+      },
+      "car_insurance": {
+        "name": "Car Insurance",
+        "amount": 150.00,
+        "category": "Insurance",
+        "frequency": "monthly"
+      }
+    }
+  },
+  "debt_balances": {
+    "mortgages": {
+      "primary_home": {
+        "name": "Primary Home",
+        "balance": 250000.00,
+        "interest_rate": 3.5,
+        "type": "mortgage",
+        "property": "Primary Residence"
+      }
+    },
+    "auto": {
+      "car_loan": {
+        "name": "Car Loan",
+        "balance": 15000.00,
+        "interest_rate": 4.5,
+        "type": "auto_loan"
+      }
+    },
+    "personal": {
+      "personal_loan": {
+        "name": "Personal Loan",
+        "balance": 0.00,
+        "interest_rate": 0.00,
+        "type": "personal_loan"
+      }
+    }
+  },
+  "credit_cards": {
+    "credit_card_1": {
+      "name": "Credit Card 1",
+      "balance": 500.00,
+      "limit": 5000,
+      "apr": 18.99
+    },
+    "credit_card_2": {
+      "name": "Credit Card 2",
+      "balance": 0.00,
+      "limit": 10000,
+      "apr": 15.99
+    }
+  },
+  "cash_accounts": {
+    "checking": {
+      "name": "Checking Account",
+      "balance": 5000.00,
+      "type": "checking",
+      "liquid": true
+    },
+    "savings": {
+      "name": "Savings Account",
+      "balance": 10000.00,
+      "type": "savings",
+      "liquid": true
+    },
+    "brokerage": {
+      "name": "Brokerage Account",
+      "balance": 25000.00,
+      "type": "brokerage",
+      "liquid": true
+    }
+  },
+  "metadata": {
+    "last_updated": "2025-11-22",
+    "version": "1.0",
+    "total_recurring_expenses": null,
+    "total_debt": null,
+    "total_liquid_cash": null
+  }
+}

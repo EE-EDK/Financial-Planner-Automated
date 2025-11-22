@@ -1,0 +1,21 @@
+[
+  {
+    "date": "2025-11-22",
+    "month": "2025-11",
+    "data": {
+      "net_worth": 40000,
+      "liquid_cash": 15000,
+      "total_debt": 265000,
+      "monthly_income": 7500,
+      "monthly_spending": 6000,
+      "emergency_fund_target": 18000,
+      "retirement_balance": 50000,
+      "discretionary_spending": 1500
+    },
+    "calculated": {
+      "emergency_months": 2.5,
+      "discretionary_pct": 0.2,
+      "cash_flow": 1500
+    }
+  }
+]

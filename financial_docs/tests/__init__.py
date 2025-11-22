@@ -1,0 +1,1 @@
+# Financial scripts test package
