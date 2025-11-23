@@ -2,8 +2,8 @@
 setlocal ENABLEDELAYEDEXPANSION
 
 :: ========================================================
-:: ENTERPRISE BUILD SYSTEM v2.0 - SMART COLOR VERSION
-:: Auto-detects shell and uses native coloring
+:: ENTERPRISE BUILD SYSTEM v2.0 - COMPLETE VERSION
+:: One-Stop Shop for Non-Technical Users
 :: ========================================================
 
 :: Detect if running in PowerShell
@@ -34,9 +34,7 @@ goto :MAIN
     if %IN_POWERSHELL%==1 (
         powershell -Command "Write-Host '[SUCCESS]' -ForegroundColor Green -NoNewline; Write-Host ' %~1'"
     ) else (
-        color 0A
         echo [SUCCESS] %~1
-        color 07
     )
     echo [SUCCESS] %~1 >> "%LOG_FILE%"
     exit /b
@@ -45,9 +43,7 @@ goto :MAIN
     if %IN_POWERSHELL%==1 (
         powershell -Command "Write-Host '[INFO]' -ForegroundColor Cyan -NoNewline; Write-Host ' %~1'"
     ) else (
-        color 0B
         echo [INFO] %~1
-        color 07
     )
     echo [INFO] %~1 >> "%LOG_FILE%"
     exit /b
@@ -56,9 +52,7 @@ goto :MAIN
     if %IN_POWERSHELL%==1 (
         powershell -Command "Write-Host '[WARNING]' -ForegroundColor Yellow -NoNewline; Write-Host ' %~1'"
     ) else (
-        color 0E
         echo [WARNING] %~1
-        color 07
     )
     echo [WARNING] %~1 >> "%LOG_FILE%"
     echo [WARNING] %~1 >> "%ERROR_LOG%"
@@ -68,22 +62,10 @@ goto :MAIN
     if %IN_POWERSHELL%==1 (
         powershell -Command "Write-Host '[ERROR]' -ForegroundColor Red -NoNewline; Write-Host ' %~1'"
     ) else (
-        color 0C
         echo [ERROR] %~1
-        color 07
     )
     echo [ERROR] %~1 >> "%LOG_FILE%"
     echo [ERROR] %~1 >> "%ERROR_LOG%"
-    exit /b
-
-:COLOR_HEADER
-    if %IN_POWERSHELL%==1 (
-        powershell -Command "Write-Host '%~1' -ForegroundColor Magenta"
-    ) else (
-        color 0D
-        echo %~1
-        color 07
-    )
     exit /b
 
 :COLOR_STEP
@@ -93,11 +75,9 @@ goto :MAIN
         powershell -Command "Write-Host ' %~1' -ForegroundColor Magenta"
         powershell -Command "Write-Host '========================================' -ForegroundColor Magenta"
     ) else (
-        color 0D
         echo ========================================
         echo  %~1
         echo ========================================
-        color 07
     )
     echo.
     echo ======================================== >> "%LOG_FILE%"
@@ -190,7 +170,7 @@ call :COLOR_SUCCESS "Administrator privileges confirmed"
 
 call :SHOW_PROGRESS "Checking installation path..."
 echo "%~dp0" | findstr /c:" " >nul 2>&1
-if not %ERRORLEVEL% == 1 (
+if %ERRORLEVEL% == 0 (
     call :COLOR_ERROR "The installation path contains spaces!"
     call :DRAW_BOX "PATH ERROR DETECTED"
     echo The current folder path has spaces in it:
@@ -257,42 +237,222 @@ IF %ERRORLEVEL% NEQ 0 (
     call :COLOR_WARNING "Python not found on this system"
     echo.
     echo Python is not installed on your computer yet.
-    echo Don't worry! We'll install it for you automatically.
+    echo Don't worry! We'll try to install it for you.
     echo.
-    echo Installing Python 3.12...
-    echo This may take 2-5 minutes. Please wait...
+    
+    :: Check for winget
+    call :SHOW_PROGRESS "Checking for Windows Package Manager (winget)..."
+    winget --version >nul 2>&1
+    if %ERRORLEVEL% == 0 (
+        call :COLOR_INFO "Found winget! Attempting installation..."
+        echo.
+        
+        :: Try winget with output visible
+        winget install -e --id Python.Python.3.12
+        
+        set "WINGET_EXIT=!ERRORLEVEL!"
+        echo.
+        call :COLOR_INFO "Winget exit code: !WINGET_EXIT!"
+        
+        if !WINGET_EXIT! == 0 (
+            call :COLOR_SUCCESS "Python installed successfully via winget!"
+            echo.
+            echo Python has been installed!
+            echo Please close this window and run the script again.
+            echo This allows Windows to recognize the new Python installation.
+            echo.
+            call :COUNTDOWN 5
+            exit /b
+        ) else (
+            call :COLOR_WARNING "Winget installation failed with code: !WINGET_EXIT!"
+        )
+    ) else (
+        call :COLOR_WARNING "Winget not found on this system"
+    )
+    
     echo.
+    :: Check for Chocolatey
+    call :SHOW_PROGRESS "Checking for Chocolatey package manager..."
+    choco --version >nul 2>&1
+    if %ERRORLEVEL% == 0 (
+        call :COLOR_INFO "Found Chocolatey! Attempting installation..."
+        echo.
+        
+        choco install python312 -y
+        
+        set "CHOCO_EXIT=!ERRORLEVEL!"
+        echo.
+        call :COLOR_INFO "Chocolatey exit code: !CHOCO_EXIT!"
+        
+        if !CHOCO_EXIT! == 0 (
+            call :COLOR_SUCCESS "Python installed successfully via Chocolatey!"
+            echo.
+            echo Python has been installed!
+            echo Please close this window and run the script again.
+            echo This allows Windows to recognize the new Python installation.
+            echo.
+            call :COUNTDOWN 5
+            exit /b
+        ) else (
+            call :COLOR_WARNING "Chocolatey installation failed with code: !CHOCO_EXIT!"
+        )
+    ) else (
+        call :COLOR_WARNING "Chocolatey not found on this system"
+    )
+    
+    echo.
+    :: Direct download method
+    call :COLOR_INFO "Attempting direct download from python.org..."
+    echo.
+    
+    set "PYTHON_INSTALLER=python-3.12.7-amd64.exe"
+    set "PYTHON_URL=https://www.python.org/ftp/python/3.12.7/python-3.12.7-amd64.exe"
     
     call :SHOW_PROGRESS "Downloading Python installer..."
-    winget install -e --id Python.Python.3.12 --silent
+    echo Downloading from: %PYTHON_URL%
+    echo.
     
-    if %ERRORLEVEL% NEQ 0 (
-        call :COLOR_ERROR "Automatic Python installation failed"
-        call :DRAW_BOX "AUTOMATIC INSTALLATION FAILED"
-        echo Possible reasons:
-        echo   - Winget not available on your system
-        echo   - Internet connection interrupted
-        echo   - Antivirus blocked the installation
+    :: Use PowerShell with error handling
+    powershell -Command "try { [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Write-Host 'Starting download...'; $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri '%PYTHON_URL%' -OutFile '%PYTHON_INSTALLER%' -ErrorAction Stop; Write-Host 'Download complete!'; exit 0 } catch { Write-Host 'Download failed:' $_.Exception.Message; exit 1 }"
+    
+    set "DOWNLOAD_EXIT=!ERRORLEVEL!"
+    
+    if !DOWNLOAD_EXIT! NEQ 0 (
+        call :COLOR_ERROR "Download failed with exit code: !DOWNLOAD_EXIT!"
+        goto :MANUAL_INSTALL
+    )
+    
+    if not exist "%PYTHON_INSTALLER%" (
+        call :COLOR_ERROR "Installer file not found after download"
+        goto :MANUAL_INSTALL
+    )
+    
+    :: Check file size to ensure it downloaded properly
+    for %%A in ("%PYTHON_INSTALLER%") do set "INSTALLER_SIZE=%%~zA"
+    if !INSTALLER_SIZE! LSS 1000000 (
+        call :COLOR_ERROR "Downloaded file is too small (!INSTALLER_SIZE! bytes)"
+        del "%PYTHON_INSTALLER%" >nul 2>&1
+        goto :MANUAL_INSTALL
+    )
+    
+    call :COLOR_SUCCESS "Download complete! (Size: !INSTALLER_SIZE! bytes)"
+    echo.
+    
+    :: Offer interactive or silent installation
+    echo Python installer is ready.
+    echo.
+    echo Choose installation method:
+    echo [A] Automatic (silent) - faster, no interaction needed
+    echo [I] Interactive - you can see and control the installation
+    echo [M] Manual - open installer and exit this script
+    echo.
+    set /p "INSTALL_METHOD=Your choice (A/I/M): "
+    
+    if /i "!INSTALL_METHOD!"=="M" (
+        call :COLOR_INFO "Opening installer for manual installation..."
+        start "" "%PYTHON_INSTALLER%"
         echo.
-        echo Manual Installation Steps:
-        echo 1. Visit: https://www.python.org/downloads/
-        echo 2. Download Python 3.12
-        echo 3. Run the installer
-        echo 4. IMPORTANT: Check "Add Python to PATH"
-        echo 5. Run this script again
+        echo Please complete the installation manually.
+        echo IMPORTANT: Make sure to check "Add Python to PATH"
+        echo.
+        echo After installation completes, run this script again.
         echo.
         pause
         exit /b
     )
     
-    call :COLOR_SUCCESS "Python installed successfully!"
+    if /i "!INSTALL_METHOD!"=="I" (
+        call :COLOR_INFO "Starting interactive installation..."
+        echo.
+        echo IMPORTANT: When the installer opens, make sure to:
+        echo   1. Check "Add Python to PATH" at the bottom
+        echo   2. Click "Install Now"
+        echo.
+        pause
+        
+        start /wait "" "%PYTHON_INSTALLER%"
+        
+        set "INSTALL_EXIT=!ERRORLEVEL!"
+    ) else (
+        call :COLOR_INFO "Starting automatic installation..."
+        call :SHOW_PROGRESS "Installing Python silently (this may take 2-3 minutes)..."
+        echo.
+        
+        :: Try silent installation with detailed logging
+        "%PYTHON_INSTALLER%" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0 /log "%LOG_DIR%\python_install.log"
+        
+        set "INSTALL_EXIT=!ERRORLEVEL!"
+        
+        echo.
+        call :COLOR_INFO "Installation exit code: !INSTALL_EXIT!"
+        
+        :: Show installation log if it exists
+        if exist "%LOG_DIR%\python_install.log" (
+            echo.
+            echo Installation log saved to: %LOG_DIR%\python_install.log
+            echo Last 10 lines of installation log:
+            echo ----------------------------------------
+            powershell -Command "Get-Content '%LOG_DIR%\python_install.log' -Tail 10"
+            echo ----------------------------------------
+        )
+    )
+    
+    :: Clean up installer
+    if exist "%PYTHON_INSTALLER%" (
+        call :COLOR_INFO "Cleaning up installer file..."
+        del "%PYTHON_INSTALLER%" >nul 2>&1
+    )
+    
+    if !INSTALL_EXIT! == 0 (
+        call :COLOR_SUCCESS "Python installation completed!"
+        echo.
+        echo Python has been installed!
+        echo Please close this window and run the script again.
+        echo This allows Windows to recognize the new Python installation.
+        echo.
+        call :COUNTDOWN 5
+        exit /b
+    ) else (
+        call :COLOR_ERROR "Installation failed with exit code: !INSTALL_EXIT!"
+        if exist "%LOG_DIR%\python_install.log" (
+            echo Check the installation log for details: %LOG_DIR%\python_install.log
+        )
+        goto :MANUAL_INSTALL
+    )
+    
+    :MANUAL_INSTALL
+    call :COLOR_ERROR "All automatic installation methods failed"
+    call :DRAW_BOX "MANUAL INSTALLATION REQUIRED"
     echo.
-    echo Python has been installed!
-    echo Please close this window and run the script again.
-    echo This allows Windows to recognize the new Python installation.
+    echo Please install Python manually:
     echo.
-    call :COUNTDOWN 5
+    echo Option 1 - Direct Download:
+    echo   1. Visit: https://www.python.org/downloads/
+    echo   2. Click "Download Python 3.12"
+    echo   3. Run the installer
+    echo   4. CRITICAL: Check "Add Python to PATH" checkbox
+    echo   5. Click "Install Now"
+    echo   6. Run this script again
+    echo.
+    echo Option 2 - Microsoft Store (Easiest):
+    echo   1. Open Microsoft Store
+    echo   2. Search for "Python 3.12"
+    echo   3. Click "Get" or "Install"
+    echo   4. Run this script again
+    echo.
+    echo Option 3 - Install Winget first (Recommended for future):
+    echo   1. Install "App Installer" from Microsoft Store
+    echo   2. Run this script again
+    echo.
+    
+    set /p "OPEN_BROWSER=Open Python download page in browser? (Y/N): "
+    if /i "!OPEN_BROWSER!"=="Y" (
+        start https://www.python.org/downloads/
+    )
+    
+    pause
     exit /b
+    
 ) ELSE (
     for /f "tokens=2" %%V in ('python --version 2^>^&1') do set PYTHON_VERSION=%%V
     call :COLOR_SUCCESS "Python is already installed (version %PYTHON_VERSION%)"
@@ -342,7 +502,6 @@ call :COLOR_SUCCESS "Virtual environment activated"
 call :COLOR_STEP "STEP 3: Installing Required Software Components"
 
 echo Installing all the tools your project needs...
-echo This is like gathering all the parts before building something.
 echo.
 
 set "MAX_RETRIES=3"
@@ -525,7 +684,7 @@ if %DO_CLEAN_BUILD%==1 (
     call :SHOW_PROGRESS "Cleaning previous build files..."
     
     if exist "dist" (
-        set "BACKUP_DIR=dist_backup_%TIMESTAMP%"
+        set "BACKUP_DIR=dist_backup_!TIMESTAMP!"
         echo Creating backup: !BACKUP_DIR!
         move "dist" "!BACKUP_DIR!" >nul 2>&1
     )
@@ -594,19 +753,10 @@ echo ========================================
 echo           BUILD SUMMARY
 echo ========================================
 echo.
-
-if %IN_POWERSHELL%==1 (
-    powershell -Command "Write-Host '* Python Environment: Ready' -ForegroundColor Green"
-    powershell -Command "Write-Host '* Dependencies: Installed' -ForegroundColor Green"
-    powershell -Command "Write-Host '* Project Structure: Initialized' -ForegroundColor Green"
-    powershell -Command "Write-Host '* Build: Completed Successfully' -ForegroundColor Green"
-) else (
-    echo * Python Environment: Ready
-    echo * Dependencies: Installed
-    echo * Project Structure: Initialized
-    echo * Build: Completed Successfully
-)
-
+echo * Python Environment: Ready
+echo * Dependencies: Installed
+echo * Project Structure: Initialized
+echo * Build: Completed Successfully
 echo.
 echo Log files saved to:
 echo   - %LOG_FILE%
