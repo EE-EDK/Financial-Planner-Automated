@@ -54,3 +54,20 @@ Thumbs.db
 *.tmp
 temp/
 tmp/
+
+# Generated financial documents and user data
+financial_docs/Archive/financial_history.json
+financial_docs/Archive/processed/*.json
+financial_docs/Archive/reports/*.md
+financial_docs/Archive/snapshots/*
+!financial_docs/Archive/snapshots/README.md
+financial_docs/Archive/raw/tax/
+financial_docs/Archive/raw/property/
+financial_docs/Archive/raw/screenshots/
+financial_docs/Archive/raw/exports/*.csv
+
+# Generated HTML
+financial_docs/financial_hub.html
+
+# Uploaded zip files
+*.zip
