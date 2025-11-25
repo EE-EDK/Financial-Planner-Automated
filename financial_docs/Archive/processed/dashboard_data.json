@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-22T10:42:24.945247",
+  "generated_at": "2025-11-25T03:08:43.255088",
   "snapshot": {
     "liquid_cash": 40000.0,
     "total_debt": 265500.0,
@@ -7,17 +7,184 @@
     "monthly_recurring": 2340.99
   },
   "trends": {
-    "trends": {},
-    "top_merchants": [],
-    "problem_categories": {}
+    "trends": {
+      "Interest Income": {
+        "months": [
+          "2025-06",
+          "2025-10"
+        ],
+        "amounts": [
+          37.66,
+          40.46
+        ],
+        "average": 39.06,
+        "total": 78.12
+      },
+      "Travel": {
+        "months": [
+          "2025-06",
+          "2025-12"
+        ],
+        "amounts": [
+          137.48,
+          100.0
+        ],
+        "average": 118.74,
+        "total": 237.48
+      },
+      "Bills & Utilities": {
+        "months": [
+          "2025-06",
+          "2025-07",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+          320.4,
+          394.38,
+          331.47,
+          348.0,
+          468.0
+        ],
+        "average": 372.45,
+        "total": 1862.25
+      },
+      "Income": {
+        "months": [
+          "2025-07",
+          "2025-09",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+          2011.07,
+          1850.3,
+          1708.0,
+          5208.0
+        ],
+        "average": 2694.34,
+        "total": 10777.37
+      },
+      "Gifts & Donations": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-12"
+        ],
+        "amounts": [
+          86.28,
+          81.56,
+          170.0
+        ],
+        "average": 112.61,
+        "total": 337.84
+      },
+      "Home Insurance": {
+        "months": [
+          "2025-07",
+          "2025-10",
+          "2025-12"
+        ],
+        "amounts": [
+          111.66,
+          101.38,
+          100.0
+        ],
+        "average": 104.35,
+        "total": 313.04
+      },
+      "Auto & Transport": {
+        "months": [
+          "2025-08",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+          250.42,
+          50.0,
+          130.0
+        ],
+        "average": 143.47,
+        "total": 430.42
+      },
+      "Shopping": {
+        "months": [
+          "2025-08",
+          "2025-12"
+        ],
+        "amounts": [
+          52.04,
+          110.0
+        ],
+        "average": 81.02,
+        "total": 162.04
+      },
+      "Insurance": {
+        "months": [
+          "2025-09",
+          "2025-12"
+        ],
+        "amounts": [
+          14.62,
+          10.0
+        ],
+        "average": 12.31,
+        "total": 24.62
+      },
+      "Savings & Investments": {
+        "months": [
+          "2025-09",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+          210.81,
+          200.0,
+          700.0
+        ],
+        "average": 370.27,
+        "total": 1110.81
+      },
+      "Groceries": {
+        "months": [
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+          80.0,
+          55.0
+        ],
+        "average": 67.5,
+        "total": 135.0
+      }
+    },
+    "top_merchants": [
+      {
+        "name": "",
+        "total": 16418.61
+      }
+    ],
+    "problem_categories": {
+      "Groceries": {
+        "total": 135.0,
+        "count": 2,
+        "average": 67.5
+      },
+      "Shopping": {
+        "total": 162.04,
+        "count": 2,
+        "average": 81.02
+      }
+    }
   },
   "budget_vs_actual": {
     "categories": {
       "Auto & Transport": {
         "budget": 400,
-        "actual": 0,
-        "remaining": 400,
-        "percent": 0.0,
+        "actual": 50.0,
+        "remaining": 350.0,
+        "percent": 12.5,
         "over_budget": false
       },
       "Dining & Drinks": {
@@ -36,9 +203,9 @@
       },
       "Groceries": {
         "budget": 600,
-        "actual": 0,
-        "remaining": 600,
-        "percent": 0.0,
+        "actual": 80.0,
+        "remaining": 520.0,
+        "percent": 13.3,
         "over_budget": false
       },
       "Home & Garden": {
@@ -100,10 +267,10 @@
     },
     "over_budget_items": [],
     "total_budgeted": 4275,
-    "total_spent": 0,
-    "total_remaining": 4275,
-    "days_in_month": 22,
-    "days_remaining": 8
+    "total_spent": 2386.0,
+    "total_remaining": 1889.0,
+    "days_in_month": 25,
+    "days_remaining": 5
   },
   "credit_card_payoff": {
     "total_balance": 500.0,
@@ -178,9 +345,73 @@
     "message": "✅ Excellent - You have 6+ months covered"
   },
   "anomalies": {
-    "category_anomalies": [],
-    "large_transactions": [],
-    "anomaly_count": 0
+    "category_anomalies": [
+      {
+        "category": "Interest Income",
+        "type": "low_spending",
+        "current": 0,
+        "average": 39.06,
+        "percent_change": -100.0,
+        "message": "Interest Income: $0.00 this month vs $39.06 average (-100.0%)"
+      },
+      {
+        "category": "Travel",
+        "type": "low_spending",
+        "current": 0,
+        "average": 118.74,
+        "percent_change": -100.0,
+        "message": "Travel: $0.00 this month vs $118.74 average (-100.0%)"
+      },
+      {
+        "category": "Gifts & Donations",
+        "type": "low_spending",
+        "current": 0,
+        "average": 112.61,
+        "percent_change": -100.0,
+        "message": "Gifts & Donations: $0.00 this month vs $112.61 average (-100.0%)"
+      },
+      {
+        "category": "Home Insurance",
+        "type": "low_spending",
+        "current": 0,
+        "average": 104.35,
+        "percent_change": -100.0,
+        "message": "Home Insurance: $0.00 this month vs $104.35 average (-100.0%)"
+      },
+      {
+        "category": "Auto & Transport",
+        "type": "low_spending",
+        "current": 50.0,
+        "average": 143.47,
+        "percent_change": -65.1,
+        "message": "Auto & Transport: $50.00 this month vs $143.47 average (-65.1%)"
+      },
+      {
+        "category": "Shopping",
+        "type": "low_spending",
+        "current": 0,
+        "average": 81.02,
+        "percent_change": -100.0,
+        "message": "Shopping: $0.00 this month vs $81.02 average (-100.0%)"
+      },
+      {
+        "category": "Insurance",
+        "type": "low_spending",
+        "current": 0,
+        "average": 12.31,
+        "percent_change": -100.0,
+        "message": "Insurance: $0.00 this month vs $12.31 average (-100.0%)"
+      }
+    ],
+    "large_transactions": [
+      {
+        "date": "2025-11-23",
+        "name": "",
+        "amount": 1708.0,
+        "category": "Income"
+      }
+    ],
+    "anomaly_count": 7
   },
   "alerts": [],
   "config": {

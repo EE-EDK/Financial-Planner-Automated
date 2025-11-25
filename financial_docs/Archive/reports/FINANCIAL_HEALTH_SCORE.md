@@ -1,5 +1,5 @@
 # FINANCIAL HEALTH SCORE
-**Generated:** November 22, 2025 at 10:42 AM
+**Generated:** November 25, 2025 at 03:08 AM
 
 ---
 
