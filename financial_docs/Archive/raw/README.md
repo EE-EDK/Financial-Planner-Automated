@@ -51,15 +51,23 @@ Place budget and financial app screenshots here:
 
 ### `/exports/`
 Place exported transaction data here:
-- **AllTransactions.csv** - Master transaction file (auto-updated by import script)
+- **AllTransactions.csv** - Master transaction file (auto-updated by import scripts)
+- **Excel budget files (.xlsx, .xls)** - Budget spreadsheets with category columns
 - CSV exports from Rocket Money, Mint, YNAB, or other budgeting apps
 - Bank transaction exports
 - Credit card statement exports
 
 **Example files:**
 - `AllTransactions.csv` (required for transaction analysis)
+- `Budget_2024.xlsx` (Excel budget with category columns)
 - `RocketMoney_Export_2024-11.csv`
 - `Bank_Transactions_Nov_2024.csv`
+
+**Import Scripts:**
+- **Excel budgets**: `python financial_docs/scripts/import_excel_budget.py`
+- **Rocket Money**: `python financial_docs/scripts/import_rocket_money.py`
+
+See [Excel Import Guide](../../scripts/README_EXCEL_IMPORT.md) for details on Excel budget format.
 
 ---
 
