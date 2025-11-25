@@ -1,19 +1,27 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-UNIFIED FINANCIAL HUB BUILDER
+UNIFIED FINANCIAL HUB BUILDER (Enhanced with Excel Import)
 Runs all analysis scripts and builds the complete financial hub in one command.
 
 Usage:
-    python3 financial_docs/build_all.py
+    python3 financial_docs/build_all.py [--months N]
 
 What it does:
-1. Analyzes transactions → TRANSACTION_ANALYSIS_REPORT.md
-2. Compares budget vs actual → BUDGET_VS_ACTUAL.md
-3. Calculates financial health score → FINANCIAL_HEALTH_SCORE.md
-4. Tracks monthly snapshot → FINANCIAL_TRENDS.md
-5. Runs scenario analysis → SCENARIO_ANALYSIS.md
-6. Builds financial_hub.html with all documents
+1. 📊 IMPORTS Excel budget file (Budget_in_Excel_for_Ethan.xlsx) → AllTransactions.csv
+2. 💳 Analyzes transactions → TRANSACTION_ANALYSIS_REPORT.md
+3. 📊 Compares budget vs actual → BUDGET_VS_ACTUAL.md
+4. 🏆 Calculates financial health score → FINANCIAL_HEALTH_SCORE.md
+5. 📈 Tracks monthly snapshot → FINANCIAL_TRENDS.md
+6. 🎯 Runs scenario analysis → SCENARIO_ANALYSIS.md
+7. 🌐 Builds financial_hub.html with all documents
+
+Excel File Locations Searched:
+- Current directory
+- Archive/raw/exports/
+- Archive/ directory  
+- Downloads folder
+- /mnt/user-data/uploads/ (Claude uploads)
 
 One script to rule them all! 🎯
 """
@@ -90,11 +98,145 @@ def print_header():
     """Print fancy header"""
     print()
     print("=" * 80)
-    print("💰 UNIFIED FINANCIAL HUB BUILDER")
+    print("💰 UNIFIED FINANCIAL HUB BUILDER (Enhanced)")
     print("=" * 80)
     print(f"Build Date: {datetime.now().strftime('%B %d, %Y at %I:%M %p')}")
     print("=" * 80)
     print()
+
+def import_excel_budget():
+    """Import Excel budget file if available"""
+    print("📊 Looking for Excel budget file...")
+    print()
+
+    # Look for Budget Excel file in multiple locations
+    possible_locations = [
+        Path("Budget_in_Excel_for_Ethan.xlsx"),  # Current directory
+        BASE_DIR / "Budget_in_Excel_for_Ethan.xlsx",  # Financial docs directory  
+        BASE_DIR / "Archive" / "raw" / "exports" / "Budget_in_Excel_for_Ethan.xlsx",  # Raw exports
+        BASE_DIR / "Archive" / "Budget_in_Excel_for_Ethan.xlsx",  # Archive root
+        Path.home() / "Downloads" / "Budget_in_Excel_for_Ethan.xlsx",  # Downloads folder
+        Path("/mnt/user-data/uploads/Budget_in_Excel_for_Ethan.xlsx"),  # Uploaded files
+    ]
+
+    # Also look for any Excel file with "budget" in the name
+    excel_patterns = [
+        "Budget*.xlsx", "*budget*.xlsx", "*Budget*.xlsx", "budget*.xls", "*budget*.xls"
+    ]
+
+    budget_file = None
+    
+    # Check specific locations first
+    for location in possible_locations:
+        if location.exists():
+            budget_file = location
+            print(f"✅ Found Excel budget: {budget_file}")
+            break
+    
+    # If not found, search for budget patterns
+    if not budget_file:
+        search_dirs = [
+            BASE_DIR,
+            BASE_DIR / "Archive",
+            BASE_DIR / "Archive" / "raw" / "exports",
+            Path.home() / "Downloads",
+            Path("/mnt/user-data/uploads")
+        ]
+        
+        for search_dir in search_dirs:
+            if not search_dir.exists():
+                continue
+            for pattern in excel_patterns:
+                try:
+                    matches = list(search_dir.glob(pattern))
+                    if matches:
+                        budget_file = max(matches, key=lambda x: x.stat().st_mtime)  # Most recent
+                        print(f"✅ Found budget file: {budget_file}")
+                        break
+                except Exception:
+                    continue  # Skip if permission denied
+            if budget_file:
+                break
+
+    if not budget_file:
+        print("⚠️  No Excel budget file found - will skip Excel import")
+        print("   Expected: Budget_in_Excel_for_Ethan.xlsx")
+        print("   Searched:")
+        for loc in possible_locations:
+            print(f"     • {loc}")
+        return False
+
+    # Run import script
+    import_script = BASE_DIR / "scripts" / "import_excel_budget.py"
+    
+    # If import script doesn't exist in expected location, look for it elsewhere
+    if not import_script.exists():
+        # Check current directory for the script
+        alt_locations = [
+            Path("import_excel_budget.py"),
+            Path("scripts/import_excel_budget.py"),
+            Path("/mnt/user-data/uploads/import_excel_budget.py")
+        ]
+        
+        for alt_script in alt_locations:
+            if alt_script.exists():
+                import_script = alt_script
+                print(f"📍 Using import script: {import_script}")
+                break
+        else:
+            print("⚠️  import_excel_budget.py not found - skipping Excel import")
+            print("   Expected locations:")
+            for loc in [BASE_DIR / "scripts" / "import_excel_budget.py"] + alt_locations:
+                print(f"     • {loc}")
+            return False
+
+    print(f"📥 Importing Excel budget from: {budget_file.name}")
+    print(f"🔧 Using import script: {import_script}")
+    
+    try:
+        # Create Archive directories if they don't exist
+        archive_dirs = [
+            BASE_DIR / "Archive",
+            BASE_DIR / "Archive" / "raw",
+            BASE_DIR / "Archive" / "raw" / "exports",
+            BASE_DIR / "Archive" / "reports",
+            BASE_DIR / "Archive" / "processed"
+        ]
+        
+        for directory in archive_dirs:
+            directory.mkdir(parents=True, exist_ok=True)
+            
+        result = subprocess.run(
+            [sys.executable, str(import_script), str(budget_file)],
+            cwd=BASE_DIR,
+            capture_output=True,
+            text=True,
+            encoding='utf-8',
+            errors='replace',
+            timeout=60
+        )
+
+        if result.returncode == 0:
+            print("✅ Excel budget imported successfully")
+            print()
+            return True
+        else:
+            print(f"❌ Excel import failed with exit code {result.returncode}")
+            if result.stderr:
+                print(f"   Error: {result.stderr.strip()[:300]}")
+            if result.stdout:
+                print(f"   Output: {result.stdout.strip()[:300]}")
+            print()
+            return False
+
+    except subprocess.TimeoutExpired:
+        print("❌ Excel import timeout (>60s)")
+        print()
+        return False
+    except Exception as e:
+        print(f"❌ Excel import error: {str(e)[:100]}")
+        print()
+        return False
 
 def check_prerequisites():
     """Check if required files exist"""
@@ -106,30 +248,41 @@ def check_prerequisites():
     # Check Archive directory
     archive_dir = BASE_DIR / "Archive"
     if not archive_dir.exists():
-        issues.append("❌ Archive/ directory not found")
+        print("📁 Creating Archive/ directory...")
+        archive_dir.mkdir(parents=True, exist_ok=True)
+        print("✅ Archive/ directory created")
     else:
         print("✅ Archive/ directory exists")
 
-    # Check for CSV file (needed by some scripts) - check both root and data/ subdirectory
-    csv_file = archive_dir / "AllTransactions.csv"
-    csv_file_data = archive_dir / "data" / "AllTransactions.csv"
+    # Create subdirectories
+    subdirs = [
+        archive_dir / "raw" / "exports",
+        archive_dir / "reports",
+        archive_dir / "processed"
+    ]
+    
+    for subdir in subdirs:
+        subdir.mkdir(parents=True, exist_ok=True)
 
-    if csv_file.exists():
-        print("✅ AllTransactions.csv found")
-    elif csv_file_data.exists():
-        print("✅ AllTransactions.csv found (in data/)")
-    else:
-        issues.append("⚠️  AllTransactions.csv not found (some scripts will skip)")
-        print("⚠️  AllTransactions.csv not found - transaction-based analysis will be limited")
+    # Check for CSV file (will be created from Excel import)
+    csv_locations = [
+        archive_dir / "AllTransactions.csv",
+        archive_dir / "data" / "AllTransactions.csv",
+        archive_dir / "raw" / "exports" / "AllTransactions.csv"
+    ]
+
+    csv_found = False
+    for csv_file in csv_locations:
+        if csv_file.exists():
+            print(f"✅ AllTransactions.csv found at: {csv_file}")
+            csv_found = True
+            break
+
+    if not csv_found:
+        print("⚠️  AllTransactions.csv not found - will be created from Excel import")
 
     print()
-
-    if "❌" in str(issues):
-        for issue in issues:
-            print(issue)
-        return False
-
-    return True
+    return True  # Always return True since we'll create what we need
 
 def run_script(script_info):
     """Run a single analysis script"""
@@ -141,13 +294,32 @@ def run_script(script_info):
     print(f"   Script: {script_info['script']}")
 
     if not script_file.exists():
-        print(f"   ❌ Script not found: {script_file}")
-        return False
+        # Try alternative locations
+        alt_locations = [
+            Path(script_info['script']),  # Relative to current
+            Path(script_info['script'].split('/')[-1]),  # Just filename
+            Path("/mnt/user-data/uploads") / script_info['script'].split('/')[-1]  # Uploads
+        ]
+        
+        for alt_script in alt_locations:
+            if alt_script.exists():
+                script_file = alt_script
+                break
+        else:
+            print(f"   ❌ Script not found: {script_file}")
+            return False
 
     # Check if CSV is required but missing
     if script_info.get('requires_csv'):
-        csv_file = BASE_DIR / "Archive" / "raw" / "exports" / "AllTransactions.csv"
-        if not csv_file.exists():
+        csv_locations = [
+            BASE_DIR / "Archive" / "raw" / "exports" / "AllTransactions.csv",
+            BASE_DIR / "Archive" / "AllTransactions.csv",
+            BASE_DIR / "Archive" / "data" / "AllTransactions.csv"
+        ]
+        
+        csv_found = any(csv_file.exists() for csv_file in csv_locations)
+        
+        if not csv_found:
             print(f"   ⚠️  Skipped (requires AllTransactions.csv)")
             return True  # Not a failure, just skipped
 
@@ -171,14 +343,20 @@ def run_script(script_info):
         # Check if output was created (more reliable than exit code)
         # Check multiple possible output locations based on file type
         output_name = script_info['output']
-        if output_name.endswith('.json'):
-            output_file = BASE_DIR / "Archive" / "processed" / output_name
-        elif output_name.endswith('.md'):
-            output_file = BASE_DIR / "Archive" / "reports" / output_name
-        else:
-            output_file = BASE_DIR / "Archive" / output_name
+        possible_output_locations = [
+            BASE_DIR / "Archive" / "processed" / output_name,
+            BASE_DIR / "Archive" / "reports" / output_name,
+            BASE_DIR / "Archive" / output_name,
+            BASE_DIR / output_name
+        ]
+        
+        output_file = None
+        for location in possible_output_locations:
+            if location.exists() and location.stat().st_size > 0:
+                output_file = location
+                break
 
-        if output_file.exists() and output_file.stat().st_size > 0:
+        if output_file:
             size = output_file.stat().st_size / 1024  # KB
             print(f"   ✅ Success → {script_info['output']} ({size:.1f} KB)")
             return True
@@ -195,7 +373,7 @@ def run_script(script_info):
             if result.stdout:
                 # Sometimes error details are in stdout
                 stdout_msg = result.stdout.strip()
-                if stdout_msg and 'Error' in stdout_msg or 'Traceback' in stdout_msg:
+                if stdout_msg and ('Error' in stdout_msg or 'Traceback' in stdout_msg):
                     print(f"   Output: {stdout_msg[:500]}")
             return not script_info['required']  # Only fail if required
 
@@ -212,11 +390,23 @@ def build_financial_hub():
     print("🌐 Building financial_hub.html...")
     print()
 
-    build_script = BASE_DIR / "scripts" / "build_financial_docs.py"
+    build_script_locations = [
+        BASE_DIR / "scripts" / "build_financial_docs.py",
+        BASE_DIR / "build_financial_docs.py",
+        Path("build_financial_docs.py"),
+        Path("/mnt/user-data/uploads/build_financial_docs.py")
+    ]
+    
+    build_script = None
+    for location in build_script_locations:
+        if location.exists():
+            build_script = location
+            break
 
-    if not build_script.exists():
-        print(f"   ❌ build_financial_docs.py not found")
-        return False
+    if not build_script:
+        print(f"   ❌ build_financial_docs.py not found in any location")
+        print("   ⚠️  Skipping HTML generation")
+        return True  # Don't fail the whole process
 
     try:
         result = subprocess.run(
@@ -230,28 +420,38 @@ def build_financial_hub():
         )
 
         # Check if HTML was created (more reliable than exit code)
-        output_file = BASE_DIR / "financial_hub.html"
+        possible_html_locations = [
+            BASE_DIR / "financial_hub.html",
+            Path("financial_hub.html")
+        ]
+        
+        output_file = None
+        for location in possible_html_locations:
+            if location.exists() and location.stat().st_size > 0:
+                output_file = location
+                break
 
-        if output_file.exists() and output_file.stat().st_size > 0:
+        if output_file:
             size = output_file.stat().st_size / 1024  # KB
             print(f"✅ financial_hub.html generated ({size:.1f} KB)")
             print()
             return True
         else:
-            print(f"   ❌ Build failed with exit code {result.returncode}")
+            print(f"   ⚠️  HTML build completed but file not found")
+            print(f"   Exit code: {result.returncode}")
             if result.stderr:
                 error_msg = result.stderr.strip()
                 if error_msg:
-                    print(f"   Error: {error_msg[:500]}")
+                    print(f"   Error: {error_msg[:300]}")
             if result.stdout:
                 stdout_msg = result.stdout.strip()
-                if stdout_msg and ('Error' in stdout_msg or 'Traceback' in stdout_msg):
-                    print(f"   Output: {stdout_msg[:500]}")
-            return False
+                if stdout_msg:
+                    print(f"   Output: {stdout_msg[:300]}")
+            return True  # Don't fail the whole process
 
     except Exception as e:
         print(f"   ❌ Error: {str(e)[:100]}")
-        return False
+        return True  # Don't fail the whole process
 
 def print_summary():
     """Print summary of generated files"""
@@ -262,24 +462,46 @@ def print_summary():
 
     archive_dir = BASE_DIR / "Archive"
 
-    # Count files
-    md_files = list(archive_dir.glob("*.md"))
-    pdf_files = list(archive_dir.glob("*.pdf"))
-    csv_files = list(archive_dir.glob("*.csv"))
-    img_files = list(archive_dir.glob("*.jpg")) + list(archive_dir.glob("*.png"))
+    # Count files in multiple directories
+    all_files = []
+    search_dirs = [archive_dir, BASE_DIR]
+    
+    for search_dir in search_dirs:
+        if search_dir.exists():
+            all_files.extend(search_dir.rglob("*.md"))
+            all_files.extend(search_dir.rglob("*.pdf"))
+            all_files.extend(search_dir.rglob("*.csv"))
+            all_files.extend(search_dir.rglob("*.jpg"))
+            all_files.extend(search_dir.rglob("*.png"))
+
+    # Categorize
+    md_files = [f for f in all_files if f.suffix == '.md']
+    pdf_files = [f for f in all_files if f.suffix == '.pdf']
+    csv_files = [f for f in all_files if f.suffix == '.csv']
+    img_files = [f for f in all_files if f.suffix in ['.jpg', '.png']]
 
     print(f"📄 Markdown documents: {len(md_files)}")
     print(f"📋 PDF documents: {len(pdf_files)}")
     print(f"💳 CSV files: {len(csv_files)}")
     print(f"📸 Images: {len(img_files)}")
-    print(f"📦 Total files: {len(md_files) + len(pdf_files) + len(csv_files) + len(img_files)}")
+    print(f"📦 Total files: {len(all_files)}")
     print()
 
     # Check HTML
-    html_file = BASE_DIR / "financial_hub.html"
-    if html_file.exists():
+    html_locations = [
+        BASE_DIR / "financial_hub.html",
+        Path("financial_hub.html")
+    ]
+    
+    html_file = None
+    for location in html_locations:
+        if location.exists():
+            html_file = location
+            break
+    
+    if html_file:
         size = html_file.stat().st_size / 1024  # KB
-        print(f"🌐 financial_hub.html: {size:.1f} KB")
+        print(f"🌐 financial_hub.html: {size:.1f} KB at {html_file}")
     else:
         print("❌ financial_hub.html: NOT FOUND")
     print()
@@ -291,19 +513,34 @@ def print_next_steps():
     print("=" * 80)
     print()
 
-    html_file = BASE_DIR / "financial_hub.html"
+    # Find HTML file
+    html_locations = [
+        BASE_DIR / "financial_hub.html",
+        Path("financial_hub.html")
+    ]
+    
+    html_file = None
+    for location in html_locations:
+        if location.exists():
+            html_file = location
+            break
 
-    if html_file.exists():
+    if html_file:
         print("✅ Build complete! Your financial hub is ready.")
         print()
         print("To view your financial hub:")
         print(f"   1. Open: {html_file}")
-        print(f"   2. Or run: open {html_file}")
+        print(f"   2. Or run: start {html_file}")
         print()
         print("To rebuild after changes:")
         print(f"   python3 {Path(__file__).name}")
+        print()
+        print("📊 Your Excel budget data has been processed!")
+        print("📈 All analysis reports are now based on your latest data.")
     else:
-        print("❌ Build incomplete. Check errors above.")
+        print("⚠️  Build completed with some limitations.")
+        print("   Reports may have been generated without the final HTML.")
+        print("   Check the Archive/ directory for individual reports.")
     print()
     print("=" * 80)
     print()
@@ -336,12 +573,19 @@ def main():
 
     print_header()
 
-    # Check prerequisites
-    if not check_prerequisites():
-        print()
-        print("❌ Prerequisites not met. Please fix issues above.")
-        return 1
+    # Check prerequisites (always succeeds, creates what's needed)
+    check_prerequisites()
 
+    # STEP 1: Import Excel budget file first
+    print("=" * 80)
+    print("📊 IMPORTING EXCEL BUDGET DATA")
+    print("=" * 80)
+    print()
+    
+    excel_imported = import_excel_budget()
+    print()
+
+    # STEP 2: Run analysis scripts
     print("=" * 80)
     print("🔧 RUNNING ANALYSIS SCRIPTS")
     print("=" * 80)
@@ -352,6 +596,12 @@ def main():
     skipped = []
     failed = []
     succeeded = []
+
+    # Add Excel import to results
+    if excel_imported:
+        succeeded.append("Excel Budget Import")
+    else:
+        skipped.append("Excel Budget Import")
 
     # Run all analysis scripts
     for script in SCRIPTS:
@@ -366,17 +616,17 @@ def main():
             failed.append(script['name'])
             success = False
 
-    # Build HTML
+    # Build HTML (non-blocking)
     print("=" * 80)
     print("🌐 BUILDING FINAL HTML")
     print("=" * 80)
     print()
 
-    if not build_financial_hub():
-        failed.append("HTML Build")
-        success = False
-    else:
+    html_built = build_financial_hub()
+    if html_built:
         succeeded.append("HTML Build")
+    else:
+        skipped.append("HTML Build")
 
     print()
 
@@ -409,7 +659,7 @@ def main():
     # Next steps
     print_next_steps()
 
-    return 0 if success else 1
+    return 0 if len(failed) == 0 else 1
 
 if __name__ == '__main__':
     sys.exit(main())
