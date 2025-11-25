@@ -74,7 +74,7 @@ CATEGORY_MAPPING = {
 }
 
 # Columns to skip (not expense/income categories)
-SKIP_COLUMNS = {'date', 'balance', 'description', 'discription', 'notes'}
+SKIP_COLUMNS = {'date', 'balance', 'description', 'discription', 'notes', 'none'}
 
 def normalize_category(column_name):
     """Normalize category name for mapping"""
@@ -209,9 +209,13 @@ def import_excel_budget(excel_file):
                     continue
 
                 # Get description if available
+                # Check if next column is description (including 'None' header or empty header)
                 description = ''
-                if len(row) > date_col_idx + 1 and headers[date_col_idx + 1].lower() in ['description', 'discription', 'notes']:
-                    description = str(row[date_col_idx + 1]) if row[date_col_idx + 1] else ''
+                if len(row) > date_col_idx + 1:
+                    next_header = headers[date_col_idx + 1].lower() if headers[date_col_idx + 1] else ''
+                    # Accept description, notes, 'none', or empty as description columns
+                    if next_header in ['description', 'discription', 'notes', 'none', '']:
+                        description = str(row[date_col_idx + 1]) if row[date_col_idx + 1] else ''
 
                 # Process each category column
                 for col_idx, (header, value) in enumerate(zip(headers, row)):
@@ -287,7 +291,9 @@ def import_excel_budget(excel_file):
                 # Get description if available
                 description = ''
                 for col in df.columns:
-                    if str(col).lower() in ['description', 'discription', 'notes']:
+                    col_name = str(col).lower() if col else ''
+                    # Accept description, notes, 'none', or empty as description columns
+                    if col_name in ['description', 'discription', 'notes', 'none', '']:
                         description = str(row[col]) if pd.notna(row[col]) else ''
                         break
 

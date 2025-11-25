@@ -1,5 +1,9 @@
 # FINANCIAL SCENARIO ANALYSIS (TEMPLATE)
+<<<<<<< HEAD
 **Generated:** November 24, 2025 at 09:11 PM
+=======
+**Generated:** November 25, 2025 at 03:08 AM
+>>>>>>> c53521f52e4c282ec76b6b8455b96590d8ac0fb1
 
 ⚠️  **TEMPLATE FILE** - Update values in scenario_calculator.py before using
 

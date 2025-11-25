@@ -119,9 +119,10 @@ def import_excel_budget():
         Path("/mnt/user-data/uploads/Budget_in_Excel_for_Ethan.xlsx"),  # Uploaded files
     ]
 
-    # Also look for any Excel file with "budget" in the name
+    # Also look for any Excel file with "budget" in the name or "100" in the name
     excel_patterns = [
-        "Budget*.xlsx", "*budget*.xlsx", "*Budget*.xlsx", "budget*.xls", "*budget*.xls"
+        "Budget*.xlsx", "*budget*.xlsx", "*Budget*.xlsx", "budget*.xls", "*budget*.xls",
+        "*100*.xlsx", "*100*.xls"
     ]
 
     budget_file = None
