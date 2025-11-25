@@ -1,9 +1,9 @@
 # TRANSACTION ANALYSIS REPORT
-**Generated:** November 22, 2025 at 10:42 AM
+**Generated:** November 24, 2025 at 09:02 PM
 **Data Source:** AllTransactions.csv
-**Period:** November 2024 - November 2024
-**Months Analyzed:** 1
-**Total Transactions:** 8
+**Period:** August 2024 - October 2025
+**Months Analyzed:** 15
+**Total Transactions:** 83
 
 ---
 
@@ -12,9 +12,9 @@
 ### Total Spending by Period
 
 **Overall:**
-- Total transactions: 8
-- Period: 1 months
-- Average per month: $7,461.48
+- Total transactions: 83
+- Period: 15 months
+- Average per month: $1,435.08
 
 ---
 
@@ -24,13 +24,20 @@
 
 | Rank | Category | Total Spent | Transactions | Avg per Transaction |
 |------|----------|-------------|--------------|-------------------|
-| 1 | **Income** | $7,000.00 | 2 | $3500.00 |
-| 2 | **Groceries** | $125.50 | 1 | $125.50 |
-| 3 | **Bills & Utilities** | $120.00 | 1 | $120.00 |
-| 4 | **Shopping** | $89.99 | 1 | $89.99 |
-| 5 | **Dining & Drinks** | $65.00 | 1 | $65.00 |
-| 6 | **Auto & Transport** | $45.00 | 1 | $45.00 |
-| 7 | **Entertainment & Rec.** | $15.99 | 1 | $15.99 |
+| 1 | **Income** | $9,982.08 | 5 | $1996.42 |
+| 2 | **Bills & Utilities** | $2,235.93 | 7 | $319.42 |
+| 3 | **Extra Tsp** | $1,821.25 | 9 | $202.36 |
+| 4 | **Auto & Transport** | $1,342.24 | 11 | $122.02 |
+| 5 | **Healthcare & Medical** | $1,225.93 | 6 | $204.32 |
+| 6 | **Savings & Investments** | $1,224.15 | 4 | $306.04 |
+| 7 | **Janet $** | $860.39 | 5 | $172.08 |
+| 8 | **Shopping** | $724.15 | 9 | $80.46 |
+| 9 | **Gifts & Donations** | $637.17 | 6 | $106.20 |
+| 10 | **Home & Garden** | $430.82 | 5 | $86.16 |
+| 11 | **Home Insurance** | $428.87 | 4 | $107.22 |
+| 12 | **Travel** | $352.89 | 2 | $176.44 |
+| 13 | **Interest Income** | $222.80 | 7 | $31.83 |
+| 14 | **Insurance** | $37.54 | 3 | $12.51 |
 
 
 ---
@@ -41,13 +48,26 @@
 
 | Rank | Merchant | Total Spent | Transactions |
 |------|----------|-------------|--------------|
-| 1 | Salary Deposit | $7,000.00 | 2 |
-| 2 | Grocery Store | $125.50 | 1 |
-| 3 | Electric Company | $120.00 | 1 |
-| 4 | Online Shopping | $89.99 | 1 |
-| 5 | Restaurant | $65.00 | 1 |
-| 6 | Gas Station | $45.00 | 1 |
-| 7 | Streaming Service | $15.99 | 1 |
+| 1 | Income - 2025-01-09 | $2,048.46 | 1 |
+| 2 | Income - 2025-02-09 | $2,036.84 | 1 |
+| 3 | Income - 2025-02-11 | $2,035.41 | 1 |
+| 4 | Income - 2025-07-04 | $2,011.07 | 1 |
+| 5 | Income - 2025-09-22 | $1,850.30 | 1 |
+| 6 | Bills & Utilities - 2025-03-26 | $424.85 | 1 |
+| 7 | Savings & Investments - 2024-12-05 | $412.35 | 1 |
+| 8 | Bills & Utilities - 2025-07-15 | $394.38 | 1 |
+| 9 | Bills & Utilities - 2025-10-11 | $331.47 | 1 |
+| 10 | Savings & Investments - 2025-02-24 | $328.58 | 1 |
+| 11 | Bills & Utilities - 2025-06-24 | $320.40 | 1 |
+| 12 | Gifts & Donations - 2025-05-02 | $299.82 | 1 |
+| 13 | Healthcare & Medical - 2025-07-21 | $299.07 | 1 |
+| 14 | Healthcare & Medical - 2025-01-16 | $294.82 | 1 |
+| 15 | Bills & Utilities - 2025-04-05 | $283.40 | 1 |
+| 16 | Savings & Investments - 2025-01-22 | $272.41 | 1 |
+| 17 | Auto & Transport - 2025-08-19 | $250.42 | 2 |
+| 18 | Bills & Utilities - 2024-11-30 | $249.63 | 1 |
+| 19 | Home & Garden - 2024-11-16 | $240.29 | 1 |
+| 20 | Bills & Utilities - 2025-08-04 | $231.80 | 1 |
 
 
 ---
@@ -58,7 +78,18 @@
 
 | Month | Total Spending | Change from Previous |
 |-------|---------------|---------------------|
-| 2024-11 | $7,461.48 | - |
+| 2024-11 | $932.24 | - |
+| 2024-12 | $613.28 | $-318.96 (-34.2%) |
+| 2025-01 | $2,896.09 | $+2,282.81 (+372.2%) |
+| 2025-02 | $4,552.86 | $+1,656.77 (+57.2%) |
+| 2025-03 | $1,169.89 | $-3,382.97 (-74.3%) |
+| 2025-04 | $347.25 | $-822.64 (-70.3%) |
+| 2025-05 | $1,161.00 | $+813.75 (+234.3%) |
+| 2025-06 | $517.28 | $-643.72 (-55.4%) |
+| 2025-07 | $3,444.71 | $+2,927.43 (+565.9%) |
+| 2025-08 | $776.54 | $-2,668.17 (-77.5%) |
+| 2025-09 | $2,401.36 | $+1,624.82 (+209.2%) |
+| 2025-10 | $849.60 | $-1,551.76 (-64.6%) |
 
 
 ---
@@ -69,8 +100,6 @@
 
 | Category | Total | Monthly Average | % of Total Spending |
 |----------|-------|-----------------|---------------------|
-| **Dining** | $65.00 | $65.00 | 0.9% |
-| **Subscription** | $15.99 | $15.99 | 0.2% |
 
 
 ### Waste Analysis Details
@@ -81,8 +110,8 @@
 - Recommendation: Target $200/month (84% reduction if current >$1,000/mo)
 
 **Dining Out:**
-- Total: $65.00
-- Monthly Average: $65.00
+- Total: $0.00
+- Monthly Average: $0.00
 - Recommendation: Target $200/month (80% reduction if current >$1,000/mo)
 
 **Fast Food:**
@@ -90,8 +119,8 @@
 - Monthly Average: $0.00
 - Recommendation: Eliminate (pack lunches, meal prep)
 
-**Total Identified Waste:** $80.99
-**Monthly Waste Average:** $80.99
+**Total Identified Waste:** $0.00
+**Monthly Waste Average:** $0.00
 
 ---
 
@@ -100,17 +129,17 @@
 ### Spending Patterns
 
 **High Spending Categories:**
-1. **Income**: $7,000.00/month average
-2. **Groceries**: $125.50/month average
-3. **Bills & Utilities**: $120.00/month average
+1. **Income**: $665.47/month average
+2. **Bills & Utilities**: $149.06/month average
+3. **Extra Tsp**: $121.42/month average
 
 
 **Opportunities for Savings:**
 
 1. **Reduce Discretionary Spending**
-   - Current waste: $80.99/month
+   - Current waste: $0.00/month
    - Target: $450/month total discretionary
-   - Potential savings: $-369.01/month
+   - Potential savings: $-450.00/month
 
 2. **Eliminate Fast Food**
    - Current: $0.00/month
@@ -152,9 +181,9 @@
 ## 📊 DATA QUALITY NOTES
 
 **Transaction Coverage:**
-- Transactions analyzed: 8
-- Date range: 1 months
-- Average transactions per month: 8
+- Transactions analyzed: 83
+- Date range: 15 months
+- Average transactions per month: 6
 
 **Limitations:**
 - Analysis based on categorization in CSV
@@ -183,5 +212,5 @@
 ---
 
 **Generated by:** analyze_transactions.py
-**Last Updated:** 2025-11-22 10:42:24
+**Last Updated:** 2025-11-24 21:02:52
 **Data File:** AllTransactions.csv

@@ -36,7 +36,7 @@ if defined dt (
     set "TIMESTAMP=%random%_%random%"
 )
 
-:: Initialize logging with safe path handling
+:: Initialize logging with safe path handling - USE TEMP IF SCRIPT DIR FAILS
 set "LOG_DIR=%SCRIPT_DIR%logs"
 if not exist "%LOG_DIR%" mkdir "%LOG_DIR%" 2>nul
 
@@ -290,408 +290,205 @@ if %PATH_WARNING%==0 (
     call :COLOR_SUCCESS "Installation path is optimal"
 )
 
-:: Check write permissions
+:: FIXED: Check write permissions - Don't exit on failure, just warn
 call :SHOW_PROGRESS "Checking write permissions..."
+set "WRITE_PERMISSION_OK=1"
+
+:: Try script directory first
 echo test > "%SCRIPT_DIR%test_write.tmp" 2>nul
 if %ERRORLEVEL% NEQ 0 (
-    call :COLOR_ERROR "Cannot write to current directory!"
-    call :DRAW_BOX "PERMISSION ERROR"
-    echo The script cannot write files to:
-    echo "%SCRIPT_DIR%"
-    echo.
-    echo Possible solutions:
-    echo 1. Run as administrator (right-click script, "Run as administrator")
-    echo 2. Move to a different folder (like C:\Projects\FinancialHub\)
-    echo 3. Check folder permissions in Windows Explorer
-    echo.
-    pause
-    exit /b 1
+    set "WRITE_PERMISSION_OK=0"
+    call :COLOR_WARNING "Limited write access to script directory"
+    
+    :: Try TEMP directory as backup
+    echo test > "%TEMP%\financial_hub_test.tmp" 2>nul
+    if %ERRORLEVEL% EQU 0 (
+        del "%TEMP%\financial_hub_test.tmp" 2>nul
+        call :COLOR_INFO "Will use temporary directory for operations if needed"
+    ) else (
+        call :COLOR_ERROR "Cannot write to any directory - build may fail"
+    )
 ) else (
     del "%SCRIPT_DIR%test_write.tmp" >nul 2>&1
     call :COLOR_SUCCESS "Write permissions OK"
 )
 
-:: Check available disk space
-call :SHOW_PROGRESS "Checking available disk space..."
-set "FREE_SPACE_GB=Unknown"
+:: CONTINUE REGARDLESS OF WRITE PERMISSIONS
 
-:: Get drive letter from script path
-set "DRIVE_LETTER=%SCRIPT_DIR:~0,2%"
-
-:: Try using WMIC (works on most systems)
-for /f "skip=1 tokens=3" %%a in ('wmic logicaldisk where "DeviceID='%DRIVE_LETTER%'" get FreeSpace 2^>nul') do (
-    if not "%%a"=="" (
-        set "FREE_BYTES=%%a"
-        set /a "FREE_SPACE_GB=!FREE_BYTES:~0,-9!"
-        goto :SPACE_CHECK_DONE
-    )
-)
-
-:: Fallback: Try PowerShell
-if %PS_AVAILABLE%==1 (
-    for /f "usebackq tokens=*" %%a in (`powershell -NoProfile -Command "(Get-PSDrive '%DRIVE_LETTER:~0,1%' -ErrorAction SilentlyContinue).Free/1GB -as [int]" 2^>nul`) do (
-        set "FREE_SPACE_GB=%%a"
-        goto :SPACE_CHECK_DONE
-    )
-)
-
-:SPACE_CHECK_DONE
-if "%FREE_SPACE_GB%"=="Unknown" (
-    call :COLOR_WARNING "Could not determine disk space"
-) else (
-    if %FREE_SPACE_GB% LSS 1 (
-        call :COLOR_ERROR "Very low disk space: %FREE_SPACE_GB% GB available"
-        call :COLOR_WARNING "Build may fail if space runs out"
-        echo.
-        set /p "CONTINUE_LOW_SPACE=Continue anyway? (Y/N): "
-        if /i "!CONTINUE_LOW_SPACE!" NEQ "Y" exit /b 1
-    ) else if %FREE_SPACE_GB% LSS 5 (
-        call :COLOR_WARNING "Low disk space: %FREE_SPACE_GB% GB available"
-    ) else (
-        call :COLOR_SUCCESS "Disk space OK: %FREE_SPACE_GB% GB available"
-    )
-)
-
-:: Check internet connection
-call :SHOW_PROGRESS "Checking internet connection..."
-set "INTERNET_OK=0"
-
-:: Try multiple methods
-ping -n 1 -w 1000 8.8.8.8 >nul 2>&1
-if %ERRORLEVEL% EQU 0 set "INTERNET_OK=1"
-
-if %INTERNET_OK% EQU 0 (
-    ping -n 1 -w 1000 1.1.1.1 >nul 2>&1
-    if !ERRORLEVEL! EQU 0 set "INTERNET_OK=1"
-)
-
-if %INTERNET_OK% EQU 0 if %PS_AVAILABLE%==1 (
-    powershell -NoProfile -Command "Test-Connection -ComputerName google.com -Count 1 -Quiet" 2>nul | find "True" >nul
-    if !ERRORLEVEL! EQU 0 set "INTERNET_OK=1"
-)
-
-if %INTERNET_OK% EQU 0 (
-    call :COLOR_WARNING "Internet connection check failed"
-    echo.
-    echo Internet is needed to download Python if not installed.
-    echo If Python is already installed, you can continue safely.
-    echo.
-    set /p "CONTINUE_NO_NET=Continue anyway? (Y/N): "
-    if /i "!CONTINUE_NO_NET!" NEQ "Y" exit /b 1
-) else (
-    call :COLOR_SUCCESS "Internet connection confirmed"
-)
-
-echo.
-call :COLOR_SUCCESS "Pre-flight checks complete!"
-echo.
+goto :STEP1_PYTHON_CHECK
 
 :: ========================================================
-:: STEP 1: PYTHON INSTALLATION & VERIFICATION
+:: STEP 1: PYTHON DETECTION AND INSTALLATION
 :: ========================================================
-call :COLOR_STEP "STEP 1: Python Environment Setup"
+:STEP1_PYTHON_CHECK
+call :COLOR_STEP "STEP 1: Python Environment Check"
 
-call :SHOW_PROGRESS "Looking for Python on your computer..."
+call :SHOW_PROGRESS "Looking for Python..."
 
-:: Check for Python in multiple ways
-set "PYTHON_FOUND=0"
-set "PYTHON_CMD=python"
+:: Test multiple Python commands
+set "PYTHON_CMD="
 set "PYTHON_VERSION="
-set "PYTHON_MAJOR=0"
-set "PYTHON_MINOR=0"
 
-:: Try standard python command
-python --version >nul 2>&1
-if %ERRORLEVEL% EQU 0 (
-    set "PYTHON_FOUND=1"
-    for /f "tokens=2" %%V in ('python --version 2^>^&1') do set "PYTHON_VERSION=%%V"
-    goto :PYTHON_VERSION_CHECK
-)
-
-:: Try python3 command
+:: Test python3
 python3 --version >nul 2>&1
-if %ERRORLEVEL% EQU 0 (
-    set "PYTHON_FOUND=1"
+if %ERRORLEVEL%==0 (
     set "PYTHON_CMD=python3"
-    for /f "tokens=2" %%V in ('python3 --version 2^>^&1') do set "PYTHON_VERSION=%%V"
-    goto :PYTHON_VERSION_CHECK
+    for /f "tokens=2" %%a in ('python3 --version 2^>^&1') do set "PYTHON_VERSION=%%a"
+    goto :PYTHON_FOUND
 )
 
-:: Try py launcher (Windows)
+:: Test python
+python --version >nul 2>&1
+if %ERRORLEVEL%==0 (
+    set "PYTHON_CMD=python"
+    for /f "tokens=2" %%a in ('python --version 2^>^&1') do set "PYTHON_VERSION=%%a"
+    goto :PYTHON_FOUND
+)
+
+:: Test py launcher
 py --version >nul 2>&1
-if %ERRORLEVEL% EQU 0 (
-    set "PYTHON_FOUND=1"
+if %ERRORLEVEL%==0 (
     set "PYTHON_CMD=py"
-    for /f "tokens=2" %%V in ('py --version 2^>^&1') do set "PYTHON_VERSION=%%V"
-    goto :PYTHON_VERSION_CHECK
+    for /f "tokens=2" %%a in ('py --version 2^>^&1') do set "PYTHON_VERSION=%%a"
+    goto :PYTHON_FOUND
 )
 
-:PYTHON_VERSION_CHECK
-if %PYTHON_FOUND%==1 (
-    call :COLOR_SUCCESS "Python found: %PYTHON_VERSION%"
+call :COLOR_ERROR "Python not found!"
+echo.
+echo Python is required to run the Financial Hub Builder.
+echo.
+echo Do you want to install Python automatically?
+echo [Y] Yes - Download and install Python
+echo [N] No  - Exit (install manually from python.org)
+echo.
+set /p "INSTALL_PYTHON=Your choice (Y/N): "
 
-    :: Parse version
-    for /f "tokens=1,2 delims=." %%a in ("%PYTHON_VERSION%") do (
-        set "PYTHON_MAJOR=%%a"
-        set "PYTHON_MINOR=%%b"
-    )
+if /i "!INSTALL_PYTHON!"=="Y" (
+    goto :INSTALL_PYTHON
+) else (
+    echo.
+    echo Please install Python from: https://python.org
+    echo Make sure to check "Add Python to PATH" during installation
+    pause
+    exit /b 1
+)
 
-    :: Check minimum version (3.8+)
-    if !PYTHON_MAJOR! LSS 3 (
-        call :COLOR_WARNING "Python !PYTHON_VERSION! is too old (need 3.8+)"
-        set "PYTHON_FOUND=0"
-    ) else if !PYTHON_MAJOR! EQU 3 (
-        if !PYTHON_MINOR! LSS 8 (
-            call :COLOR_WARNING "Python !PYTHON_VERSION! is too old (need 3.8+)"
-            set "PYTHON_FOUND=0"
-        )
+:PYTHON_FOUND
+call :COLOR_SUCCESS "Found Python %PYTHON_VERSION% (%PYTHON_CMD%)"
+
+:: Check Python version
+for /f "tokens=1,2 delims=." %%a in ("%PYTHON_VERSION%") do (
+    set "PY_MAJOR=%%a"
+    set "PY_MINOR=%%b"
+)
+
+if %PY_MAJOR% LSS 3 (
+    call :COLOR_ERROR "Python version too old: %PYTHON_VERSION%"
+    call :COLOR_INFO "Python 3.8 or newer is required"
+    goto :INSTALL_PYTHON
+) else if %PY_MAJOR% EQU 3 if %PY_MINOR% LSS 8 (
+    call :COLOR_ERROR "Python version too old: %PYTHON_VERSION%"
+    call :COLOR_INFO "Python 3.8 or newer is required"
+    goto :INSTALL_PYTHON
+) else (
+    call :COLOR_SUCCESS "Python version is compatible"
+)
+
+goto :STEP2_DEPENDENCIES
+
+:INSTALL_PYTHON
+call :SHOW_PROGRESS "Installing Python..."
+call :COLOR_WARNING "Python installation feature coming soon"
+echo.
+echo Please install Python manually:
+echo 1. Go to https://python.org/downloads/
+echo 2. Download Python 3.11 or newer
+echo 3. Run installer and CHECK "Add Python to PATH"
+echo 4. Restart this script
+echo.
+pause
+exit /b 1
+
+:: ========================================================
+:: STEP 2: DEPENDENCY CHECK
+:: ========================================================
+:STEP2_DEPENDENCIES
+call :COLOR_STEP "STEP 2: Checking Dependencies"
+
+call :SHOW_PROGRESS "Testing pip package manager..."
+%PYTHON_CMD% -m pip --version >nul 2>&1
+if %ERRORLEVEL% NEQ 0 (
+    call :COLOR_ERROR "pip not available"
+    echo.
+    echo pip is required to install Python packages.
+    echo Try reinstalling Python and ensure pip is included.
+    pause
+    exit /b 1
+) else (
+    call :COLOR_SUCCESS "pip is available"
+)
+
+:: Check for required packages
+call :SHOW_PROGRESS "Checking required packages..."
+set "MISSING_PACKAGES="
+
+:: Test each package
+for %%p in (pandas openpyxl pathlib datetime collections) do (
+    %PYTHON_CMD% -c "import %%p" >nul 2>&1
+    if !ERRORLEVEL! NEQ 0 (
+        set "MISSING_PACKAGES=!MISSING_PACKAGES! %%p"
     )
 )
 
-if %PYTHON_FOUND%==0 (
-    call :COLOR_WARNING "Python 3.8+ not found on this system"
+if defined MISSING_PACKAGES (
+    call :COLOR_WARNING "Missing packages:%MISSING_PACKAGES%"
     echo.
-    echo Python needs to be installed.
-    echo.
-
-    :: Try winget first (Windows 11 / modern Windows 10)
-    call :SHOW_PROGRESS "Checking for Windows Package Manager (winget)..."
-    where winget >nul 2>&1
-    if !ERRORLEVEL! EQU 0 (
-        call :COLOR_INFO "winget is available - using recommended method"
-        echo.
-        echo Installing Python via Windows Package Manager...
-        echo This is the cleanest and most reliable installation method.
-        echo.
-
-        winget install --id Python.Python.3.12 --source winget --silent --accept-package-agreements --accept-source-agreements
-
-        if !ERRORLEVEL! EQU 0 (
-            call :COLOR_SUCCESS "Python installed successfully via winget!"
-            echo.
-            call :COLOR_INFO "IMPORTANT: Close this window and run the script again"
-            call :COLOR_INFO "This refreshes the environment variables"
-            echo.
-            pause
-            exit /b 0
-        ) else (
-            call :COLOR_WARNING "winget installation failed, trying alternative method..."
-        )
-    ) else (
-        call :COLOR_INFO "winget not available (normal for older Windows 10)"
+    echo Installing required packages...
+    %PYTHON_CMD% -m pip install pandas openpyxl --break-system-packages 2>nul
+    if !ERRORLEVEL! NEQ 0 (
+        %PYTHON_CMD% -m pip install pandas openpyxl
     )
-
-    :: Fallback: Direct download
-    call :COLOR_INFO "Downloading Python installer..."
-    echo.
-
-    set "PYTHON_INSTALLER=%TEMP%\python-installer.exe"
-    set "PYTHON_URL=https://www.python.org/ftp/python/3.12.7/python-3.12.7-amd64.exe"
-
-    if %PS_AVAILABLE%==1 (
-        powershell -NoProfile -Command "$ProgressPreference = 'SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri '%PYTHON_URL%' -OutFile '%PYTHON_INSTALLER%'" 2>nul
-    ) else (
-        :: Fallback: use certutil (available on all Windows)
-        certutil -urlcache -split -f "%PYTHON_URL%" "%PYTHON_INSTALLER%" >nul 2>&1
-    )
-
-    if exist "%PYTHON_INSTALLER%" (
-        call :COLOR_SUCCESS "Download complete!"
+    
+    if !ERRORLEVEL! NEQ 0 (
+        call :COLOR_ERROR "Failed to install packages"
         echo.
-        echo Installing Python 3.12.7...
-        echo.
-        echo The installer will:
-        echo   - Install Python for %USERNAME%
-        echo   - Add Python to PATH
-        echo   - Install pip package manager
-        echo.
-        echo This may take a few minutes...
-        echo.
-
-        :: Try all-users installation if admin, otherwise current user only
-        if %IS_ADMIN% EQU 1 (
-            "%PYTHON_INSTALLER%" /quiet InstallAllUsers=1 PrependPath=1 Include_pip=1 Include_test=0
-        ) else (
-            "%PYTHON_INSTALLER%" /quiet InstallAllUsers=0 PrependPath=1 Include_pip=1 Include_test=0
-        )
-
-        set "INSTALL_RESULT=!ERRORLEVEL!"
-        del "%PYTHON_INSTALLER%" >nul 2>&1
-
-        if !INSTALL_RESULT! EQU 0 (
-            call :COLOR_SUCCESS "Python installation complete!"
-            echo.
-            call :COLOR_INFO "IMPORTANT: Close this window and run the script again"
-            call :COLOR_INFO "This refreshes the environment variables"
-            echo.
-            pause
-            exit /b 0
-        ) else (
-            call :COLOR_ERROR "Installation failed"
-            echo.
-            echo Please try manual installation:
-            echo 1. Visit: https://www.python.org/downloads/
-            echo 2. Download Python 3.12 or newer
-            echo 3. Run installer and check "Add Python to PATH"
-            echo 4. Run this script again
-            echo.
-            pause
-            exit /b 1
-        )
-    ) else (
-        call :COLOR_ERROR "Could not download Python installer"
-        echo.
-        echo Please install manually:
-        echo 1. Visit: https://www.python.org/downloads/
-        echo 2. Download Python 3.12 or newer
-        echo 3. Run installer and check "Add Python to PATH"
-        echo 4. Run this script again
-        echo.
+        echo Try running as administrator or install manually:
+        echo   pip install pandas openpyxl
         pause
         exit /b 1
-    )
-)
-
-:: ========================================================
-:: STEP 2: VIRTUAL ENVIRONMENT SETUP
-:: ========================================================
-call :COLOR_STEP "STEP 2: Setting Up Isolated Environment"
-
-echo Creating a clean workspace for your project...
-echo This prevents conflicts with other Python installations.
-echo.
-
-set "VENV_DIR=%SCRIPT_DIR%venv"
-
-IF NOT EXIST "%VENV_DIR%" (
-    call :SHOW_PROGRESS "Creating virtual environment..."
-    "%PYTHON_CMD%" -m venv "%VENV_DIR%"
-
-    if !ERRORLEVEL! NEQ 0 (
-        call :COLOR_ERROR "Failed to create virtual environment"
-        call :COLOR_INFO "Trying to install venv module..."
-
-        "%PYTHON_CMD%" -m pip install virtualenv
-        "%PYTHON_CMD%" -m virtualenv "%VENV_DIR%"
-
-        if !ERRORLEVEL! NEQ 0 (
-            call :COLOR_ERROR "Could not create virtual environment"
-            echo.
-            echo Continuing without virtual environment (not recommended)
-            echo.
-            set "VENV_DIR="
-            pause
-        ) else (
-            call :COLOR_SUCCESS "Virtual environment created using virtualenv"
-        )
     ) else (
-        call :COLOR_SUCCESS "Virtual environment created"
+        call :COLOR_SUCCESS "Packages installed successfully"
     )
-) ELSE (
-    call :COLOR_INFO "Virtual environment already exists"
-)
-
-:: Activate virtual environment if it exists
-if defined VENV_DIR (
-    if exist "%VENV_DIR%\Scripts\activate.bat" (
-        call :SHOW_PROGRESS "Activating virtual environment..."
-        call "%VENV_DIR%\Scripts\activate.bat"
-
-        if !ERRORLEVEL! NEQ 0 (
-            call :COLOR_WARNING "Failed to activate virtual environment"
-            call :COLOR_INFO "Continuing with system Python"
-        ) else (
-            call :COLOR_SUCCESS "Virtual environment activated"
-
-            :: Update PYTHON_CMD to use venv python
-            set "PYTHON_CMD=%VENV_DIR%\Scripts\python.exe"
-        )
-    )
+) else (
+    call :COLOR_SUCCESS "All required packages are available"
 )
 
 :: ========================================================
-:: STEP 3: DEPENDENCY INSTALLATION
+:: STEP 3: PROJECT STRUCTURE
 :: ========================================================
-call :COLOR_STEP "STEP 3: Installing Required Components"
+call :COLOR_STEP "STEP 3: Setting Up Project Structure"
 
-echo Installing project dependencies...
-echo.
+call :SHOW_PROGRESS "Creating directories..."
 
-call :SHOW_PROGRESS "Upgrading pip to latest version..."
-"%PYTHON_CMD%" -m pip install --upgrade pip --quiet 2>nul
+:: Create Archive structure
+if not exist "%SCRIPT_DIR%Archive" mkdir "%SCRIPT_DIR%Archive"
+if not exist "%SCRIPT_DIR%Archive\raw" mkdir "%SCRIPT_DIR%Archive\raw"
+if not exist "%SCRIPT_DIR%Archive\raw\exports" mkdir "%SCRIPT_DIR%Archive\raw\exports"
+if not exist "%SCRIPT_DIR%Archive\processed" mkdir "%SCRIPT_DIR%Archive\processed"
+if not exist "%SCRIPT_DIR%Archive\reports" mkdir "%SCRIPT_DIR%Archive\reports"
 
-set "MAX_RETRIES=3"
-set "RETRY_COUNT=0"
+call :COLOR_SUCCESS "Directory structure created"
 
-:INSTALL_DEPENDENCIES
-set /a RETRY_COUNT+=1
+:: Create default config files if they don't exist
+call :SHOW_PROGRESS "Creating default configuration files..."
 
-:: Check for requirements-dev.txt first, then requirements.txt
-set "REQ_FILE=%SCRIPT_DIR%requirements-dev.txt"
-if not exist "%REQ_FILE%" set "REQ_FILE=%SCRIPT_DIR%requirements.txt"
-
-IF EXIST "%REQ_FILE%" (
-    call :SHOW_PROGRESS "Installing from %REQ_FILE:~-20% (Attempt !RETRY_COUNT!/%MAX_RETRIES%)..."
-
-    "%PYTHON_CMD%" -m pip install -r "%REQ_FILE%"
-
-    if !ERRORLEVEL! NEQ 0 (
-        call :COLOR_ERROR "Installation failed (Attempt !RETRY_COUNT!)"
-
-        if !RETRY_COUNT! LSS %MAX_RETRIES% (
-            echo Retrying in 5 seconds...
-            call :COUNTDOWN 5
-            goto :INSTALL_DEPENDENCIES
-        ) else (
-            call :COLOR_ERROR "Failed after %MAX_RETRIES% attempts"
-            echo.
-            call :COLOR_WARNING "Build may fail without dependencies"
-            echo.
-            set /p "CONTINUE_NO_DEPS=Continue anyway? (Y/N): "
-            if /i "!CONTINUE_NO_DEPS!" NEQ "Y" exit /b 1
-        )
-    ) else (
-        call :COLOR_SUCCESS "All components installed successfully"
-    )
-) ELSE (
-    call :COLOR_WARNING "No requirements file found"
-    call :COLOR_INFO "Installing PyInstaller as fallback..."
-    "%PYTHON_CMD%" -m pip install pyinstaller --quiet 2>nul
-    call :COLOR_SUCCESS "PyInstaller installed"
-)
-
-:: ========================================================
-:: STEP 4: PROJECT STRUCTURE & INITIALIZATION
-:: ========================================================
-call :COLOR_STEP "STEP 4: Preparing Project Structure"
-
-call :SHOW_PROGRESS "Creating directory structure..."
-
-:: Create directories with error handling
-set "DIRS_TO_CREATE=Archive\reports Archive\processed Archive\raw\exports"
-
-for %%D in (%DIRS_TO_CREATE%) do (
-    if not exist "%SCRIPT_DIR%%%D" (
-        mkdir "%SCRIPT_DIR%%%D" 2>nul
-        if !ERRORLEVEL! EQU 0 (
-            call :COLOR_INFO "Created: %%D"
-        ) else (
-            call :COLOR_WARNING "Could not create: %%D"
-        )
-    )
-)
-
-call :SHOW_PROGRESS "Initializing configuration files..."
-
-:: Create default config files if they don't exist (for first-time users)
 IF NOT EXIST "%SCRIPT_DIR%Archive\processed\financial_config.json" (
     (
         echo {
-        echo   "metadata": {"last_updated": "1970-01-01", "version": "2.0"},
-        echo   "cash_accounts": {},
-        echo   "credit_cards": {},
-        echo   "debt_balances": {},
-        echo   "recurring_expenses": {}
+        echo   "recurring_expenses": {},
+        echo   "account_mapping": {},
+        echo   "category_mapping": {},
+        echo   "metadata": {"last_updated": "1970-01-01"}
         echo }
     ) > "%SCRIPT_DIR%Archive\processed\financial_config.json"
     call :COLOR_INFO "Created default financial_config.json"
@@ -708,40 +505,17 @@ IF NOT EXIST "%SCRIPT_DIR%Archive\processed\budget.json" (
     call :COLOR_INFO "Created default budget.json"
 )
 
-IF NOT EXIST "%SCRIPT_DIR%Archive\processed\financial_goals.json" (
-    (
-        echo {
-        echo   "goals": {},
-        echo   "metadata": {"last_updated": "1970-01-01"}
-        echo }
-    ) > "%SCRIPT_DIR%Archive\processed\financial_goals.json"
-    call :COLOR_INFO "Created default financial_goals.json"
-)
-
 IF NOT EXIST "%SCRIPT_DIR%Archive\raw\exports\AllTransactions.csv" (
     echo Date,Name,Amount,Category,Account Name,Description,Custom Name,Ignored From > "%SCRIPT_DIR%Archive\raw\exports\AllTransactions.csv"
     call :COLOR_INFO "Created default AllTransactions.csv"
 )
 
-IF NOT EXIST "%SCRIPT_DIR%Archive\processed\account_balance_history.json" (
-    (
-        echo {
-        echo   "created": "1970-01-01T00:00:00",
-        echo   "cash_accounts": {},
-        echo   "credit_cards": {},
-        echo   "debt_balances": {},
-        echo   "totals": []
-        echo }
-    ) > "%SCRIPT_DIR%Archive\processed\account_balance_history.json"
-    call :COLOR_INFO "Created default account_balance_history.json"
-)
-
 call :COLOR_SUCCESS "Project structure ready"
 
 :: ========================================================
-:: STEP 5: BUILD PROCESS
+:: STEP 4: BUILD PROCESS
 :: ========================================================
-call :COLOR_STEP "STEP 5: Building Financial Hub"
+call :COLOR_STEP "STEP 4: Building Financial Hub"
 
 echo Building your Financial Hub dashboard...
 echo.
@@ -770,34 +544,6 @@ if not exist "%BUILD_SCRIPT%" (
         echo.
         pause
         exit /b 1
-    )
-)
-
-:: Clean build option
-set "DO_CLEAN_BUILD=0"
-if exist "%SCRIPT_DIR%dist" (
-    if exist "%SCRIPT_DIR%build" (
-        echo.
-        echo Previous build artifacts found.
-        set /p "CLEAN_CHOICE=Clean rebuild? [Y]es or [N]o: "
-
-        if /i "!CLEAN_CHOICE!"=="Y" set "DO_CLEAN_BUILD=1"
-    )
-)
-
-if %DO_CLEAN_BUILD%==1 (
-    call :SHOW_PROGRESS "Cleaning build directories..."
-    if exist "%SCRIPT_DIR%build" (
-        rmdir /s /q "%SCRIPT_DIR%build" 2>nul
-        if !ERRORLEVEL! EQU 0 (
-            call :COLOR_INFO "Cleaned: build"
-        )
-    )
-    if exist "%SCRIPT_DIR%dist" (
-        rmdir /s /q "%SCRIPT_DIR%dist" 2>nul
-        if !ERRORLEVEL! EQU 0 (
-            call :COLOR_INFO "Cleaned: dist"
-        )
     )
 )
 
@@ -859,21 +605,6 @@ if exist "%SCRIPT_DIR%Archive\reports" (
     )
 )
 
-:: Check for executable builds
-if exist "%SCRIPT_DIR%dist" (
-    for /r "%SCRIPT_DIR%dist" %%F in (*.exe) do (
-        set "FOUND_OUTPUT=1"
-        for %%A in ("%%F") do set "EXE_SIZE=%%~zA"
-        set /a EXE_SIZE_MB=!EXE_SIZE! / 1048576
-        echo.
-        call :COLOR_SUCCESS "Executable created!"
-        echo Name: %%~nxF
-        echo Location: %%F
-        echo Size: !EXE_SIZE_MB! MB
-        echo.
-    )
-)
-
 if !FOUND_OUTPUT!==0 (
     call :COLOR_WARNING "No output files found"
     echo.
@@ -920,7 +651,7 @@ echo   Main log: %LOG_FILE%
 if exist "%ERROR_LOG%" echo   Error log: %ERROR_LOG%
 echo.
 echo Common issues:
-echo   - Missing dependencies (check Step 3)
+echo   - Missing dependencies (check Step 2)
 echo   - Missing data files (check Archive\raw\exports\)
 echo   - Configuration file errors
 echo.

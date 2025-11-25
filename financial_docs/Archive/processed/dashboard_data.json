@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-22T10:42:24.945247",
+  "generated_at": "2025-11-24T21:02:52.767807",
   "snapshot": {
     "liquid_cash": 40000.0,
     "total_debt": 265500.0,
@@ -7,9 +7,83 @@
     "monthly_recurring": 2340.99
   },
   "trends": {
-    "trends": {},
-    "top_merchants": [],
-    "problem_categories": {}
+    "trends": {
+      "Interest Income": {
+        "months": [
+          "2025-06",
+          "2025-10"
+        ],
+        "amounts": [
+          37.66,
+          40.46
+        ],
+        "average": 39.06,
+        "total": 78.12
+      },
+      "Bills & Utilities": {
+        "months": [
+          "2025-06",
+          "2025-07",
+          "2025-10"
+        ],
+        "amounts": [
+          320.4,
+          394.38,
+          331.47
+        ],
+        "average": 348.75,
+        "total": 1046.25
+      },
+      "Income": {
+        "months": [
+          "2025-07",
+          "2025-09"
+        ],
+        "amounts": [
+          2011.07,
+          1850.3
+        ],
+        "average": 1930.68,
+        "total": 3861.37
+      },
+      "Gifts & Donations": {
+        "months": [
+          "2025-07",
+          "2025-08"
+        ],
+        "amounts": [
+          86.28,
+          81.56
+        ],
+        "average": 83.92,
+        "total": 167.84
+      },
+      "Home Insurance": {
+        "months": [
+          "2025-07",
+          "2025-10"
+        ],
+        "amounts": [
+          111.66,
+          101.38
+        ],
+        "average": 106.52,
+        "total": 213.04
+      }
+    },
+    "top_merchants": [
+      {
+        "name": "",
+        "total": 6396.61
+      }
+    ],
+    "problem_categories": {
+      "Shopping": {
+        "total": 52.04,
+        "count": 1,
+        "average": 52.04
+      }
+    }
   },
   "budget_vs_actual": {
     "categories": {
@@ -102,8 +176,8 @@
     "total_budgeted": 4275,
     "total_spent": 0,
     "total_remaining": 4275,
-    "days_in_month": 22,
-    "days_remaining": 8
+    "days_in_month": 24,
+    "days_remaining": 6
   },
   "credit_card_payoff": {
     "total_balance": 500.0,
@@ -178,9 +252,50 @@
     "message": "✅ Excellent - You have 6+ months covered"
   },
   "anomalies": {
-    "category_anomalies": [],
+    "category_anomalies": [
+      {
+        "category": "Interest Income",
+        "type": "low_spending",
+        "current": 0,
+        "average": 39.06,
+        "percent_change": -100.0,
+        "message": "Interest Income: $0.00 this month vs $39.06 average (-100.0%)"
+      },
+      {
+        "category": "Bills & Utilities",
+        "type": "low_spending",
+        "current": 0,
+        "average": 348.75,
+        "percent_change": -100.0,
+        "message": "Bills & Utilities: $0.00 this month vs $348.75 average (-100.0%)"
+      },
+      {
+        "category": "Income",
+        "type": "low_spending",
+        "current": 0,
+        "average": 1930.68,
+        "percent_change": -100.0,
+        "message": "Income: $0.00 this month vs $1,930.68 average (-100.0%)"
+      },
+      {
+        "category": "Gifts & Donations",
+        "type": "low_spending",
+        "current": 0,
+        "average": 83.92,
+        "percent_change": -100.0,
+        "message": "Gifts & Donations: $0.00 this month vs $83.92 average (-100.0%)"
+      },
+      {
+        "category": "Home Insurance",
+        "type": "low_spending",
+        "current": 0,
+        "average": 106.52,
+        "percent_change": -100.0,
+        "message": "Home Insurance: $0.00 this month vs $106.52 average (-100.0%)"
+      }
+    ],
     "large_transactions": [],
-    "anomaly_count": 0
+    "anomaly_count": 5
   },
   "alerts": [],
   "config": {

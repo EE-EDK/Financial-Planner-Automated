@@ -1,25 +1,84 @@
 Date,Description,Amount,Category,Account,Notes
-2024-11-01,Grocery Store,-125.50,Groceries,Checking,Weekly groceries
-2024-11-02,Gas Station,-45.00,Auto & Transport,Credit Card 1,Fill up
-2024-11-03,Salary Deposit,3500.00,Income,Checking,Bi-weekly paycheck
-2024-11-05,Electric Company,-120.00,Bills & Utilities,Checking,Monthly bill
-2024-11-07,Restaurant,-65.00,Dining & Drinks,Credit Card 1,Dinner out
-2024-11-10,Online Shopping,-89.99,Shopping,Credit Card 2,Household items
-2024-11-15,Streaming Service,-15.99,Entertainment & Rec.,Checking,Monthly subscription
-2024-11-17,Salary Deposit,3500.00,Income,Checking,Bi-weekly paycheck
-2025-11-23,TSP & OPM deposits,50.0,Auto & Transport,Budget Import,Imported from Sample_Budget.xlsx
-2025-11-23,TSP & OPM deposits,348.0,Bills & Utilities,Budget Import,Imported from Sample_Budget.xlsx
-2025-11-23,TSP & OPM deposits,80.0,Groceries,Budget Import,Imported from Sample_Budget.xlsx
-2025-11-23,TSP & OPM deposits,200.0,Savings & Investments,Budget Import,Imported from Sample_Budget.xlsx
-2025-11-23,TSP & OPM deposits,1708.0,Income,Budget Import,Imported from Sample_Budget.xlsx
-2025-12-01,visa,-63.8,Auto & Transport,Budget Import,Imported from Sample_Budget.xlsx
-2025-12-01,visa,-298.5,Bills & Utilities,Budget Import,Imported from Sample_Budget.xlsx
-2025-12-01,visa,-45.0,Groceries,Budget Import,Imported from Sample_Budget.xlsx
-2025-12-01,visa,-15.99,Entertainment,Budget Import,Imported from Sample_Budget.xlsx
-2025-12-01,visa,-145.28,Savings & Investments,Budget Import,Imported from Sample_Budget.xlsx
-2025-12-01,visa,-552.58,Income,Budget Import,Imported from Sample_Budget.xlsx
-2025-12-05,Bills & Utilities - 2025-12-05,120.0,Bills & Utilities,Budget Import,Imported from Sample_Budget.xlsx
-2025-12-05,Groceries - 2025-12-05,55.0,Groceries,Budget Import,Imported from Sample_Budget.xlsx
-2025-12-05,Healthcare & Medical - 2025-12-05,45.0,Healthcare & Medical,Budget Import,Imported from Sample_Budget.xlsx
-2025-12-10,salary,500.0,Savings & Investments,Budget Import,Imported from Sample_Budget.xlsx
-2025-12-10,salary,3500.0,Income,Budget Import,Imported from Sample_Budget.xlsx
+2024-08-17,Shopping - 2024-08-17,-52.49,Shopping,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-08-24,Shopping - 2024-08-24,-107.08,Shopping,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-08-28,Home & Garden - 2024-08-28,-53.68,Home & Garden,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-09-17,Auto & Transport - 2024-09-17,178.68,Auto & Transport,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-09-17,Extra Tsp - 2024-09-17,220.46,Extra Tsp,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-09-27,Auto & Transport - 2024-09-27,-143.81,Auto & Transport,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-09-27,Shopping - 2024-09-27,-126.45,Shopping,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-09-28,Auto & Transport - 2024-09-28,106.02,Auto & Transport,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-09-28,Extra Tsp - 2024-09-28,209.61,Extra Tsp,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-09-29,Healthcare & Medical - 2024-09-29,184.93,Healthcare & Medical,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-09-29,Home & Garden - 2024-09-29,8.88,Home & Garden,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-10-16,Auto & Transport - 2024-10-16,-86.53,Auto & Transport,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-10-21,Auto & Transport - 2024-10-21,-155.24,Auto & Transport,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-10-24,Interest Income - 2024-10-24,14.84,Interest Income,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-10-25,Travel - 2024-10-25,-215.41,Travel,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-11-08,Janet $ - 2024-11-08,-195.33,Janet $,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-11-15,Gifts & Donations - 2024-11-15,-41.89,Gifts & Donations,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-11-15,Insurance - 2024-11-15,-11.25,Insurance,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-11-16,Home & Garden - 2024-11-16,-240.29,Home & Garden,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-11-21,Janet $ - 2024-11-21,-193.85,Janet $,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-11-30,Bills & Utilities - 2024-11-30,249.63,Bills & Utilities,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-12-05,Shopping - 2024-12-05,56.74,Shopping,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-12-05,Savings & Investments - 2024-12-05,412.35,Savings & Investments,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2024-12-12,Shopping - 2024-12-12,-144.19,Shopping,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-01-04,Shopping - 2025-01-04,-62.83,Shopping,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-01-09,Income - 2025-01-09,2048.46,Income,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-01-16,Healthcare & Medical - 2025-01-16,-294.82,Healthcare & Medical,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-01-16,Extra Tsp - 2025-01-16,-217.57,Extra Tsp,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-01-22,Savings & Investments - 2025-01-22,-272.41,Savings & Investments,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-02-09,Income - 2025-02-09,2036.84,Income,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-02-11,Income - 2025-02-11,2035.41,Income,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-02-24,Janet $ - 2025-02-24,152.03,Janet $,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-02-24,Savings & Investments - 2025-02-24,328.58,Savings & Investments,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-03-12,Gifts & Donations - 2025-03-12,-73.14,Gifts & Donations,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-03-12,Healthcare & Medical - 2025-03-12,-111.33,Healthcare & Medical,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-03-19,Extra Tsp - 2025-03-19,-183.1,Extra Tsp,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-03-26,Bills & Utilities - 2025-03-26,-424.85,Bills & Utilities,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-03-26,Extra Tsp - 2025-03-26,-214.46,Extra Tsp,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-03-28,Janet $ - 2025-03-28,-108.53,Janet $,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-03-31,Gifts & Donations - 2025-03-31,-54.48,Gifts & Donations,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-04-05,Bills & Utilities - 2025-04-05,-283.4,Bills & Utilities,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-04-21,Shopping - 2025-04-21,-63.85,Shopping,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-05-02,Gifts & Donations - 2025-05-02,299.82,Gifts & Donations,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-05-05,Auto & Transport - 2025-05-05,-112.88,Auto & Transport,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-05-08,Shopping - 2025-05-08,58.48,Shopping,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-05-08,Interest Income - 2025-05-08,23.66,Interest Income,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-05-09,Home Insurance - 2025-05-09,-110.45,Home Insurance,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-05-10,Extra Tsp - 2025-05-10,-211.6,Extra Tsp,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-05-12,Home & Garden - 2025-05-12,-36.08,Home & Garden,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-05-15,Interest Income - 2025-05-15,-41.08,Interest Income,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-05-16,Healthcare & Medical - 2025-05-16,175.06,Healthcare & Medical,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-05-18,Home & Garden - 2025-05-18,-91.89,Home & Garden,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-06-07,Interest Income - 2025-06-07,37.66,Interest Income,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-06-17,Interest Income - 2025-06-17,-21.74,Interest Income,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-06-24,Travel - 2025-06-24,137.48,Travel,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-06-24,Bills & Utilities - 2025-06-24,320.4,Bills & Utilities,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-07-04,Income - 2025-07-04,2011.07,Income,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-07-10,Interest Income - 2025-07-10,-43.36,Interest Income,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-07-12,Auto & Transport - 2025-07-12,-82.55,Auto & Transport,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-07-12,Home Insurance - 2025-07-12,-105.38,Home Insurance,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-07-15,Gifts & Donations - 2025-07-15,86.28,Gifts & Donations,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-07-15,Home Insurance - 2025-07-15,111.66,Home Insurance,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-07-15,Bills & Utilities - 2025-07-15,394.38,Bills & Utilities,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-07-21,Healthcare & Medical - 2025-07-21,-299.07,Healthcare & Medical,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-07-21,Extra Tsp - 2025-07-21,-198.15,Extra Tsp,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-07-27,Auto & Transport - 2025-07-27,-112.81,Auto & Transport,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-08-04,Bills & Utilities - 2025-08-04,-231.8,Bills & Utilities,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-08-18,Healthcare & Medical - 2025-08-18,-160.72,Healthcare & Medical,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-08-19,Auto & Transport - 2025-08-19,104.92,Auto & Transport,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-08-19,Auto & Transport - 2025-08-19,145.5,Auto & Transport,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-08-19,Gifts & Donations - 2025-08-19,81.56,Gifts & Donations,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-08-19,Shopping - 2025-08-19,52.04,Shopping,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-09-22,Income - 2025-09-22,1850.3,Income,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-09-29,Insurance - 2025-09-29,14.62,Insurance,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-09-29,Savings & Investments - 2025-09-29,210.81,Savings & Investments,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-09-29,Extra Tsp - 2025-09-29,-212.33,Extra Tsp,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-09-30,Auto & Transport - 2025-09-30,-113.3,Auto & Transport,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-10-01,Insurance - 2025-10-01,-11.67,Insurance,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-10-02,Home Insurance - 2025-10-02,101.38,Home Insurance,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-10-03,Interest Income - 2025-10-03,40.46,Interest Income,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-10-11,Bills & Utilities - 2025-10-11,331.47,Bills & Utilities,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-10-11,Extra Tsp - 2025-10-11,153.97,Extra Tsp,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
+2025-10-15,Janet $ - 2025-10-15,210.65,Janet $,Budget Import,Imported from Budget_in_Excel_for_Ethan_with_100_lines.xlsx
