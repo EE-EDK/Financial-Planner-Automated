@@ -58,3 +58,8 @@ tmp/
 # Generated reports
 financial_report.html
 financial_data.json
+
+# User data and archives
+archive/
+data/inputs/
+data/transactions.csv
