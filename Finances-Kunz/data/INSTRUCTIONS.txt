@@ -1,0 +1,49 @@
+HOW TO ADD YOUR TRANSACTIONS
+=============================
+
+Since you track manually in Excel, here are two ways to use this program:
+
+OPTION 1: Keep Using Your Excel File (Simplest)
+------------------------------------------------
+1. Keep tracking in your Excel file like you always do
+2. When you want to see a report, save your Excel file as CSV:
+   - In Excel: File → Save As
+   - Choose "CSV (Comma delimited)" as the format
+   - Save it as "transactions.csv" in this folder
+3. Run the finance program
+4. View your report!
+
+OPTION 2: Use the CSV Template
+-------------------------------
+1. Open "transactions_template.csv" in Excel
+2. Add your transactions following the example format:
+   - Date: YYYY-MM-DD (like 2025-12-01)
+   - Description: What you bought
+   - Category: Must match your budget categories
+   - Amount: The cost (positive numbers for expenses)
+3. Save as "transactions.csv"
+4. Run the finance program
+
+Your Budget Categories:
+- Auto
+- B-Day
+- Car Ins.
+- Clothes
+- Cycle Ins.
+- Extra TSP
+- Furniture
+- Home Insurance
+- Interest
+- Janet $
+- Medical
+- Mower
+- Property Taxes
+- Savings
+- Utilities
+- Vacation
+- X-mas
+- Xtra Car
+
+Remember: The category names must match exactly!
+
+Need help? Ask Ethan!
