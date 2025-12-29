@@ -1,0 +1,201 @@
+{
+  "last_updated": "2025-12-29",
+  "income": {
+    "monthly_earnings": 11877
+  },
+  "budget": {
+    "Bills & Utilities": 760,
+    "Auto & Transport": 800,
+    "Baby Ava": 0,
+    "Dining & Drinks": 300,
+    "Emergency Funds": 300,
+    "Entertainment & Rec.": 100,
+    "Ethan-Product": 50,
+    "Family Care": 185,
+    "Groceries": 760,
+    "Home & Garden": 60,
+    "Loan Payment": 5000,
+    "Medical": 210,
+    "New Water Heater": 150,
+    "No Debt Goal": 1690,
+    "Personal Care": 60,
+    "Pets": 50,
+    "Rental Property Operating": 300,
+    "Shopping": 100,
+    "Software & Tech": 50,
+    "Taxes": 50,
+    "Everything Else": 440
+  },
+  "accounts": {
+    "checking": {
+      "USAA Checking": 3283.54,
+      "Capital One EK": 220,
+      "Capital One KK": 340
+    },
+    "savings": {
+      "USAA Savings": 1000.12
+    },
+    "investment": {
+      "Vanguard": 300
+    }
+  },
+  "debts": {
+    "mortgages": [
+      {
+        "name": "308 Rental Mortgage",
+        "balance": 138226.21,
+        "rate": 2.75,
+        "monthly_payment": 1240.45,
+        "property": "308 Jamie Ct"
+      },
+      {
+        "name": "808 Primary Residence",
+        "balance": 256506.38,
+        "rate": 2.25,
+        "monthly_payment": 1621.09,
+        "property": "808 Primary Residence"
+      },
+      {
+        "name": "Goodleap Solar",
+        "balance": 15110.84,
+        "rate": 2.99,
+        "monthly_payment": 102.92,
+        "type": "loan"
+      }
+    ],
+    "auto": [
+      {
+        "name": "Mazda Lease",
+        "balance": 14772,
+        "rate": 0,
+        "monthly_payment": 615.5,
+        "type": "lease"
+      },
+      {
+        "name": "Civic Auto Loan",
+        "balance": 30821.89,
+        "rate": 5.19,
+        "monthly_payment": 561.26,
+        "type": "auto_loan"
+      }
+    ],
+    "credit_cards": [
+      {
+        "name": "Venture One Ethan",
+        "balance": 14980,
+        "apr": 22,
+        "minimum_payment": 176,
+        "note": "0% APR expires May 22, 2026"
+      },
+      {
+        "name": "Kenia Personal Loan",
+        "balance": 9000,
+        "apr": 5,
+        "minimum_payment": 300,
+        "note": "Hidden debt not in original plan"
+      },
+      {
+        "name": "VISA Card",
+        "balance": 538
+      },
+      {
+        "name": "Discover Card",
+        "balance": 1128
+      }
+    ]
+  },
+  "recurring_expenses": {
+    "subscriptions": [
+      {
+        "name": "Hulu",
+        "amount": 18.99,
+        "category": "Entertainment & Rec."
+      },
+      {
+        "name": "T-Mobile + Netflix",
+        "amount": 123,
+        "category": "Bills & Utilities"
+      },
+      {
+        "name": "Life Insurance",
+        "amount": 92.21,
+        "category": "Bills & Utilities"
+      },
+      {
+        "name": "Spotify",
+        "amount": 19.99,
+        "category": "Entertainment & Rec."
+      },
+      {
+        "name": "Xfinity",
+        "amount": 60,
+        "category": "Bills & Utilities"
+      },
+      {
+        "name": "MadMuscle",
+        "amount": 19.99,
+        "category": "Family Care"
+      },
+      {
+        "name": "Amazon Prime",
+        "amount": 14.99,
+        "category": "Shopping"
+      },
+      {
+        "name": "Ring",
+        "amount": 19.99,
+        "category": "Bills & Utilities"
+      },
+      {
+        "name": "Microsoft 365",
+        "amount": 8.5,
+        "category": "Software & Tech"
+      },
+      {
+        "name": "Avail",
+        "amount": 9,
+        "category": "Software & Tech"
+      }
+    ],
+    "utilities": [
+      {
+        "name": "Natural Gas",
+        "amount": 80,
+        "category": "Bills & Utilities",
+        "variable": true
+      },
+      {
+        "name": "Electricity",
+        "amount": 50,
+        "category": "Bills & Utilities",
+        "variable": true
+      },
+      {
+        "name": "Water/Sewer/Trash",
+        "amount": 130,
+        "category": "Bills & Utilities",
+        "variable": true
+      },
+      {
+        "name": "Gas (Vehicle)",
+        "amount": 250,
+        "category": "Auto & Transport",
+        "variable": true
+      },
+      {
+        "name": "Car Insurance",
+        "amount": 190,
+        "category": "Auto & Transport"
+      }
+    ]
+  },
+  "goals": {
+    "emergency_fund_target": 25000,
+    "credit_card_payoff_deadline": "2026-04-30",
+    "notes": [
+      "Pay off $30K Venture card before 0% APR expires April 2026",
+      "Build emergency fund to $25,000",
+      "Reduce discretionary spending"
+    ]
+  }
+}

@@ -1,0 +1,109 @@
+[
+  {
+    "date": "2025-12-05T18:11:28.170585",
+    "score": 32.8,
+    "grade": "F",
+    "breakdown": {
+      "emergency_fund": 3.8,
+      "debt_management": 19,
+      "savings_rate": 0,
+      "cash_flow": 10
+    }
+  },
+  {
+    "date": "2025-12-05T18:11:39.877095",
+    "score": 32.8,
+    "grade": "F",
+    "breakdown": {
+      "emergency_fund": 3.8,
+      "debt_management": 19,
+      "savings_rate": 0,
+      "cash_flow": 10
+    }
+  },
+  {
+<<<<<<< HEAD
+    "date": "2025-12-05T13:05:25.191616",
+    "score": 31.3,
+    "grade": "F",
+    "breakdown": {
+      "emergency_fund": 2.3,
+      "debt_management": 19,
+      "savings_rate": 0,
+      "cash_flow": 10
+    }
+  },
+  {
+    "date": "2025-12-05T13:15:32.195337",
+    "score": 31.3,
+    "grade": "F",
+    "breakdown": {
+      "emergency_fund": 2.3,
+      "debt_management": 19,
+      "savings_rate": 0,
+      "cash_flow": 10
+    }
+  },
+  {
+    "date": "2025-12-05T13:16:53.409135",
+    "score": 31.3,
+    "grade": "F",
+    "breakdown": {
+      "emergency_fund": 2.3,
+      "debt_management": 19,
+      "savings_rate": 0,
+      "cash_flow": 10
+    }
+  },
+  {
+    "date": "2025-12-05T13:19:35.992452",
+    "score": 30.4,
+    "grade": "F",
+    "breakdown": {
+      "emergency_fund": 1.4,
+      "debt_management": 19,
+      "savings_rate": 0,
+      "cash_flow": 10
+    }
+  },
+  {
+    "date": "2025-12-27T21:20:50.946576",
+    "score": 32.4,
+    "grade": "F",
+    "breakdown": {
+      "emergency_fund": 3.4,
+      "debt_management": 19,
+      "savings_rate": 0,
+      "cash_flow": 10
+    }
+  },
+  {
+    "date": "2025-12-27T21:21:59.025093",
+    "score": 30.1,
+    "grade": "F",
+    "breakdown": {
+      "emergency_fund": 1.1,
+      "debt_management": 19,
+      "savings_rate": 0,
+      "cash_flow": 10
+    }
+  },
+  {
+    "date": "2025-12-27T21:23:05.556701",
+    "score": 30.1,
+    "grade": "F",
+    "breakdown": {
+      "emergency_fund": 1.1,
+=======
+    "date": "2025-12-07T16:53:38.075388",
+    "score": 31.6,
+    "grade": "F",
+    "breakdown": {
+      "emergency_fund": 2.6,
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      "debt_management": 19,
+      "savings_rate": 0,
+      "cash_flow": 10
+    }
+  }
+]

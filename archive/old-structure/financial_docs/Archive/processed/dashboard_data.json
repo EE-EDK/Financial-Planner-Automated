@@ -1,0 +1,1497 @@
+{
+<<<<<<< HEAD
+  "generated_at": "2025-12-27T21:23:05.779176",
+=======
+  "generated_at": "2025-12-07T16:53:38.282259",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+  "snapshot": {
+    "liquid_cash": 5143.66,
+    "total_debt": 475036.32,
+    "net_worth": -469892.66,
+    "monthly_recurring": 5403.88
+  },
+  "trends": {
+    "trends": {
+      "Amazon": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+          356.49,
+          591.13,
+          1429.66,
+          1041.75,
+          84.02,
+          432.74
+        ],
+        "average": 655.97,
+        "total": 3935.79
+      },
+      "Shopping": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+<<<<<<< HEAD
+          268.35,
+          519.33,
+          357.98,
+          269.51,
+          258.27,
+          958.51
+        ],
+        "average": 438.66,
+        "total": 2631.95
+=======
+          2339.72,
+          4598.02
+        ],
+        "average": 3468.87,
+        "total": 6937.74
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      "Investment": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+          250.0,
+          250.0,
+          300.0,
+          700.0
+        ],
+        "average": 375.0,
+        "total": 1500.0
+      },
+      "Software & Tech": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+<<<<<<< HEAD
+          229.98,
+          1064.79,
+          277.63,
+          131.92,
+          384.48,
+          27.57
+        ],
+        "average": 352.73,
+        "total": 2116.37
+=======
+          58.04,
+          461.5
+        ],
+        "average": 259.77,
+        "total": 519.54
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      "Auto & Transport": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+<<<<<<< HEAD
+          1199.82,
+          1034.05,
+          352.25,
+          432.35,
+          282.1,
+          1200.29
+        ],
+        "average": 750.14,
+        "total": 4500.86
+=======
+          427.81,
+          148.3
+        ],
+        "average": 288.06,
+        "total": 576.11
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      "Bills & Utilities": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+<<<<<<< HEAD
+          994.02,
+          1259.2,
+          1177.57,
+          1172.09,
+          575.1,
+          429.17
+        ],
+        "average": 934.53,
+        "total": 5607.15
+=======
+          525.18,
+          84.02
+        ],
+        "average": 304.6,
+        "total": 609.2
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      "Loan Payment": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+<<<<<<< HEAD
+          3104.83,
+          3703.82,
+          4919.32,
+          4319.32,
+          4930.18,
+          4930.18
+        ],
+        "average": 4317.94,
+        "total": 25907.65
+=======
+          171.62,
+          271.94
+        ],
+        "average": 221.78,
+        "total": 443.56
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      "Internal Transfers": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+<<<<<<< HEAD
+          19781.48,
+          3392.19,
+          3102.94,
+          27946.83,
+          4981.02,
+          6683.54
+        ],
+        "average": 10981.33,
+        "total": 65888.0
+=======
+          159.05,
+          1034.43
+        ],
+        "average": 596.74,
+        "total": 1193.48
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      "Dining & Drinks": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+<<<<<<< HEAD
+          977.87,
+          1110.76,
+          1081.05,
+          933.96,
+          488.45,
+          476.04
+        ],
+        "average": 844.69,
+        "total": 5068.13
+=======
+          14.99,
+          218.97
+        ],
+        "average": 116.98,
+        "total": 233.96
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      "Entertainment & Rec.": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+<<<<<<< HEAD
+          127.19,
+          160.22,
+          408.43,
+          69.95,
+          108.72,
+          312.39
+        ],
+        "average": 197.82,
+        "total": 1186.9
+=======
+          31.98,
+          108.72
+        ],
+        "average": 70.35,
+        "total": 140.7
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      "Groceries": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+<<<<<<< HEAD
+          937.58,
+          1483.63,
+          1122.0,
+          642.59,
+          1154.12,
+          734.13
+        ],
+        "average": 1012.34,
+        "total": 6074.05
+=======
+          615.5,
+          4930.18
+        ],
+        "average": 2772.84,
+        "total": 5545.68
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      "Home & Garden": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+          313.34,
+          87.66,
+          166.94,
+          258.0,
+          43.37,
+          456.86
+        ],
+        "average": 221.03,
+        "total": 1326.17
+      },
+      "Cash & Checks": {
+        "months": [
+          "2025-07",
+          "2025-12"
+        ],
+        "amounts": [
+<<<<<<< HEAD
+          100.0,
+          102.75
+        ],
+        "average": 101.38,
+        "total": 202.75
+      },
+      "Health & Wellness": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+          205.72,
+          542.2,
+          223.99,
+          84.0,
+          84.0,
+          84.0
+        ],
+        "average": 203.99,
+        "total": 1223.91
+=======
+          71.67,
+          575.1
+        ],
+        "average": 323.38,
+        "total": 646.77
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      "Uncategorized": {
+        "months": [
+          "2025-07",
+          "2025-09",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+          29.74,
+          16.98,
+          40.97,
+          5.99,
+          226.15
+        ],
+        "average": 63.97,
+        "total": 319.83
+      },
+      "Business": {
+        "months": [
+          "2025-07",
+          "2025-11"
+        ],
+        "amounts": [
+          13200.0,
+          34.48
+        ],
+        "average": 6617.24,
+        "total": 13234.48
+      },
+      "Medical": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+          52.39,
+          856.48,
+          552.39,
+          739.23,
+          148.3,
+          265.48
+        ],
+        "average": 435.71,
+        "total": 2614.27
+      },
+      "Travel & Vacation": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10"
+        ],
+        "amounts": [
+          20.0,
+          46.04,
+          38.99,
+          405.0
+        ],
+        "average": 127.51,
+        "total": 510.03
+      },
+      "Pets": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-12"
+        ],
+        "amounts": [
+          49.04,
+          413.93,
+          49.04,
+          49.04,
+          49.04
+        ],
+        "average": 122.02,
+        "total": 610.09
+      },
+      "Personal Care": {
+        "months": [
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+          86.16,
+          35.98,
+          87.71,
+          29.0,
+          36.9,
+          43.6
+        ],
+        "average": 53.23,
+        "total": 319.35
+      },
+      "Family Care": {
+        "months": [
+          "2025-08",
+          "2025-09",
+          "2025-12"
+        ],
+        "amounts": [
+          318.94,
+          516.69,
+          181.08
+        ],
+        "average": 338.9,
+        "total": 1016.71
+      },
+      "Fees": {
+        "months": [
+          "2025-08",
+          "2025-09"
+        ],
+        "amounts": [
+          20.5,
+          0.5
+        ],
+        "average": 10.5,
+        "total": 21.0
+      },
+      "Savings Transfer": {
+        "months": [
+          "2025-08",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+          28.83,
+          400.0,
+          1220.46,
+          2587.24
+        ],
+        "average": 1059.13,
+        "total": 4236.53
+      },
+      "No Debt Goal": {
+        "months": [
+          "2025-09",
+          "2025-11"
+        ],
+        "amounts": [
+<<<<<<< HEAD
+          1400.0,
+          1500.0
+        ],
+        "average": 1450.0,
+        "total": 2900.0
+      },
+      "Christmas budget purchases": {
+        "months": [
+          "2025-11",
+          "2025-12"
+        ],
+        "amounts": [
+          208.79,
+          117.51
+        ],
+        "average": 163.15,
+        "total": 326.3
+=======
+          19.99,
+          384.48
+        ],
+        "average": 202.24,
+        "total": 404.47
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      }
+    },
+    "top_merchants": [
+      {
+        "name": "USAA FUNDS TRANSFER DB",
+        "total": 30226.0
+      },
+      {
+        "name": "BALANCE TRANSFERUSAA",
+        "total": 21096.63
+      },
+      {
+        "name": "USAA FEDERAL SAVINGS BANK",
+        "total": 16955.0
+      },
+      {
+        "name": "Rocket Savings Deposit",
+<<<<<<< HEAD
+        "total": 10390.01
+=======
+        "total": 2484.87
+      },
+      {
+        "name": "Withdrawal from Pay Off Credit Card Debt Goal",
+        "total": 1922.29
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      {
+        "name": "FREEDOM MTG PYMTS",
+        "total": 10039.44
+      },
+      {
+        "name": "LOANDEPOT MSP ACH",
+        "total": 7972.02
+      },
+      {
+        "name": "ICPAYMENT",
+        "total": 5462.13
+      },
+      {
+        "name": "Withdrawal from Pay Off Credit Card Debt Goal",
+        "total": 3612.29
+      },
+      {
+<<<<<<< HEAD
+        "name": "Costco",
+        "total": 2388.39
+      },
+      {
+        "name": "Walmart",
+        "total": 1648.22
+=======
+        "name": "MAZDA FINANCIAL 11242025",
+        "total": 615.5
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      }
+    ],
+    "problem_categories": {
+      "Amazon": {
+<<<<<<< HEAD
+        "total": 7938.57,
+        "count": 233,
+        "average": 34.07
+      },
+      "Dining & Drinks": {
+        "total": 5068.13,
+        "count": 164,
+        "average": 30.9
+      },
+      "Groceries": {
+        "total": 6074.05,
+        "count": 60,
+        "average": 101.23
+      },
+      "Shopping": {
+        "total": 2631.95,
+        "count": 53,
+        "average": 49.66
+      },
+      "Entertainment & Rec.": {
+        "total": 1186.9,
+        "count": 48,
+        "average": 24.73
+=======
+        "total": 1218.4,
+        "count": 32,
+        "average": 38.08
+      },
+      "Dining & Drinks": {
+        "total": 519.54,
+        "count": 17,
+        "average": 30.56
+      },
+      "Groceries": {
+        "total": 1193.48,
+        "count": 11,
+        "average": 108.5
+      },
+      "Shopping": {
+        "total": 233.96,
+        "count": 7,
+        "average": 33.42
+      },
+      "Entertainment & Rec.": {
+        "total": 140.7,
+        "count": 9,
+        "average": 15.63
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      }
+    }
+  },
+  "budget_vs_actual": {
+    "categories": {
+      "Auto & Transport": {
+        "budget": 400,
+        "actual": 1200.29,
+        "remaining": -800.29,
+        "percent": 300.1,
+        "over_budget": true
+      },
+      "Christmas budget purchases": {
+        "budget": 423,
+        "actual": 117.51,
+        "remaining": 305.49,
+        "percent": 27.8,
+        "over_budget": false
+      },
+      "Dining & Drinks": {
+        "budget": 250,
+        "actual": 476.04,
+        "remaining": -226.04,
+        "percent": 190.4,
+        "over_budget": true
+      },
+      "Entertainment & Rec.": {
+        "budget": 100,
+        "actual": 312.39,
+        "remaining": -212.39,
+        "percent": 312.4,
+        "over_budget": true
+      },
+      "Groceries": {
+        "budget": 1000,
+        "actual": 734.13,
+        "remaining": 265.87,
+        "percent": 73.4,
+        "over_budget": false
+      },
+      "Home & Garden": {
+        "budget": 50,
+        "actual": 456.86,
+        "remaining": -406.86,
+        "percent": 913.7,
+        "over_budget": true
+      },
+      "Loan Payment": {
+        "budget": 4229,
+        "actual": 4930.18,
+        "remaining": -701.18,
+        "percent": 116.6,
+        "over_budget": true
+      },
+      "Medical": {
+        "budget": 200,
+        "actual": 265.48,
+        "remaining": -65.48,
+        "percent": 132.7,
+        "over_budget": true
+      },
+      "No Debt Goal": {
+        "budget": 2110,
+        "actual": 0,
+        "remaining": 2110,
+        "percent": 0.0,
+        "over_budget": false
+      },
+      "Personal Care": {
+        "budget": 50,
+        "actual": 43.6,
+        "remaining": 6.4,
+        "percent": 87.2,
+        "over_budget": false
+      },
+      "Pets": {
+        "budget": 100,
+        "actual": 49.04,
+        "remaining": 50.96,
+        "percent": 49.0,
+        "over_budget": false
+      },
+      "Rental Property Operating": {
+        "budget": 400,
+        "actual": 0,
+        "remaining": 400,
+        "percent": 0.0,
+        "over_budget": false
+      },
+      "Shopping": {
+        "budget": 100,
+        "actual": 958.51,
+        "remaining": -858.51,
+        "percent": 958.5,
+        "over_budget": true
+      },
+      "Software & Tech": {
+        "budget": 200,
+        "actual": 27.57,
+        "remaining": 172.43,
+        "percent": 13.8,
+        "over_budget": false
+      },
+      "Everything Else": {
+        "budget": 77,
+        "actual": 0,
+        "remaining": 77,
+        "percent": 0.0,
+        "over_budget": false
+      }
+    },
+    "over_budget_items": [
+      {
+        "category": "Shopping",
+        "budget": 100,
+        "actual": 958.51,
+        "overage": 858.51
+      },
+      {
+        "category": "Auto & Transport",
+        "budget": 400,
+        "actual": 1200.29,
+        "overage": 800.29
+      },
+      {
+        "category": "Loan Payment",
+        "budget": 4229,
+        "actual": 4930.18,
+        "overage": 701.18
+      },
+      {
+        "category": "Home & Garden",
+        "budget": 50,
+        "actual": 456.86,
+        "overage": 406.86
+      },
+      {
+        "category": "Dining & Drinks",
+        "budget": 250,
+        "actual": 476.04,
+        "overage": 226.04
+      },
+      {
+        "category": "Entertainment & Rec.",
+        "budget": 100,
+        "actual": 312.39,
+        "overage": 212.39
+      },
+      {
+        "category": "Medical",
+        "budget": 200,
+        "actual": 265.48,
+        "overage": 65.48
+      }
+    ],
+    "total_budgeted": 9689,
+<<<<<<< HEAD
+    "total_spent": 21697.21,
+    "total_remaining": -12008.21,
+    "days_in_month": 27,
+    "days_remaining": 4
+=======
+    "total_spent": 0,
+    "total_remaining": 9689,
+    "days_in_month": 7,
+    "days_remaining": 24
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+  },
+  "credit_card_payoff": {
+    "total_balance": 19599.0,
+    "cards": [
+      {
+        "name": "Venture One Ethan",
+        "balance": 17933.0,
+        "apr": 22.0,
+        "min_payment": 358.66,
+        "months_to_payoff": 137,
+        "total_interest": 31124.74
+      },
+      {
+        "name": "VISA Card",
+        "balance": 538.0,
+        "apr": 0,
+        "min_payment": 25,
+        "months_to_payoff": 22,
+        "total_interest": 0.0
+      },
+      {
+        "name": "Discover Card",
+        "balance": 1128.0,
+        "apr": 0,
+        "min_payment": 25,
+        "months_to_payoff": 46,
+        "total_interest": 0.0
+      }
+    ],
+    "current_payment": 176,
+    "scenarios": {
+      "$200/mo": {
+        "monthly_payment": 200,
+        "months": null,
+        "years": null,
+        "total_interest": 0,
+        "total_paid": 19599.0
+      },
+      "$500/mo": {
+        "monthly_payment": 500,
+        "months": 65,
+        "years": 5.4,
+        "total_interest": 12610.01,
+        "total_paid": 32209.01
+      },
+      "$1000/mo": {
+        "monthly_payment": 1000,
+        "months": 24,
+        "years": 2.0,
+        "total_interest": 4364.46,
+        "total_paid": 23963.46
+      },
+      "$1500/mo": {
+        "monthly_payment": 1500,
+        "months": 15,
+        "years": 1.2,
+        "total_interest": 2710.82,
+        "total_paid": 22309.82
+      }
+    },
+    "recommendation": {
+      "method": "avalanche",
+      "description": "Pay highest APR first",
+      "target_payment": 500,
+      "payoff_months": 65
+    }
+  },
+  "emergency_fund": {
+    "current_balance": 5143.66,
+    "monthly_expenses": 5403.88,
+    "months_covered": 0.95,
+    "days_covered": 29.0,
+    "targets": {
+      "three_months": 16211.64,
+      "six_months": 32423.28
+    },
+    "progress": {
+      "to_3_months": {
+        "percent": 31.7,
+        "remaining": 11067.98
+      },
+      "to_6_months": {
+        "percent": 15.9,
+        "remaining": 27279.62
+      }
+    },
+    "status": "critical",
+    "message": "🔴 Critical - Less than 1 month covered"
+  },
+  "anomalies": {
+    "category_anomalies": [
+      {
+        "category": "Shopping",
+        "type": "high_spending",
+        "current": 958.51,
+        "average": 438.66,
+        "percent_change": 118.5,
+        "message": "Shopping: $958.51 this month vs $438.66 average (+118.5%)"
+      },
+      {
+<<<<<<< HEAD
+        "category": "Investment",
+        "type": "high_spending",
+        "current": 700.0,
+        "average": 375.0,
+        "percent_change": 86.7,
+        "message": "Investment: $700.00 this month vs $375.00 average (+86.7%)"
+=======
+        "category": "Internal Transfers",
+        "type": "low_spending",
+        "current": 0,
+        "average": 3468.87,
+        "percent_change": -100.0,
+        "message": "Internal Transfers: $0.00 this month vs $3,468.87 average (-100.0%)"
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      {
+        "category": "Software & Tech",
+        "type": "low_spending",
+<<<<<<< HEAD
+        "current": 27.57,
+        "average": 352.73,
+        "percent_change": -92.2,
+        "message": "Software & Tech: $27.57 this month vs $352.73 average (-92.2%)"
+      },
+      {
+        "category": "Auto & Transport",
+        "type": "high_spending",
+        "current": 1200.29,
+        "average": 750.14,
+        "percent_change": 60.0,
+        "message": "Auto & Transport: $1,200.29 this month vs $750.14 average (+60.0%)"
+=======
+        "current": 0,
+        "average": 259.77,
+        "percent_change": -100.0,
+        "message": "Dining & Drinks: $0.00 this month vs $259.77 average (-100.0%)"
+      },
+      {
+        "category": "Medical",
+        "type": "low_spending",
+        "current": 0,
+        "average": 288.06,
+        "percent_change": -100.0,
+        "message": "Medical: $0.00 this month vs $288.06 average (-100.0%)"
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      {
+        "category": "Bills & Utilities",
+        "type": "low_spending",
+<<<<<<< HEAD
+        "current": 429.17,
+        "average": 934.53,
+        "percent_change": -54.1,
+        "message": "Bills & Utilities: $429.17 this month vs $934.53 average (-54.1%)"
+      },
+      {
+        "category": "Entertainment & Rec.",
+        "type": "high_spending",
+        "current": 312.39,
+        "average": 197.82,
+        "percent_change": 57.9,
+        "message": "Entertainment & Rec.: $312.39 this month vs $197.82 average (+57.9%)"
+      },
+      {
+        "category": "Home & Garden",
+        "type": "high_spending",
+        "current": 456.86,
+        "average": 221.03,
+        "percent_change": 106.7,
+        "message": "Home & Garden: $456.86 this month vs $221.03 average (+106.7%)"
+=======
+        "current": 0,
+        "average": 304.6,
+        "percent_change": -100.0,
+        "message": "Amazon: $0.00 this month vs $304.60 average (-100.0%)"
+      },
+      {
+        "category": "Auto & Transport",
+        "type": "low_spending",
+        "current": 0,
+        "average": 221.78,
+        "percent_change": -100.0,
+        "message": "Auto & Transport: $0.00 this month vs $221.78 average (-100.0%)"
+      },
+      {
+        "category": "Groceries",
+        "type": "low_spending",
+        "current": 0,
+        "average": 596.74,
+        "percent_change": -100.0,
+        "message": "Groceries: $0.00 this month vs $596.74 average (-100.0%)"
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      {
+        "category": "Health & Wellness",
+        "type": "low_spending",
+<<<<<<< HEAD
+        "current": 84.0,
+        "average": 203.99,
+        "percent_change": -58.8,
+        "message": "Health & Wellness: $84.00 this month vs $203.99 average (-58.8%)"
+=======
+        "current": 0,
+        "average": 116.98,
+        "percent_change": -100.0,
+        "message": "Shopping: $0.00 this month vs $116.98 average (-100.0%)"
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      {
+        "category": "Uncategorized",
+        "type": "high_spending",
+        "current": 226.15,
+        "average": 63.97,
+        "percent_change": 253.5,
+        "message": "Uncategorized: $226.15 this month vs $63.97 average (+253.5%)"
+      },
+      {
+        "category": "Business",
+        "type": "low_spending",
+        "current": 0,
+<<<<<<< HEAD
+        "average": 6617.24,
+        "percent_change": -100.0,
+        "message": "Business: $0.00 this month vs $6,617.24 average (-100.0%)"
+=======
+        "average": 70.35,
+        "percent_change": -100.0,
+        "message": "Entertainment & Rec.: $0.00 this month vs $70.35 average (-100.0%)"
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      {
+        "category": "Travel & Vacation",
+        "type": "low_spending",
+        "current": 0,
+<<<<<<< HEAD
+        "average": 127.51,
+        "percent_change": -100.0,
+        "message": "Travel & Vacation: $0.00 this month vs $127.51 average (-100.0%)"
+=======
+        "average": 2772.84,
+        "percent_change": -100.0,
+        "message": "Loan Payment: $0.00 this month vs $2,772.84 average (-100.0%)"
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      {
+        "category": "Pets",
+        "type": "low_spending",
+<<<<<<< HEAD
+        "current": 49.04,
+        "average": 122.02,
+        "percent_change": -59.8,
+        "message": "Pets: $49.04 this month vs $122.02 average (-59.8%)"
+=======
+        "current": 0,
+        "average": 323.38,
+        "percent_change": -100.0,
+        "message": "Bills & Utilities: $0.00 this month vs $323.38 average (-100.0%)"
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      },
+      {
+        "category": "Fees",
+        "type": "low_spending",
+        "current": 0,
+        "average": 10.5,
+        "percent_change": -100.0,
+        "message": "Fees: $0.00 this month vs $10.50 average (-100.0%)"
+      },
+      {
+        "category": "Savings Transfer",
+        "type": "high_spending",
+        "current": 2587.24,
+        "average": 1059.13,
+        "percent_change": 144.3,
+        "message": "Savings Transfer: $2,587.24 this month vs $1,059.13 average (+144.3%)"
+      },
+      {
+        "category": "No Debt Goal",
+        "type": "low_spending",
+        "current": 0,
+<<<<<<< HEAD
+        "average": 1450.0,
+        "percent_change": -100.0,
+        "message": "No Debt Goal: $0.00 this month vs $1,450.00 average (-100.0%)"
+=======
+        "average": 202.24,
+        "percent_change": -100.0,
+        "message": "Software & Tech: $0.00 this month vs $202.24 average (-100.0%)"
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      }
+    ],
+    "large_transactions": [
+      {
+        "date": "2025-12-01",
+        "name": "USAA FUNDS TRANSFER DB",
+        "amount": 2000.0,
+        "category": "Internal Transfers"
+      },
+      {
+        "date": "2025-12-15",
+        "name": "Withdrawal from Pay Off Credit Card Debt Goal",
+        "amount": 1690.0,
+        "category": "Savings Transfer"
+      },
+      {
+        "date": "2025-12-15",
+        "name": "USAA FEDERAL SAVINGS BANK",
+        "amount": 1400.0,
+        "category": "Internal Transfers"
+      },
+      {
+        "date": "2025-12-03",
+        "name": "LOANDEPOT MSP ACH",
+        "amount": 1328.67,
+        "category": "Loan Payment"
+      },
+      {
+        "date": "2025-12-05",
+        "name": "FREEDOM MTG PYMTS",
+        "amount": 836.62,
+        "category": "Loan Payment"
+      },
+      {
+        "date": "2025-12-16",
+        "name": "FREEDOM MTG PYMTS",
+        "amount": 836.62,
+        "category": "Loan Payment"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "SP MAMAZING 6509954896",
+        "amount": 740.93,
+        "category": "Shopping"
+      },
+      {
+        "date": "2025-12-26",
+        "name": "MAZDA FINANCIAL 12232025",
+        "amount": 615.5,
+        "category": "Loan Payment"
+      },
+      {
+        "date": "2025-12-08",
+        "name": "4TE*CASS COUNTY TAX WEB",
+        "amount": 607.51,
+        "category": "Taxes"
+      },
+      {
+        "date": "2025-12-01",
+        "name": "USAA FEDERAL SAVINGS BANK",
+        "amount": 600.0,
+        "category": "Internal Transfers"
+      }
+    ],
+    "anomaly_count": 15
+  },
+  "alerts": [
+    {
+      "type": "warning",
+      "category": "Shopping",
+      "message": "Shopping over budget by $858.51",
+      "action": "Reduce Shopping spending"
+    },
+    {
+      "type": "warning",
+      "category": "Auto & Transport",
+      "message": "Auto & Transport over budget by $800.29",
+      "action": "Reduce Auto & Transport spending"
+    },
+    {
+      "type": "warning",
+      "category": "Loan Payment",
+      "message": "Loan Payment over budget by $701.18",
+      "action": "Reduce Loan Payment spending"
+    },
+    {
+      "type": "warning",
+      "category": "Home & Garden",
+      "message": "Home & Garden over budget by $406.86",
+      "action": "Reduce Home & Garden spending"
+    },
+    {
+      "type": "warning",
+      "category": "Dining & Drinks",
+      "message": "Dining & Drinks over budget by $226.04",
+      "action": "Reduce Dining & Drinks spending"
+    },
+    {
+      "type": "warning",
+      "category": "Entertainment & Rec.",
+      "message": "Entertainment & Rec. over budget by $212.39",
+      "action": "Reduce Entertainment & Rec. spending"
+    },
+    {
+      "type": "warning",
+      "category": "Medical",
+      "message": "Medical over budget by $65.48",
+      "action": "Reduce Medical spending"
+    },
+    {
+      "type": "warning",
+      "category": "Amazon",
+<<<<<<< HEAD
+      "message": "Amazon spending: $7938.57 (233 transactions)",
+=======
+      "message": "Amazon spending: $1218.40 (32 transactions)",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      "action": "Review Amazon purchases, consider removing app"
+    },
+    {
+      "type": "warning",
+      "category": "Dining & Drinks",
+<<<<<<< HEAD
+      "message": "Dining spending: $5068.13",
+=======
+      "message": "Dining spending: $519.54",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      "action": "Reduce restaurant spending"
+    }
+  ],
+  "config": {
+    "recurring_expenses": {
+      "mortgages_and_loans": {
+        "308_mortgage": {
+          "name": "308 Mortgage",
+          "amount": 1240.45,
+          "category": "Housing",
+          "frequency": "monthly"
+        },
+        "808_mortgage": {
+          "name": "808 Mortgage",
+          "amount": 1621.09,
+          "category": "Housing",
+          "frequency": "monthly"
+        },
+        "goodleap_solar": {
+          "name": "Goodleap Solar",
+          "amount": 102.92,
+          "category": "Housing",
+          "frequency": "monthly"
+        },
+        "venture_minimum": {
+          "name": "Venture Minimum",
+          "amount": 176.0,
+          "category": "Debt Payment",
+          "frequency": "monthly"
+        },
+        "mazda_lease": {
+          "name": "Mazda Lease",
+          "amount": 615.5,
+          "category": "Auto & Transport",
+          "frequency": "monthly"
+        },
+        "civic_auto_loan": {
+          "name": "Civic Auto Loan",
+          "amount": 561.26,
+          "category": "Auto & Transport",
+          "frequency": "monthly"
+        }
+      },
+      "subscriptions": {
+        "hulu": {
+          "name": "Hulu",
+          "amount": 18.99,
+          "category": "Entertainment & Rec.",
+          "frequency": "monthly"
+        },
+        "tmobile_netflix": {
+          "name": "Tmobile+Netflix",
+          "amount": 123.0,
+          "category": "Bills & Utilities",
+          "frequency": "monthly"
+        },
+        "life_insurance": {
+          "name": "Life Insurance",
+          "amount": 92.21,
+          "category": "Insurance",
+          "frequency": "monthly"
+        },
+        "adobe": {
+          "name": "Adobe",
+          "amount": 0.0,
+          "category": "Software & Tech",
+          "frequency": "monthly",
+          "status": "cancelled"
+        },
+        "spotify": {
+          "name": "Spotify",
+          "amount": 19.99,
+          "category": "Entertainment & Rec.",
+          "frequency": "monthly"
+        },
+        "xfinity": {
+          "name": "Xfinity",
+          "amount": 60.0,
+          "category": "Bills & Utilities",
+          "frequency": "monthly"
+        },
+        "madmuscle": {
+          "name": "MadMuscle",
+          "amount": 19.99,
+          "category": "Health & Wellness",
+          "frequency": "monthly"
+        },
+        "amazon_prime": {
+          "name": "Amazon Prime",
+          "amount": 14.99,
+          "category": "Shopping",
+          "frequency": "monthly"
+        },
+        "ring": {
+          "name": "Ring",
+          "amount": 19.99,
+          "category": "Bills & Utilities",
+          "frequency": "monthly"
+        },
+        "microsoft_365": {
+          "name": "Microsoft 365",
+          "amount": 8.5,
+          "category": "Software & Tech",
+          "frequency": "monthly"
+        },
+        "avail": {
+          "name": "Avail",
+          "amount": 9.0,
+          "category": "Software & Tech",
+          "frequency": "monthly"
+        }
+      },
+      "utilities": {
+        "natural_gas": {
+          "name": "Natural Gas",
+          "amount": 80.0,
+          "category": "Bills & Utilities",
+          "frequency": "monthly",
+          "variable": true
+        },
+        "gas": {
+          "name": "Gas",
+          "amount": 250.0,
+          "category": "Auto & Transport",
+          "frequency": "monthly",
+          "variable": true
+        },
+        "electricity": {
+          "name": "Electricity",
+          "amount": 50.0,
+          "category": "Bills & Utilities",
+          "frequency": "monthly",
+          "variable": true
+        },
+        "utilities": {
+          "name": "Utilities",
+          "amount": 130.0,
+          "category": "Bills & Utilities",
+          "frequency": "monthly",
+          "variable": true
+        },
+        "car_insurance": {
+          "name": "Car Insurance",
+          "amount": 190.0,
+          "category": "Insurance",
+          "frequency": "monthly"
+        }
+      }
+    },
+    "debt_balances": {
+      "mortgages": {
+        "308_rental": {
+          "name": "308 Rental",
+          "balance": 138226.21,
+          "interest_rate": 2.75,
+          "type": "mortgage",
+          "property": "308 Jamie Ct"
+        },
+        "808_house": {
+          "name": "808 House",
+          "balance": 256506.38,
+          "interest_rate": 2.25,
+          "type": "mortgage",
+          "property": "808 Primary Residence"
+        },
+        "solar": {
+          "name": "Solar",
+          "balance": 15110.84,
+          "interest_rate": 2.99,
+          "type": "loan"
+        }
+      },
+      "auto": {
+        "car_lease": {
+          "name": "Car Lease",
+          "balance": 14772.0,
+          "interest_rate": 0.0,
+          "type": "lease"
+        },
+        "car_loan": {
+          "name": "Car Loan",
+          "balance": 30821.89,
+          "interest_rate": 5.19,
+          "type": "auto_loan"
+        }
+      },
+      "personal": {
+        "personal_loan": {
+          "name": "Personal Loan",
+          "balance": 0.0,
+          "interest_rate": 0.0,
+          "type": "personal_loan"
+        }
+      }
+    },
+    "credit_cards": {
+      "visa_card": {
+        "name": "VISA Card",
+        "balance": 538.0,
+        "limit": null,
+        "apr": null
+      },
+      "discover_card": {
+        "name": "Discover Card",
+        "balance": 1128.0,
+        "limit": null,
+        "apr": null
+      },
+      "best_buy": {
+        "name": "Best Buy",
+        "balance": 0.0,
+        "limit": null,
+        "apr": null
+      },
+      "lowes": {
+        "name": "Lowes",
+        "balance": 0.0,
+        "limit": null,
+        "apr": null
+      },
+      "venture_one_ethan": {
+        "name": "Venture One Ethan",
+        "balance": 17933.0,
+        "limit": null,
+        "apr": 22.0
+      },
+      "venture_one_kenia": {
+        "name": "Venture One Kenia",
+        "balance": 0.0,
+        "limit": null,
+        "apr": null
+      }
+    },
+    "cash_accounts": {
+      "usaa_checking": {
+        "name": "USAA Checking",
+        "balance": 3283.54,
+        "type": "checking",
+        "liquid": true
+      },
+      "usaa_savings": {
+        "name": "USAA Savings",
+        "balance": 1000.12,
+        "type": "savings",
+        "liquid": true
+      },
+      "capital_one_ek": {
+        "name": "Capital One EK",
+        "balance": 220.0,
+        "type": "checking",
+        "liquid": true
+      },
+      "capital_one_kk": {
+        "name": "Capital One KK",
+        "balance": 340.0,
+        "type": "checking",
+        "liquid": true
+      },
+      "vanguard": {
+        "name": "Vanguard",
+        "balance": 300.0,
+        "type": "brokerage",
+        "liquid": true
+      }
+    }
+  }
+}

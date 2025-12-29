@@ -1,0 +1,26 @@
+[
+  {
+    "date": "2025-11-29",
+    "month": "2025-11",
+    "data": {
+      "net_worth": 456000,
+      "liquid_cash": 7462,
+      "credit_card_debt": 30000,
+      "total_debt": 483301,
+      "monthly_income": 15334,
+      "monthly_spending": 15931,
+      "emergency_fund_target": 52596,
+      "retirement_balance": 192042,
+      "primary_mortgage": 256506,
+      "rental_mortgage": 138226,
+      "honda_loan": 28686,
+      "discretionary_spending": 5393
+    },
+    "calculated": {
+      "debt_to_income": 1.038933089865658,
+      "emergency_months": 0.4683949532358295,
+      "discretionary_pct": 0.3517020999086996,
+      "cash_flow": -597
+    }
+  }
+]

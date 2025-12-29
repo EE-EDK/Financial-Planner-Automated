@@ -1,0 +1,868 @@
+{
+  "created": "2025-11-21T03:22:22.849580",
+  "cash_accounts": {
+    "usaa_checking": {
+      "name": "USAA Checking",
+      "type": "checking",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 3283.54
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 3283.54
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 3283.54
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 3283.54
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 3283.54
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 3283.54
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 3283.54
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 3283.54
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 3283.54
+        }
+      ]
+    },
+    "usaa_savings": {
+      "name": "USAA Savings",
+      "type": "savings",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 1000.12
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 1000.12
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 1000.12
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 1000.12
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 1000.12
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 1000.12
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 1000.12
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 1000.12
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 1000.12
+        }
+      ]
+    },
+    "capital_one_ek": {
+      "name": "Capital One EK",
+      "type": "checking",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 220.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 220.0
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 220.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 220.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 220.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 220.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 220.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 220.0
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 220.0
+        }
+      ]
+    },
+    "capital_one_kk": {
+      "name": "Capital One KK",
+      "type": "checking",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 340.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 340.0
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 340.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 340.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 340.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 340.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 340.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 340.0
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 340.0
+        }
+      ]
+    },
+    "vanguard": {
+      "name": "Vanguard",
+      "type": "brokerage",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 300.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 300.0
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 300.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 300.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 300.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 300.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 300.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 300.0
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 300.0
+        }
+      ]
+    }
+  },
+  "credit_cards": {
+    "visa_card": {
+      "name": "VISA Card",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 538.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 538.0
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 538.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 538.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 538.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 538.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 538.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 538.0
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 538.0
+        }
+      ]
+    },
+    "discover_card": {
+      "name": "Discover Card",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 1128.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 1128.0
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 1128.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 1128.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 1128.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 1128.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 1128.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 1128.0
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 1128.0
+        }
+      ]
+    },
+    "best_buy": {
+      "name": "Best Buy",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 0.0
+        }
+      ]
+    },
+    "lowes": {
+      "name": "Lowes",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 0.0
+        }
+      ]
+    },
+    "venture_one_ethan": {
+      "name": "Venture One Ethan",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 17933.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 17933.0
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 17933.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 17933.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 17933.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 17933.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 17933.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 17933.0
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 17933.0
+        }
+      ]
+    },
+    "venture_one_kenia": {
+      "name": "Venture One Kenia",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 0.0
+        }
+      ]
+    }
+  },
+  "debt_balances": {
+    "mortgages.308_rental": {
+      "name": "308 Rental",
+      "type": "mortgages",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 138226.21
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 138226.21
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 138226.21
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 138226.21
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 138226.21
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 138226.21
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 138226.21
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 138226.21
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 138226.21
+        }
+      ]
+    },
+    "mortgages.808_house": {
+      "name": "808 House",
+      "type": "mortgages",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 256506.38
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 256506.38
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 256506.38
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 256506.38
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 256506.38
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 256506.38
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 256506.38
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 256506.38
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 256506.38
+        }
+      ]
+    },
+    "mortgages.solar": {
+      "name": "Solar",
+      "type": "mortgages",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 15110.84
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 15110.84
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 15110.84
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 15110.84
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 15110.84
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 15110.84
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 15110.84
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 15110.84
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 15110.84
+        }
+      ]
+    },
+    "auto.car_lease": {
+      "name": "Car Lease",
+      "type": "auto",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 14772.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 14772.0
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 14772.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 14772.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 14772.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 14772.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 14772.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 14772.0
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 14772.0
+        }
+      ]
+    },
+    "auto.car_loan": {
+      "name": "Car Loan",
+      "type": "auto",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 30821.89
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 30821.89
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 30821.89
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 30821.89
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 30821.89
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 30821.89
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 30821.89
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 30821.89
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 30821.89
+        }
+      ]
+    },
+    "personal.personal_loan": {
+      "name": "Personal Loan",
+      "type": "personal",
+      "history": [
+        {
+          "date": "2025-11-21",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+<<<<<<< HEAD
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-27",
+          "balance": 0.0
+        },
+        {
+          "date": "2025-12-27",
+=======
+          "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+          "balance": 0.0
+        }
+      ]
+    }
+  },
+  "totals": [
+    {
+      "date": "2025-11-21",
+      "total_cash": 5143.66,
+      "total_credit_card_debt": 19599.0,
+      "total_other_debt": 455437.32,
+      "total_debt": 475036.32,
+      "net_worth": -469892.66
+    },
+    {
+      "date": "2025-12-05",
+      "total_cash": 5143.66,
+      "total_credit_card_debt": 19599.0,
+      "total_other_debt": 455437.32,
+      "total_debt": 475036.32,
+      "net_worth": -469892.66
+    },
+    {
+<<<<<<< HEAD
+      "date": "2025-12-05",
+      "total_cash": 5143.66,
+      "total_credit_card_debt": 19599.0,
+      "total_other_debt": 455437.32,
+      "total_debt": 475036.32,
+      "net_worth": -469892.66
+    },
+    {
+      "date": "2025-12-05",
+      "total_cash": 5143.66,
+      "total_credit_card_debt": 19599.0,
+      "total_other_debt": 455437.32,
+      "total_debt": 475036.32,
+      "net_worth": -469892.66
+    },
+    {
+      "date": "2025-12-05",
+      "total_cash": 5143.66,
+      "total_credit_card_debt": 19599.0,
+      "total_other_debt": 455437.32,
+      "total_debt": 475036.32,
+      "net_worth": -469892.66
+    },
+    {
+      "date": "2025-12-05",
+      "total_cash": 5143.66,
+      "total_credit_card_debt": 19599.0,
+      "total_other_debt": 455437.32,
+      "total_debt": 475036.32,
+      "net_worth": -469892.66
+    },
+    {
+      "date": "2025-12-27",
+      "total_cash": 5143.66,
+      "total_credit_card_debt": 19599.0,
+      "total_other_debt": 455437.32,
+      "total_debt": 475036.32,
+      "net_worth": -469892.66
+    },
+    {
+      "date": "2025-12-27",
+      "total_cash": 5143.66,
+      "total_credit_card_debt": 19599.0,
+      "total_other_debt": 455437.32,
+      "total_debt": 475036.32,
+      "net_worth": -469892.66
+    },
+    {
+      "date": "2025-12-27",
+=======
+      "date": "2025-12-07",
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+      "total_cash": 5143.66,
+      "total_credit_card_debt": 19599.0,
+      "total_other_debt": 455437.32,
+      "total_debt": 475036.32,
+      "net_worth": -469892.66
+    }
+  ],
+<<<<<<< HEAD
+  "last_updated": "2025-12-27T21:23:05.839718"
+=======
+  "last_updated": "2025-12-07T16:53:38.344709"
+>>>>>>> c9a9f4757974327705dc1cafa3b10205c2987bfb
+}
