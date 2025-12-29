@@ -27,6 +27,12 @@ from datetime import datetime, timedelta
 from collections import defaultdict
 from decimal import Decimal
 
+try:
+    import openpyxl
+    EXCEL_SUPPORT = True
+except ImportError:
+    EXCEL_SUPPORT = False
+
 # Directories - Simple hybrid path detection
 if getattr(sys, 'frozen', False):
     # Running as executable - use exe location as base
@@ -750,6 +756,134 @@ class FinanceManager:
                 </div>''')
         return '\n'.join(cards)
 
+    def process_excel_budget(self, excel_file):
+        """Process Excel budget file and auto-generate config and transactions"""
+        if not EXCEL_SUPPORT:
+            print("❌ Excel support not available. Install openpyxl: pip install openpyxl")
+            return False
+
+        print(f"\n📊 Processing Excel budget: {excel_file.name}")
+
+        try:
+            wb = openpyxl.load_workbook(excel_file)
+            ws = wb.active
+
+            # Read header row to get categories
+            header_row = list(ws.iter_rows(min_row=1, max_row=1, values_only=True))[0]
+
+            # Find category columns (skip Date and Description columns)
+            categories = {}
+            for col_idx, header in enumerate(header_row):
+                if header and header not in ['Date', None] and col_idx >= 2:
+                    # Remove trailing spaces from category names
+                    category_name = str(header).strip()
+                    if category_name and category_name not in ['Deposit', 'Balance']:
+                        categories[col_idx] = category_name
+
+            print(f"✅ Found {len(categories)} budget categories")
+
+            # Extract transactions from data rows
+            transactions = []
+            category_totals = defaultdict(float)
+
+            for row in ws.iter_rows(min_row=2, values_only=True):
+                # Skip empty rows and total rows
+                if not row[0] or str(row[0]).lower() in ['totals', 'total']:
+                    continue
+
+                # Get date
+                try:
+                    if isinstance(row[0], datetime):
+                        trans_date = row[0].strftime('%Y-%m-%d')
+                    else:
+                        trans_date = str(row[0])
+                except:
+                    continue
+
+                # Get description
+                description = str(row[1]) if len(row) > 1 and row[1] else "Transaction"
+
+                # Process each category column
+                for col_idx, category_name in categories.items():
+                    if col_idx < len(row) and row[col_idx]:
+                        try:
+                            amount = float(row[col_idx])
+                            if amount != 0:  # Skip zero amounts
+                                transactions.append({
+                                    'date': trans_date,
+                                    'name': description,
+                                    'amount': abs(amount),  # Use absolute value
+                                    'category': category_name,
+                                    'account': 'Excel Import',
+                                    'description': description
+                                })
+                                category_totals[category_name] += abs(amount)
+                        except (ValueError, TypeError):
+                            continue
+
+            print(f"✅ Extracted {len(transactions)} transactions")
+
+            # Auto-generate config.json with discovered categories
+            # Use category totals as initial budget estimates (monthly average)
+            num_months = 1  # Could be improved to detect actual date range
+            auto_budget = {}
+            for category, total in category_totals.items():
+                monthly_avg = total / max(num_months, 1)
+                auto_budget[category] = round(monthly_avg, 2)
+
+            # Create new config
+            new_config = {
+                "last_updated": datetime.now().strftime('%Y-%m-%d'),
+                "income": {
+                    "monthly_earnings": sum(auto_budget.values())  # Estimate based on spending
+                },
+                "budget": auto_budget,
+                "accounts": {
+                    "checking": {"Checking Account": 0},
+                    "savings": {"Savings Account": 0}
+                },
+                "debts": {
+                    "mortgages": [],
+                    "auto": [],
+                    "credit_cards": []
+                },
+                "recurring_expenses": {
+                    "subscriptions": [],
+                    "utilities": []
+                },
+                "goals": {
+                    "emergency_fund_target": 10000,
+                    "notes": [
+                        "Auto-generated from Excel import",
+                        "Review and adjust budget amounts as needed"
+                    ]
+                }
+            }
+
+            # Save config
+            print(f"💾 Generating config.json with {len(auto_budget)} categories...")
+            self.config = new_config
+            self.save_config()
+
+            # Save transactions to CSV
+            print(f"💾 Saving {len(transactions)} transactions to CSV...")
+            with open(TRANSACTIONS_FILE, 'w', newline='', encoding='utf-8') as f:
+                if transactions:
+                    writer = csv.DictWriter(f, fieldnames=['date', 'name', 'amount', 'category', 'account', 'description'])
+                    writer.writeheader()
+                    writer.writerows(transactions)
+
+            print(f"✅ Excel import complete!")
+            print(f"   Categories: {', '.join(sorted(auto_budget.keys()))}")
+
+            return True
+
+        except Exception as e:
+            print(f"❌ Error processing Excel file: {e}")
+            import traceback
+            traceback.print_exc()
+            return False
+
     def process_inputs(self):
         """Process files in data/inputs/ directory"""
         print("\n📂 Processing input files...")
@@ -757,17 +891,25 @@ class FinanceManager:
         input_files = list(INPUTS_DIR.glob('*'))
         if not input_files:
             print("No files found in data/inputs/")
-            return
+            return False
 
         print(f"Found {len(input_files)} files:")
         for file in input_files:
             print(f"  - {file.name}")
 
-        print("\nℹ️  To process these files, please tell Claude:")
-        print(f"   'Process the files in data/inputs/ and update config.json'")
-        print("\nClaude will analyze the files and either:")
-        print("  1. Update config.json automatically, or")
-        print("  2. Tell you what to add to config.json")
+        # Look for Excel files
+        excel_files = [f for f in input_files if f.suffix.lower() in ['.xlsx', '.xls']]
+
+        if excel_files:
+            print(f"\n✨ Found {len(excel_files)} Excel file(s) - auto-processing...")
+            for excel_file in excel_files:
+                if self.process_excel_budget(excel_file):
+                    return True
+            return False
+        else:
+            print("\nℹ️  No Excel files found.")
+            print("    Drop an Excel budget file here to auto-generate report!")
+            return False
 
     def archive_monthly(self):
         """Archive current month's data"""
@@ -832,6 +974,15 @@ Examples:
         print("=" * 70)
         print("🚀 RUNNING FULL FINANCIAL ANALYSIS")
         print("=" * 70)
+
+        # Check for Excel files in inputs first
+        excel_files = list(INPUTS_DIR.glob('*.xlsx')) + list(INPUTS_DIR.glob('*.xls'))
+        if excel_files:
+            print(f"\n✨ Detected Excel file(s) in data/inputs/")
+            print(f"   Auto-importing from Excel...")
+            if fm.process_inputs():
+                print("\n📊 Excel import successful! Continuing with analysis...")
+
         fm.load_transactions()
         fm.analyze_spending()
         report_file = fm.generate_report()
