@@ -20,15 +20,9 @@ Last Updated: December 29, 2025
 *(See `data/INSTRUCTIONS.txt` for detailed help)*
 
 ### Step 2: Run the Program
-**Option A: Use the Easy Button (Recommended)**
-1. Double-click `finance_gui.exe` (if you have the executable)
+1. Double-click `finance_gui.exe`
 2. Click the big red "RUN ALL" button
 3. Wait for it to finish
-
-**Option B: Use Command Line**
-1. Open Terminal or Command Prompt
-2. Type: `python tools/finance.py all`
-3. Press Enter
 
 ### Step 3: View Your Report
 1. Open `financial_report.html` in your web browser
@@ -43,12 +37,11 @@ That's it! 🎉
 ```
 Finances-Kunz/
 ├── README.md                    # This file - instructions
+├── finance_gui.exe              # ← Double-click this to run the program!
 ├── budget_editor.html           # Edit your budget in a web page
 ├── financial_report.html        # Your spending report (created automatically)
 │
-├── tools/                       # The program files
-│   ├── finance.py               # Main program
-│   ├── finance_gui.py           # Visual program (easier to use)
+├── tools/                       # Program files and settings
 │   └── config.json              # Your budget settings
 │
 └── data/                        # Your transaction files
@@ -59,9 +52,9 @@ Finances-Kunz/
 
 ---
 
-## 💻 Using the Visual Program
+## 💻 Using the Program
 
-If you have `finance_gui.exe`, just double-click it!
+Double-click `finance_gui.exe` to open the program.
 
 **The program has 2 tabs:**
 
@@ -93,22 +86,17 @@ If you have `finance_gui.exe`, just double-click it!
 
 ### How to Change Budget Amounts
 
-**Option 1: Use the Visual Program (Easiest)**
-1. Open `finance_gui.exe`
+**Option 1: Use the Program (Easiest)**
+1. Double-click `finance_gui.exe`
 2. Click "Budget Editor" tab
 3. Type new amounts
 4. Click "SAVE CONFIG"
 
 **Option 2: Use the Web Editor**
-1. Open `budget_editor.html` in your browser
+1. Double-click `budget_editor.html` to open in your browser
 2. Change the numbers
 3. Click "Save Config"
 4. Move the downloaded file to the `tools` folder
-
-**Option 3: Edit the File Directly**
-1. Open `tools/config.json` in Notepad
-2. Change the numbers (be careful with commas!)
-3. Save the file
 
 ---
 
@@ -122,8 +110,8 @@ If you have `finance_gui.exe`, just double-click it!
 - Check that it's actually a CSV file (not Excel)
 
 ### "The program won't run"
-- Try Option B in Quick Start above
-- Make sure Python is installed on your computer
+- Try restarting your computer
+- Make sure the .exe file is in the right folder
 
 ### Need more help?
 Ask someone to help you, or call Ethan! 📞
@@ -139,7 +127,6 @@ Ask someone to help you, or call Ethan! 📞
 2. **Create Your Report**
    - Save your Excel as CSV: `data/transactions.csv`
    - Double-click `finance_gui.exe` and click "RUN ALL"
-   - OR type: `python tools/finance.py all`
 
 3. **Review Your Report**
    - Open `financial_report.html`
@@ -175,7 +162,7 @@ All your financial data stays on **your computer only**. Nothing is uploaded any
 Just remember:
 1. Keep tracking in your Excel file
 2. Save Excel as CSV to `data` folder when ready
-3. Run the program
+3. Double-click `finance_gui.exe` and click "RUN ALL"
 4. Look at your report
 5. Adjust budget if needed
 
