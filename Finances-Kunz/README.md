@@ -75,14 +75,23 @@ Double-click `finance_gui.exe` to open the program.
 
 ### Your Budget Categories
 - **Auto** - Gas, car repairs
+- **B-Day** - Birthday expenses
 - **Car Ins.** - Car insurance
-- **Utilities** - Electric, gas, water
+- **Clothes** - Clothing and shoes
+- **Cycle Ins.** - Motorcycle insurance
+- **Extra TSP** - Retirement contributions
+- **Furniture** - Home furnishings
+- **Home Insurance** - Home insurance
+- **Interest** - Interest payments
+- **Janet $** - Personal allowance
 - **Medical** - Doctor visits, medicine
-- **Groceries** - Food shopping
+- **Mower** - Lawn equipment
+- **Property Taxes** - Property taxes
+- **Savings** - Savings allocation
+- **Utilities** - Electric, gas, water
 - **Vacation** - Travel and trips
 - **X-mas** - Holiday spending
-- **Clothes** - Clothing and shoes
-- **And more...**
+- **Xtra Car** - Additional car expenses
 
 ### How to Change Budget Amounts
 
