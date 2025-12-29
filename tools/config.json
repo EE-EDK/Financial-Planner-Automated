@@ -1,51 +1,33 @@
 {
   "last_updated": "2025-12-29",
-  "income": {
-    "monthly_earnings": 4500
+  "expenses": {
+    "Auto": 0,
+    "B-Day": 0,
+    "Car Ins.": 0,
+    "Clothes": 0,
+    "Cycle Ins.": 0,
+    "Home Insurance": 0,
+    "Medical": 0,
+    "Property Taxes": 0,
+    "Utilities": 0,
+    "Vacation": 0,
+    "X-mas": 0,
+    "Xtra Car": 0
   },
-  "budget": {
-    "Auto": 80,
-    "B-Day": 70,
-    "Car Ins.": 140,
-    "Clothes": 110,
-    "Cycle Ins.": 10,
-    "Extra TSP": 200,
-    "Furniture": 50,
-    "Home Insurance": 100,
+  "savings_goals": {
+    "Moms money": 0,
     "Interest": 0,
-    "Janet $": 0,
-    "Medical": 80,
-    "Mower": 0,
-    "Property Taxes": 270,
-    "Savings": 0,
-    "Utilities": 348,
-    "Vacation": 100,
-    "X-mas": 100,
-    "Xtra Car": 50
+    "Mower saving": 0,
+    "Furniture Saving": 0,
+    "Extra TSP": 0
   },
   "accounts": {
-    "checking": {
-      "Checking Account": 0
-    },
-    "savings": {
-      "Savings Account": 0
-    }
+    "Savings": 0,
+    "Deposits": 0,
+    "Balance": 0
   },
-  "debts": {
-    "mortgages": [],
-    "auto": [],
-    "credit_cards": []
-  },
-  "recurring_expenses": {
-    "subscriptions": [],
-    "utilities": []
-  },
-  "goals": {
-    "emergency_fund_target": 10000,
-    "notes": [
-      "Build emergency fund",
-      "Track monthly spending",
-      "Plan for vacation and holidays"
-    ]
-  }
+  "notes": [
+    "Excel columns: C-N = Expenses, O-S = Savings Goals, T-V = Accounts",
+    "Balance calculated as: Previous Balance - Expenses - Savings + Deposits"
+  ]
 }
