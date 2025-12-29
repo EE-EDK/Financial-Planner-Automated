@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget Editor - Kunz Family Finances</title>
+    <title>Budget Editor - Mom's Budget</title>
     <style>
         * {
             margin: 0;
@@ -11,545 +11,398 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --navy: #0F1626;
-            --leather: #AB987A;
-            --coral: #FF533D;
-            --eggshell: #F5F5F5;
-            --white: #FFFFFF;
-            --dark-text: #1a1a1a;
-            --light-text: #6b7280;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--eggshell);
-            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 20px;
-            color: var(--dark-text);
+            min-height: 100vh;
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            background: var(--white);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
         }
 
         .header {
-            background: var(--navy);
-            color: var(--white);
-            padding: 60px 40px;
+            background: linear-gradient(135deg, #0F1626 0%, #1a2332 100%);
+            color: white;
+            padding: 40px;
             text-align: center;
         }
 
         .header h1 {
-            font-size: 42px;
+            font-size: 2.5em;
+            margin-bottom: 10px;
             font-weight: 300;
-            letter-spacing: 8px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .header p {
-            opacity: 0.7;
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            color: #AB987A;
+            font-size: 1em;
         }
 
         .content {
-            padding: 60px 40px;
+            padding: 40px;
         }
 
         .section {
             margin-bottom: 40px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #AB987A;
         }
 
-        .section-title {
-            font-size: 24px;
-            font-weight: 300;
-            letter-spacing: 3px;
-            color: var(--navy);
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--leather);
-        }
-
-        .income-section {
-            background: var(--eggshell);
-            padding: 30px;
-            border-radius: 4px;
-            border-left: 4px solid var(--leather);
-            margin-bottom: 40px;
-        }
-
-        .income-input {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .income-input label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            color: var(--navy);
-        }
-
-        .income-input input, .add-category input {
-            flex: 1;
-            padding: 12px 20px;
-            border: 2px solid var(--leather);
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 300;
-            color: var(--navy);
-        }
-
-        .income-input input:focus, .add-category input:focus {
-            outline: none;
-            border-color: var(--coral);
-        }
-
-        /* Add Category Styles */
-        .add-category {
-            display: flex;
-            gap: 10px;
+        .section h2 {
+            color: #0F1626;
             margin-bottom: 20px;
-            align-items: stretch;
+            font-size: 1.6em;
+            font-weight: 400;
         }
 
-        .btn-add {
-            background: var(--navy);
-            color: white;
-            padding: 0 25px;
-            border: none;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-
-        .btn-add:hover {
-            background: #1a253a;
-        }
-
-        .budget-grid {
+        .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
         }
 
-        .budget-item {
+        .category-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
-            background: var(--eggshell);
-            border-radius: 4px;
-            border-left: 4px solid var(--leather);
-            transition: all 0.2s;
+            padding: 12px 15px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
         }
 
-        .budget-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .budget-item-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .budget-item label {
-            font-size: 13px;
-            color: var(--navy);
+        .category-item label {
             font-weight: 500;
-            letter-spacing: 0.5px;
-            margin-right: 10px;
+            color: #0F1626;
             flex: 1;
-            word-break: break-word;
         }
 
-        .budget-item input {
-            width: 100px;
-            padding: 8px 10px;
-            border: 2px solid var(--leather);
-            border-radius: 4px;
+        .category-item input {
+            width: 120px;
+            padding: 8px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 1em;
             text-align: right;
-            font-size: 16px;
-            font-weight: 300;
-            color: var(--navy);
-            transition: border-color 0.2s;
+            transition: border-color 0.3s;
         }
 
-        .budget-item input:focus {
+        .category-item input:focus {
             outline: none;
-            border-color: var(--coral);
+            border-color: #AB987A;
         }
 
-        .btn-delete {
-            background: transparent;
-            border: 1px solid var(--coral);
-            color: var(--coral);
-            width: 24px;
-            height: 24px;
-            border-radius: 4px;
+        .add-remove-buttons {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.2s;
+            gap: 10px;
+            margin-top: 15px;
         }
 
-        .btn-delete:hover {
-            background: var(--coral);
+        .add-btn, .remove-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .add-btn {
+            background: #4caf50;
             color: white;
         }
 
-        .summary {
-            background: var(--navy);
-            color: var(--white);
-            padding: 30px;
-            border-radius: 4px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+        .add-btn:hover {
+            background: #45a049;
         }
 
-        .summary-item {
-            text-align: center;
+        .remove-btn {
+            background: #f44336;
+            color: white;
         }
 
-        .summary-label {
-            font-size: 11px;
-            opacity: 0.7;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .summary-value {
-            font-size: 28px;
-            font-weight: 300;
-            letter-spacing: -1px;
+        .remove-btn:hover {
+            background: #da190b;
         }
 
         .actions {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
-            padding: 40px;
-            background: var(--eggshell);
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
         }
 
-        button.action-btn {
+        .btn {
             padding: 15px 40px;
             border: none;
-            border-radius: 4px;
-            font-size: 13px;
-            font-weight: 400;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .btn-save {
-            background: var(--coral);
-            color: var(--white);
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
         }
 
-        .btn-save:hover {
+        .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 83, 61, 0.4);
-            background: #ff6b59;
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
         }
 
-        .btn-load {
-            background: var(--leather);
-            color: var(--white);
+        .btn-secondary {
+            background: #AB987A;
+            color: white;
         }
 
-        .btn-load:hover {
-            background: #c0ab8e;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(171, 152, 122, 0.4);
+        .btn-secondary:hover {
+            background: #9a8669;
         }
 
-        .alert {
-            padding: 20px 25px;
-            border-radius: 4px;
-            margin-bottom: 25px;
-            font-weight: 400;
-            border-left: 4px solid;
+        .note {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #2196f3;
+            font-size: 0.95em;
+            color: #1565c0;
         }
 
-        .alert-success {
-            background: #e8f5e9;
-            color: #2e7d32;
-            border-left-color: #4caf50;
-        }
-
-        .alert-info {
-            background: #fff3e0;
-            color: #e65100;
-            border-left-color: var(--leather);
-        }
-
-        input[type="file"] {
-            display: none;
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Budget Editor</h1>
-            <p>Kunz Family</p>
+            <h1>💰 BUDGET EDITOR</h1>
+            <p>Mom's Budget Configuration</p>
         </div>
 
         <div class="content">
-            <div id="message"></div>
-
-            <div class="income-section">
-                <div class="income-input">
-                    <label>Monthly Earnings:</label>
-                    <input type="number" id="monthlyEarnings" step="0.01" min="0">
-                </div>
+            <div class="note">
+                <strong>📝 How this works:</strong> Add or remove budget items in each section.
+                When you save, this creates a config.json file that the program uses to read your Excel file.
             </div>
 
-            <div class="summary" id="summary">
-                <div class="summary-item">
-                    <div class="summary-label">Total Budget</div>
-                    <div class="summary-value" id="totalBudget">$0</div>
-                </div>
-                <div class="summary-item">
-                    <div class="summary-label">Earnings</div>
-                    <div class="summary-value" id="earnings">$0</div>
-                </div>
-                <div class="summary-item">
-                    <div class="summary-label">Left for Savings</div>
-                    <div class="summary-value" id="savings">$0</div>
-                </div>
-            </div>
-
+            <!-- EXPENSES SECTION -->
             <div class="section">
-                <div class="section-title">Budget Categories</div>
-                
-                <div class="add-category">
-                    <input type="text" id="newCategoryName" placeholder="Enter new category name..." onkeypress="handleEnter(event)">
-                    <button class="btn-add" onclick="addNewCategory()">Add Category</button>
+                <h2>💳 Monthly Expenses (Columns C-N)</h2>
+                <div class="category-grid" id="expenses-grid">
+                    <!-- Populated by JavaScript -->
                 </div>
+                <div class="add-remove-buttons">
+                    <button class="add-btn" onclick="addExpense()">+ Add Expense</button>
+                    <button class="remove-btn" onclick="removeLastExpense()">- Remove Last</button>
+                </div>
+            </div>
 
-                <div class="budget-grid" id="budgetGrid"></div>
+            <!-- SAVINGS GOALS SECTION -->
+            <div class="section">
+                <h2>🎯 Savings Goals (Columns O-S)</h2>
+                <div class="category-grid" id="savings-grid">
+                    <!-- Populated by JavaScript -->
+                </div>
+                <div class="add-remove-buttons">
+                    <button class="add-btn" onclick="addSavingsGoal()">+ Add Goal</button>
+                    <button class="remove-btn" onclick="removeLastSavingsGoal()">- Remove Last</button>
+                </div>
+            </div>
+
+            <!-- ACCOUNTS SECTION -->
+            <div class="section">
+                <h2>🏦 Account Tracking (Columns T-V)</h2>
+                <div class="category-grid" id="accounts-grid">
+                    <!-- Populated by JavaScript -->
+                </div>
+                <div class="add-remove-buttons">
+                    <button class="add-btn" onclick="addAccount()">+ Add Account</button>
+                    <button class="remove-btn" onclick="removeLastAccount()">- Remove Last</button>
+                </div>
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="actions">
+                <button class="btn btn-primary" onclick="saveConfig()">💾 Save Config</button>
+                <button class="btn btn-secondary" onclick="loadConfig()">📂 Load Config</button>
             </div>
         </div>
 
-        <div class="actions">
-            <button class="action-btn btn-load" onclick="document.getElementById('fileInput').click()">
-                Load Config
-            </button>
-            <button class="action-btn btn-save" onclick="saveConfig()">
-                Save Config
-            </button>
-            <input type="file" id="fileInput" accept=".json" onchange="loadFile()">
+        <div class="footer">
+            Made with ❤️ for Mom
         </div>
     </div>
 
     <script>
-        // Default configuration requested by user
-        const defaultCategories = [
-            "Bills & Utilities",
-            "Auto & Transport",
-            "Dining & Drinks",
-            "Emergency Funds",
-            "Entertainment & Rec.",
-            "Family Care",
-            "Groceries",
-            "Home & Garden",
-            "Loan Payment",
-            "Medical",
-            "Personal Care",
-            "Shopping",
-            "Software & Tech",
-            "Taxes",
-            "Everything Else"
-        ];
-
-        // Initialize config with defaults (all values 0)
-        let config = {
-            income: { monthly_earnings: 0 },
-            budget: {},
-            last_updated: new Date().toISOString().split('T')[0]
+        // Default configuration
+        const defaultConfig = {
+            last_updated: new Date().toISOString().split('T')[0],
+            expenses: {
+                "Auto": 0,
+                "B-Day": 0,
+                "Car Ins.": 0,
+                "Clothes": 0,
+                "Cycle Ins.": 0,
+                "Home Insurance": 0,
+                "Medical": 0,
+                "Property Taxes": 0,
+                "Utilities": 0,
+                "Vacation": 0,
+                "X-mas": 0,
+                "Xtra Car": 0
+            },
+            savings_goals: {
+                "Moms money": 0,
+                "Interest": 0,
+                "Mower saving": 0,
+                "Furniture Saving": 0,
+                "Extra TSP": 0
+            },
+            accounts: {
+                "Savings": 0,
+                "Deposits": 0,
+                "Balance": 0
+            },
+            notes: [
+                "Excel columns: C-N = Expenses, O-S = Savings Goals, T-V = Accounts",
+                "Balance calculated as: Previous Balance - Expenses - Savings + Deposits"
+            ]
         };
 
-        // Populate default budget object
-        defaultCategories.forEach(cat => {
-            config.budget[cat] = 0;
-        });
+        let currentConfig = JSON.parse(JSON.stringify(defaultConfig));
 
-        // Load config from file
-        function loadFile() {
-            const file = document.getElementById('fileInput').files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const loadedConfig = JSON.parse(e.target.result);
-                    // Basic validation
-                    if (!loadedConfig.budget) throw new Error("Invalid config format");
-                    
-                    config = loadedConfig;
-                    if (!config.income) config.income = { monthly_earnings: 0 };
-                    
-                    populateForm();
-                    showMessage('Config loaded successfully!', 'success');
-                } catch (error) {
-                    showMessage('Error loading config: ' + error.message, 'error');
-                }
-            };
-            reader.readAsText(file);
-        }
-
-        // Try to load config.json automatically on page load
-        async function autoLoadConfig() {
-            try {
-                const response = await fetch('config.json');
-                if (response.ok) {
-                    const loadedConfig = await response.json();
-                    config = loadedConfig;
-                    showMessage('Config loaded from config.json', 'info');
-                } else {
-                    // Fail silently and stick to defaults if file not found
-                    console.log("No config.json found, using defaults");
-                }
-            } catch (error) {
-                console.log("No config.json found, using defaults");
-            }
-            // Always populate form (either with defaults or loaded data)
-            populateForm();
-        }
-
-        // Populate form with config data
-        function populateForm() {
-            // Set earnings
-            document.getElementById('monthlyEarnings').value = config.income?.monthly_earnings || 0;
-
-            // Populate budget categories
-            const budgetGrid = document.getElementById('budgetGrid');
-            budgetGrid.innerHTML = '';
-
-            if (config.budget) {
-                // Sort keys alphabetically for display
-                Object.keys(config.budget).sort().forEach(category => {
-                    const item = document.createElement('div');
-                    item.className = 'budget-item';
-                    item.innerHTML = `
-                        <label>${category}</label>
-                        <div class="budget-item-controls">
-                            <input type="number"
-                                   data-category="${category}"
-                                   value="${config.budget[category]}"
-                                   step="0.01"
-                                   min="0"
-                                   onchange="updateBudget()">
-                            <button class="btn-delete" onclick="deleteCategory('${category}')" title="Remove Category">×</button>
-                        </div>
-                    `;
-                    budgetGrid.appendChild(item);
-                });
-            }
-
-            updateSummary();
-        }
-
-        // Add a new category
-        function addNewCategory() {
-            const input = document.getElementById('newCategoryName');
-            const name = input.value.trim();
-
-            if (!name) {
-                showMessage('Please enter a category name', 'error');
-                return;
-            }
-
-            if (config.budget[name] !== undefined) {
-                showMessage('Category already exists', 'error');
-                return;
-            }
-
-            // Add to config with 0 value
-            config.budget[name] = 0;
-            
-            // Clear input
-            input.value = '';
-            
-            // Refresh view
-            populateForm();
-            showMessage(`Added category: ${name}`, 'success');
-        }
-
-        // Delete a category
-        function deleteCategory(categoryName) {
-            if (confirm(`Are you sure you want to remove "${categoryName}"?`)) {
-                delete config.budget[categoryName];
-                populateForm();
+        function renderExpenses() {
+            const grid = document.getElementById('expenses-grid');
+            grid.innerHTML = '';
+            for (const [name, amount] of Object.entries(currentConfig.expenses)) {
+                const item = document.createElement('div');
+                item.className = 'category-item';
+                item.innerHTML = `
+                    <label>${name}</label>
+                    <input type="number" value="${amount}" step="0.01"
+                           onchange="updateExpense('${name}', this.value)">
+                `;
+                grid.appendChild(item);
             }
         }
 
-        // Handle Enter key in add category input
-        function handleEnter(e) {
-            if (e.key === 'Enter') {
-                addNewCategory();
+        function renderSavingsGoals() {
+            const grid = document.getElementById('savings-grid');
+            grid.innerHTML = '';
+            for (const [name, amount] of Object.entries(currentConfig.savings_goals)) {
+                const item = document.createElement('div');
+                item.className = 'category-item';
+                item.innerHTML = `
+                    <label>${name}</label>
+                    <input type="number" value="${amount}" step="0.01"
+                           onchange="updateSavingsGoal('${name}', this.value)">
+                `;
+                grid.appendChild(item);
             }
         }
 
-        // Update budget value when changed
-        function updateBudget() {
-            const inputs = document.querySelectorAll('[data-category]');
-            inputs.forEach(input => {
-                const category = input.getAttribute('data-category');
-                config.budget[category] = parseFloat(input.value) || 0;
-            });
-
-            config.income.monthly_earnings = parseFloat(document.getElementById('monthlyEarnings').value) || 0;
-
-            updateSummary();
+        function renderAccounts() {
+            const grid = document.getElementById('accounts-grid');
+            grid.innerHTML = '';
+            for (const [name, amount] of Object.entries(currentConfig.accounts)) {
+                const item = document.createElement('div');
+                item.className = 'category-item';
+                item.innerHTML = `
+                    <label>${name}</label>
+                    <input type="number" value="${amount}" step="0.01"
+                           onchange="updateAccount('${name}', this.value)">
+                `;
+                grid.appendChild(item);
+            }
         }
 
-        // Update summary calculations
-        function updateSummary() {
-            const earnings = parseFloat(document.getElementById('monthlyEarnings').value) || 0;
-            const totalBudget = Object.values(config.budget || {}).reduce((sum, val) => sum + val, 0);
-            const savings = earnings - totalBudget;
-
-            document.getElementById('earnings').textContent = '$' + earnings.toLocaleString('en-US', {minimumFractionDigits: 2});
-            document.getElementById('totalBudget').textContent = '$' + totalBudget.toLocaleString('en-US', {minimumFractionDigits: 2});
-            document.getElementById('savings').textContent = '$' + savings.toLocaleString('en-US', {minimumFractionDigits: 2});
-
-            // Change color based on positive/negative
-            const savingsEl = document.getElementById('savings');
-            savingsEl.style.color = savings >= 0 ? '#4ade80' : '#f87171';
+        function updateExpense(name, value) {
+            currentConfig.expenses[name] = parseFloat(value) || 0;
         }
 
-        // Save config to file
+        function updateSavingsGoal(name, value) {
+            currentConfig.savings_goals[name] = parseFloat(value) || 0;
+        }
+
+        function updateAccount(name, value) {
+            currentConfig.accounts[name] = parseFloat(value) || 0;
+        }
+
+        function addExpense() {
+            const name = prompt('Enter expense category name:');
+            if (name) {
+                currentConfig.expenses[name] = 0;
+                renderExpenses();
+            }
+        }
+
+        function removeLastExpense() {
+            const keys = Object.keys(currentConfig.expenses);
+            if (keys.length > 0) {
+                delete currentConfig.expenses[keys[keys.length - 1]];
+                renderExpenses();
+            }
+        }
+
+        function addSavingsGoal() {
+            const name = prompt('Enter savings goal name:');
+            if (name) {
+                currentConfig.savings_goals[name] = 0;
+                renderSavingsGoals();
+            }
+        }
+
+        function removeLastSavingsGoal() {
+            const keys = Object.keys(currentConfig.savings_goals);
+            if (keys.length > 0) {
+                delete currentConfig.savings_goals[keys[keys.length - 1]];
+                renderSavingsGoals();
+            }
+        }
+
+        function addAccount() {
+            const name = prompt('Enter account name:');
+            if (name) {
+                currentConfig.accounts[name] = 0;
+                renderAccounts();
+            }
+        }
+
+        function removeLastAccount() {
+            const keys = Object.keys(currentConfig.accounts);
+            if (keys.length > 0) {
+                delete currentConfig.accounts[keys[keys.length - 1]];
+                renderAccounts();
+            }
+        }
+
         function saveConfig() {
-            // Update config with current values one last time
-            config.income.monthly_earnings = parseFloat(document.getElementById('monthlyEarnings').value) || 0;
-            config.last_updated = new Date().toISOString().split('T')[0];
+            currentConfig.last_updated = new Date().toISOString().split('T')[0];
 
-            // Create download link
-            const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
+            const blob = new Blob([JSON.stringify(currentConfig, null, 2)],
+                                 { type: 'application/json' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -559,23 +412,38 @@
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
 
-            showMessage('Config saved! Replace the config.json file in your project directory.', 'success');
+            alert('✅ Config saved! Move the downloaded file to the tools/ folder.');
         }
 
-        // Show message
-        function showMessage(text, type) {
-            const messageDiv = document.getElementById('message');
-            messageDiv.innerHTML = `<div class="alert alert-${type === 'error' ? 'info' : type}">${text}</div>`;
-            setTimeout(() => {
-                messageDiv.innerHTML = '';
-            }, 3000);
+        function loadConfig() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'application/json';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    try {
+                        currentConfig = JSON.parse(event.target.result);
+                        renderExpenses();
+                        renderSavingsGoals();
+                        renderAccounts();
+                        alert('✅ Config loaded successfully!');
+                    } catch (error) {
+                        alert('❌ Error loading config: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
+            };
+            input.click();
         }
 
-        // Add event listener for earnings input
-        document.getElementById('monthlyEarnings').addEventListener('input', updateBudget);
-
-        // Auto-load config on page load
-        autoLoadConfig();
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderExpenses();
+            renderSavingsGoals();
+            renderAccounts();
+        });
     </script>
 </body>
 </html>
