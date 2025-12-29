@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Manager - Instructions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0F1626 0%, #1a2332 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            color: #AB987A;
+            font-size: 1.1em;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        h2 {
+            color: #0F1626;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #AB987A;
+            font-size: 1.8em;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        h3 {
+            color: #0F1626;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .step-box {
+            background: #f8f9fa;
+            border-left: 4px solid #AB987A;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .step-box h3 {
+            margin-top: 0;
+            color: #0F1626;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .category-item {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid #AB987A;
+        }
+
+        .category-item strong {
+            color: #0F1626;
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #FF533D;
+        }
+
+        .file-structure {
+            background: #0F1626;
+            color: #AB987A;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.8;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .tip-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .help-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+
+        .option-card {
+            background: white;
+            border: 2px solid #AB987A;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .option-card h4 {
+            color: #0F1626;
+            margin-bottom: 10px;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💰 BUDGET MANAGER</h1>
+            <p>Simple budget tracking for your monthly finances</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Last Updated: December 29, 2025</p>
+        </div>
+
+        <div class="content">
+            <div class="highlight-box">
+                <h2 style="color: white; border: none; margin: 0;">🚀 Quick Start (Two Easy Ways!)</h2>
+            </div>
+
+            <div class="step-box">
+                <h3><span class="emoji">⚡</span>EASY WAY: Drop Your Excel File</h3>
+                <ol>
+                    <li>Copy your Excel budget file</li>
+                    <li>Paste it into the <code>data/inputs</code> folder</li>
+                    <li>Double-click <code>finance_gui.exe</code></li>
+                    <li>Click the big red "RUN ALL" button</li>
+                    <li>Wait for it to finish</li>
+                    <li>Open <code>financial_report.html</code> in your web browser</li>
+                </ol>
+                <div class="tip-box">
+                    <strong>That's it!</strong> The program will automatically read your Excel file, find all your categories, and create a beautiful report!
+                </div>
+            </div>
+
+            <div class="step-box">
+                <h3><span class="emoji">📝</span>MANUAL WAY: Use CSV Transactions</h3>
+                <ol>
+                    <li>Open your Excel budget file</li>
+                    <li>Go to: File → Save As</li>
+                    <li>Choose "CSV (Comma delimited)" as the format</li>
+                    <li>Save it as <code>transactions.csv</code> in the <code>data</code> folder</li>
+                    <li>Double-click <code>finance_gui.exe</code></li>
+                    <li>Click the big red "RUN ALL" button</li>
+                    <li>Open <code>financial_report.html</code> to see your report</li>
+                </ol>
+                <div class="tip-box">
+                    See <code>data/INSTRUCTIONS.txt</code> for detailed help with CSV format
+                </div>
+            </div>
+
+            <h2><span class="emoji">📁</span>What's in This Folder?</h2>
+            <div class="file-structure">Financial-Planner-Automated/
+├── README.html              # This file - instructions
+├── finance_gui.exe          # ← Double-click this to run!
+├── budget_editor.html       # Edit your budget
+├── financial_report.html    # Your report (created automatically)
+│
+├── tools/                   # Program files and settings
+│   └── config.json          # Your budget settings
+│
+└── data/                    # Your files
+    ├── inputs/              # ← Drop Excel file HERE for easy way!
+    ├── transactions.csv     # Or put CSV file here for manual way
+    ├── transactions_template.csv  # Example format
+    └── INSTRUCTIONS.txt     # Detailed instructions</div>
+
+            <h2><span class="emoji">💻</span>Using the Program</h2>
+            <p>Double-click <code>finance_gui.exe</code> to open the program.</p>
+
+            <h3>The program has 2 tabs:</h3>
+
+            <div class="option-card">
+                <h4>Operations Tab</h4>
+                <ul>
+                    <li><strong>IMPORT</strong> - Load your transactions</li>
+                    <li><strong>ANALYZE</strong> - Check your spending</li>
+                    <li><strong>REPORT</strong> - Create the report</li>
+                    <li><strong>RUN ALL</strong> - Do everything at once (easiest!)</li>
+                </ul>
+            </div>
+
+            <div class="option-card">
+                <h4>Budget Editor Tab</h4>
+                <ul>
+                    <li>Edit your monthly income</li>
+                    <li>Change budget amounts for each category</li>
+                    <li>Click "SAVE CONFIG" when done</li>
+                </ul>
+            </div>
+
+            <h2><span class="emoji">📝</span>Your Budget Categories</h2>
+            <p>These categories will be automatically detected from your Excel file:</p>
+            <div class="category-grid">
+                <div class="category-item"><strong>Auto</strong> - Gas, car repairs</div>
+                <div class="category-item"><strong>B-Day</strong> - Birthday expenses</div>
+                <div class="category-item"><strong>Car Ins.</strong> - Car insurance</div>
+                <div class="category-item"><strong>Clothes</strong> - Clothing and shoes</div>
+                <div class="category-item"><strong>Cycle Ins.</strong> - Motorcycle insurance</div>
+                <div class="category-item"><strong>Extra TSP</strong> - Retirement contributions</div>
+                <div class="category-item"><strong>Furniture</strong> - Home furnishings</div>
+                <div class="category-item"><strong>Home Insurance</strong> - Home insurance</div>
+                <div class="category-item"><strong>Interest</strong> - Interest payments</div>
+                <div class="category-item"><strong>Janet $</strong> - Personal allowance</div>
+                <div class="category-item"><strong>Medical</strong> - Doctor visits, medicine</div>
+                <div class="category-item"><strong>Mower</strong> - Lawn equipment</div>
+                <div class="category-item"><strong>Property Taxes</strong> - Property taxes</div>
+                <div class="category-item"><strong>Savings</strong> - Savings allocation</div>
+                <div class="category-item"><strong>Utilities</strong> - Electric, gas, water</div>
+                <div class="category-item"><strong>Vacation</strong> - Travel and trips</div>
+                <div class="category-item"><strong>X-mas</strong> - Holiday spending</div>
+                <div class="category-item"><strong>Xtra Car</strong> - Additional car expenses</div>
+            </div>
+
+            <h2><span class="emoji">🆘</span>Help! Something's Wrong</h2>
+
+            <div class="help-box">
+                <h4>"Config not found"</h4>
+                <p>Make sure <code>config.json</code> is in the <code>tools</code> folder</p>
+            </div>
+
+            <div class="help-box">
+                <h4>"No transactions found"</h4>
+                <ul>
+                    <li>Make sure you dropped your Excel file in <code>data/inputs</code>, OR</li>
+                    <li>Make sure you saved <code>transactions.csv</code> in the <code>data</code> folder</li>
+                    <li>Check that CSV is actually a CSV file (not Excel)</li>
+                </ul>
+            </div>
+
+            <div class="help-box">
+                <h4>"The program won't run"</h4>
+                <ul>
+                    <li>Try restarting your computer</li>
+                    <li>Make sure the .exe file is in the right folder</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <h4>Need more help?</h4>
+                <p><strong>Ask someone to help you, or call Ethan! 📞</strong></p>
+            </div>
+
+            <h2><span class="emoji">📅</span>Monthly Routine</h2>
+            <ol>
+                <li><strong>Track Your Spending</strong> - Keep adding to your Excel file as usual</li>
+                <li><strong>Create Your Report</strong> - Drop Excel in <code>data/inputs</code> and run the program</li>
+                <li><strong>Review Your Report</strong> - Open <code>financial_report.html</code></li>
+                <li><strong>Adjust if Needed</strong> - Use the Budget Editor to update your budget</li>
+            </ol>
+
+            <h2><span class="emoji">💡</span>Tips</h2>
+            <div class="tip-box">
+                <strong>✅ Keep tracking in Excel</strong> - Continue your manual tracking as usual
+            </div>
+            <div class="tip-box">
+                <strong>✅ Use the EASY way</strong> - Just drop your Excel file in <code>data/inputs</code>!
+            </div>
+            <div class="tip-box">
+                <strong>✅ Review your report</strong> - See where your money goes
+            </div>
+            <div class="tip-box">
+                <strong>✅ Adjust your budget</strong> - Make it realistic based on actual spending
+            </div>
+            <div class="tip-box">
+                <strong>✅ Keep it simple</strong> - Don't overthink it!
+            </div>
+
+            <h2><span class="emoji">🔒</span>Privacy</h2>
+            <p>All your financial data stays on <strong>your computer only</strong>. Nothing is uploaded anywhere.</p>
+
+            <div class="highlight-box" style="margin-top: 40px;">
+                <h2 style="color: white; border: none; margin: 0 0 15px 0;">✨ That's All You Need to Know!</h2>
+                <p style="font-size: 1.1em;">Just remember:</p>
+                <ol style="margin-top: 15px; font-size: 1.05em;">
+                    <li>Keep tracking in your Excel file</li>
+                    <li>Drop Excel file in <code style="background: rgba(255,255,255,0.2); color: white;">data/inputs</code> folder</li>
+                    <li>Double-click <code style="background: rgba(255,255,255,0.2); color: white;">finance_gui.exe</code> and click "RUN ALL"</li>
+                    <li>Look at your report</li>
+                    <li>Adjust budget if needed</li>
+                </ol>
+                <p style="margin-top: 20px; font-size: 1.2em;"><strong>Questions? Ask Ethan! 😊</strong></p>
+            </div>
+        </div>
+
+        <div class="footer">
+            Made with ❤️ for Mom
+        </div>
+    </div>
+</body>
+</html>
