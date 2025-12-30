@@ -42,7 +42,7 @@ class BudgetGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("Mom's Budget Manager")
-        self.root.geometry("1000x700")
+        self.root.geometry("1000x1000")
 
         # Color scheme
         self.colors = {
@@ -292,7 +292,7 @@ def main():
     root = ttkb.Window(
         title="Mom's Budget Manager",
         themename="darkly",
-        size=(1000, 700)
+        size=(1000, 1000)
     )
 
     app = BudgetGUI(root)

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mom's Budget Manager - Instructions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Original palette */
+            --deep-teal: #003135;
+            --teal: #024950;
+            --rust: #964734;
+            --bright-green: #0FAA4F;
+            --light-aqua: #AFDDE5;
+            
+            /* Neutrals */
+            --warm-gray: #C9D1D3;
+            --soft-sand: #D9CBAE;
+            --charcoal: #1E2528;
+            
+            /* Warm metallics */
+            --copper: #C76A3D;
+            --terracotta: #C65D3B;
+            --deep-brown: #7A4B3A;
+            
+            /* Extra teals */
+            --mid-deep-teal: #00424F;
+            --mid-teal: #007A7C;
+            --aqua-highlight: #E0F7FA;
+            
+            /* Accents */
+            --muted-gold: #F2A900;
+            --soft-peach: #E6B8A2;
+            --burgundy: #643629;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--aqua-highlight);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--charcoal);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 8px 24px rgba(0, 49, 53, 0.15);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--deep-teal) 0%, var(--teal) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--mid-teal) 0%, transparent 50%);
+            opacity: 0.1;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .header p {
+            color: var(--light-aqua);
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .content {
+            padding: 60px 40px;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: var(--deep-teal);
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--mid-teal);
+            margin-top: 60px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        .step-box {
+            background: var(--soft-sand);
+            border-left: 5px solid var(--copper);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .step-box h3 {
+            color: var(--deep-teal);
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .step-box ol,
+        .step-box ul {
+            margin-left: 25px;
+        }
+
+        .step-box li {
+            margin: 14px 0;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--charcoal);
+        }
+
+        .step-box p {
+            margin-bottom: 12px;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--charcoal);
+        }
+
+        code {
+            background: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: var(--rust);
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid var(--warm-gray);
+        }
+
+        .tip-box {
+            background: var(--soft-peach);
+            border-left: 5px solid var(--terracotta);
+            padding: 25px 30px;
+            margin: 25px 0;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .tip-box p {
+            margin: 10px 0;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--charcoal);
+        }
+
+        .tip-box strong {
+            color: var(--rust);
+        }
+
+        .big-button {
+            background: linear-gradient(135deg, var(--bright-green) 0%, var(--mid-teal) 100%);
+            color: white;
+            padding: 25px 50px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            margin: 30px 0;
+            box-shadow: 0 6px 20px rgba(15, 170, 79, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .simple-list {
+            background: white;
+            border: 2px solid var(--mid-teal);
+            border-radius: 8px;
+            padding: 30px;
+            margin: 25px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .simple-list li {
+            margin: 15px 0;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .simple-list strong {
+            color: var(--deep-teal);
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--deep-teal) 0%, var(--mid-deep-teal) 100%);
+            color: var(--light-aqua);
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        .footer .main {
+            font-size: 20px;
+            color: white;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .footer .sub {
+            font-size: 16px;
+        }
+
+        .footer .credit {
+            margin-top: 20px;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .highlight-green {
+            color: var(--bright-green);
+            font-weight: 600;
+        }
+
+        .highlight-gold {
+            color: var(--muted-gold);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💰 MOM'S BUDGET MANAGER</h1>
+            <p>Super Simple Budget Tracking</p>
+        </div>
+
+        <div class="content">
+            <h2>🚀 How to Use (3 Steps!)</h2>
+
+            <div class="step-box">
+                <h3>Step 1: Put Your Excel File in the Right Place</h3>
+                <ol>
+                    <li>Find your Excel budget file on your computer</li>
+                    <li>Copy it (or drag it) into the <code>data/inputs</code> folder</li>
+                    <li>That's it for step 1!</li>
+                </ol>
+            </div>
+
+            <div class="step-box">
+                <h3>Step 2: Run the Program</h3>
+                <ol>
+                    <li>Double-click <code>finance_gui.exe</code></li>
+                    <li>Click the big button that says <strong class="highlight-green">"🚀 GENERATE REPORT"</strong></li>
+                    <li>Wait for it to finish (you'll see a green checkmark)</li>
+                </ol>
+                <div class="big-button">
+                    🚀 GENERATE REPORT
+                </div>
+            </div>
+
+            <div class="step-box">
+                <h3>Step 3: Look at Your Report</h3>
+                <ol>
+                    <li>Click the <strong class="highlight-gold">"📊 Open Report"</strong> button</li>
+                    <li>Your report will open in your web browser</li>
+                    <li>See your spending organized by month!</li>
+                </ol>
+            </div>
+
+            <div class="tip-box">
+                <p><strong>That's it!</strong> The program automatically reads your Excel file,
+                understands all your categories, and creates a beautiful report showing where
+                your money goes each month.</p>
+            </div>
+
+            <h2>📁 What's in Each Folder?</h2>
+
+            <div class="simple-list">
+                <ul>
+                    <li><strong>finance_gui.exe</strong> - Double-click this to run the program</li>
+                    <li><strong>data/inputs/</strong> - Drop your Excel file HERE</li>
+                    <li><strong>financial_report.html</strong> - Your report (created automatically)</li>
+                    <li><strong>budget_editor.html</strong> - Change your budget categories</li>
+                    <li><strong>tools/config.json</strong> - Your budget settings</li>
+                </ul>
+            </div>
+
+            <h2>💡 Your Budget Has 3 Parts</h2>
+
+            <div class="step-box">
+                <h3>1. Monthly Expenses (Columns C-N in Excel)</h3>
+                <p>Things you spend money on every month:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Auto, Car Insurance, Utilities</li>
+                    <li>Medical, Clothes, Vacation</li>
+                    <li>And all your other expenses</li>
+                </ul>
+            </div>
+
+            <div class="step-box">
+                <h3>2. Savings Goals (Columns O-S in Excel)</h3>
+                <p>Money you're setting aside for specific things:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Mom's money, Interest</li>
+                    <li>Mower saving, Furniture Saving</li>
+                    <li>Extra TSP</li>
+                </ul>
+            </div>
+
+            <div class="step-box">
+                <h3>3. Account Tracking (Columns T-V in Excel)</h3>
+                <p>Keep track of your money:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Savings - How much in savings</li>
+                    <li>Deposits - Money added</li>
+                    <li>Balance - Current balance</li>
+                </ul>
+            </div>
+
+            <h2>🆘 Need Help?</h2>
+
+            <div class="tip-box">
+                <p><strong>Can't find your Excel file?</strong></p>
+                <p>Make sure it's in the <code>data/inputs</code> folder. Look for a folder named "data" with an "inputs" folder inside it.</p>
+            </div>
+
+            <div class="tip-box">
+                <p><strong>Program won't run?</strong></p>
+                <p>Try restarting your computer, then double-click <code>finance_gui.exe</code> again.</p>
+            </div>
+
+            <div class="tip-box">
+                <p><strong>Want to change your budget categories?</strong></p>
+                <p>Double-click <code>budget_editor.html</code> and add or remove categories. Save it and run the program again.</p>
+            </div>
+
+            <div class="tip-box">
+                <p><strong>Still stuck?</strong></p>
+                <p><strong>Call Ethan! 📞</strong> He can help you figure it out.</p>
+            </div>
+
+            <h2>📅 What to Do Each Month</h2>
+
+            <div class="simple-list">
+                <ol>
+                    <li>Keep tracking in your Excel file like always</li>
+                    <li>When you want to see a report, drop the Excel file in <code>data/inputs</code></li>
+                    <li>Double-click <code>finance_gui.exe</code></li>
+                    <li>Click "GENERATE REPORT"</li>
+                    <li>Click "Open Report" to see it</li>
+                    <li>Done!</li>
+                </ol>
+            </div>
+
+            <h2>🔒 Privacy</h2>
+            <p style="font-size: 17px; margin-top: 20px; line-height: 1.7;">
+                All your financial information stays on <strong>your computer only</strong>.
+                Nothing is uploaded to the internet or shared anywhere.
+            </p>
+
+        </div>
+
+        <div class="footer">
+            <p class="main"><strong>That's All!</strong></p>
+            <p class="sub">Just drop your Excel file, click the button, and see your report. Easy! 😊</p>
+            <p class="credit">Made with❤️ for Mom</p>
+        </div>
+    </div>
+</body>
+</html>
