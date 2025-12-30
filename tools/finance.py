@@ -104,32 +104,56 @@ class BudgetManager:
         # Read header row to map columns
         header_row = list(ws.iter_rows(min_row=1, max_row=1, values_only=True))[0]
 
-        # Find column indices
-        date_col = 0  # Column A
-        desc_col = 1  # Column B
+        # Find column indices by matching headers
+        date_col = 0  # Column A (should be "Date")
+        desc_col = 1  # Column B (should be description)
 
-        # Map expense categories to columns (C-N)
+        # Build mappings by matching Excel headers to config categories
         expense_cols = {}
-        col_idx = 2  # Start at column C
-        for category in self.config['expenses'].keys():
-            expense_cols[category] = col_idx
-            col_idx += 1
-
-        # Map savings goals to columns (O-S)
         savings_cols = {}
-        for category in self.config['savings_goals'].keys():
-            savings_cols[category] = col_idx
-            col_idx += 1
-
-        # Map account tracking columns (T-V)
         account_cols = {}
-        for category in self.config['accounts'].keys():
-            account_cols[category] = col_idx
-            col_idx += 1
 
-        print(f"   Expense columns: C-{chr(65 + list(expense_cols.values())[-1])}")
-        print(f"   Savings columns: {chr(65 + list(savings_cols.values())[0])}-{chr(65 + list(savings_cols.values())[-1])}")
-        print(f"   Account columns: {chr(65 + list(account_cols.values())[0])}-{chr(65 + list(account_cols.values())[-1])}")
+        print(f"   Matching Excel headers to config categories...")
+
+        for col_idx, header in enumerate(header_row):
+            if not header or col_idx < 2:  # Skip Date and Description columns
+                continue
+
+            header_str = str(header).strip()
+
+            # Try to match to expense categories
+            if header_str in self.config['expenses']:
+                expense_cols[header_str] = col_idx
+                print(f"      Found expense: {header_str} in column {chr(65 + col_idx)}")
+
+            # Try to match to savings goals
+            elif header_str in self.config['savings_goals']:
+                savings_cols[header_str] = col_idx
+                print(f"      Found savings goal: {header_str} in column {chr(65 + col_idx)}")
+
+            # Try to match to account tracking
+            elif header_str in self.config['accounts']:
+                account_cols[header_str] = col_idx
+                print(f"      Found account: {header_str} in column {chr(65 + col_idx)}")
+
+            # Warn about unmatched columns
+            else:
+                if header_str not in ['Deposit', 'Balance', '']:  # Ignore common extra columns
+                    print(f"      ⚠️  Column '{header_str}' in Excel not in config (will be ignored)")
+
+        # Verify we found all configured categories
+        missing_expenses = set(self.config['expenses'].keys()) - set(expense_cols.keys())
+        missing_savings = set(self.config['savings_goals'].keys()) - set(savings_cols.keys())
+        missing_accounts = set(self.config['accounts'].keys()) - set(account_cols.keys())
+
+        if missing_expenses:
+            print(f"      ⚠️  Config expenses not in Excel: {', '.join(missing_expenses)}")
+        if missing_savings:
+            print(f"      ⚠️  Config savings goals not in Excel: {', '.join(missing_savings)}")
+        if missing_accounts:
+            print(f"      ⚠️  Config accounts not in Excel: {', '.join(missing_accounts)}")
+
+        print(f"   ✅ Mapped {len(expense_cols)} expenses, {len(savings_cols)} savings, {len(account_cols)} accounts")
 
         # Process data rows
         row_count = 0
