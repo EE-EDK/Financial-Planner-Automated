@@ -1,20 +1,21 @@
 #!/usr/bin/env python3
 """
 Mom's Budget Manager
-Simplified Excel-based budget tracking
+Simplified Excel and CSV budget tracking
 
 Usage:
-    python finance.py              # Run full analysis (auto-detects Excel in data/inputs/)
+    python finance.py              # Run full analysis (auto-detects Excel/CSV in data/inputs/)
 
 Configuration:
     - Edit tools/config.json to define your budget categories
-    - Drop Excel file in data/inputs/
+    - Drop Excel (.xlsx, .xls) or CSV file in data/inputs/
     - Run the program to generate financial_report.html
 """
 
 import json
 import sys
 import os
+import csv
 from pathlib import Path
 from datetime import datetime
 from collections import defaultdict
@@ -68,11 +69,15 @@ class BudgetManager:
 
         return config
 
-    def find_excel_files(self):
-        """Find Excel files in data/inputs/"""
-        excel_files = list(INPUTS_DIR.glob('*.xlsx')) + list(INPUTS_DIR.glob('*.xls'))
-        excel_files = [f for f in excel_files if not f.name.startswith('~')]  # Ignore temp files
-        return excel_files
+    def find_input_files(self):
+        """Find Excel and CSV files in data/inputs/"""
+        input_files = (
+            list(INPUTS_DIR.glob('*.xlsx')) +
+            list(INPUTS_DIR.glob('*.xls')) +
+            list(INPUTS_DIR.glob('*.csv'))
+        )
+        input_files = [f for f in input_files if not f.name.startswith('~')]  # Ignore temp files
+        return input_files
 
     def parse_date(self, date_value):
         """Parse date from Excel (handles MM/DD/YYYY and datetime objects)"""
@@ -221,6 +226,133 @@ class BudgetManager:
 
         print(f"   ✅ Processed {row_count} rows across {len(self.monthly_data)} months")
         return True
+
+    def process_csv_file(self, csv_file):
+        """Process CSV file based on config.json structure"""
+        print(f"\n📊 Processing: {csv_file.name}")
+
+        with open(csv_file, 'r', encoding='utf-8') as f:
+            # Read header row
+            csv_reader = csv.reader(f)
+            header_row = next(csv_reader)
+
+            # Find column indices by matching headers
+            date_col = 0  # Column A (should be "Date")
+            desc_col = 1  # Column B (should be description)
+
+            # Build mappings by matching CSV headers to config categories
+            expense_cols = {}
+            savings_cols = {}
+            account_cols = {}
+
+            print(f"   Matching CSV headers to config categories...")
+
+            for col_idx, header in enumerate(header_row):
+                if not header or col_idx < 2:  # Skip Date and Description columns
+                    continue
+
+                header_str = str(header).strip()
+
+                # Try to match to expense categories
+                if header_str in self.config['expenses']:
+                    expense_cols[header_str] = col_idx
+                    print(f"      Found expense: {header_str} in column {col_idx}")
+
+                # Try to match to savings goals
+                elif header_str in self.config['savings_goals']:
+                    savings_cols[header_str] = col_idx
+                    print(f"      Found savings goal: {header_str} in column {col_idx}")
+
+                # Try to match to account tracking
+                elif header_str in self.config['accounts']:
+                    account_cols[header_str] = col_idx
+                    print(f"      Found account: {header_str} in column {col_idx}")
+
+                # Warn about unmatched columns
+                else:
+                    if header_str not in ['Deposit', 'Balance', '']:
+                        print(f"      ⚠️  Column '{header_str}' in CSV not in config (will be ignored)")
+
+            # Verify we found all configured categories
+            missing_expenses = set(self.config['expenses'].keys()) - set(expense_cols.keys())
+            missing_savings = set(self.config['savings_goals'].keys()) - set(savings_cols.keys())
+            missing_accounts = set(self.config['accounts'].keys()) - set(account_cols.keys())
+
+            if missing_expenses:
+                print(f"      ⚠️  Config expenses not in CSV: {', '.join(missing_expenses)}")
+            if missing_savings:
+                print(f"      ⚠️  Config savings goals not in CSV: {', '.join(missing_savings)}")
+            if missing_accounts:
+                print(f"      ⚠️  Config accounts not in CSV: {', '.join(missing_accounts)}")
+
+            print(f"   ✅ Mapped {len(expense_cols)} expenses, {len(savings_cols)} savings, {len(account_cols)} accounts")
+
+            # Process data rows
+            row_count = 0
+            for row in csv_reader:
+                # Check for Totals row
+                if row[0] and str(row[0]).strip().lower() == 'totals':
+                    print(f"   Found Totals row, stopping")
+                    break
+
+                # Skip empty rows
+                if not row[0]:
+                    continue
+
+                # Parse date
+                trans_date = self.parse_date(row[date_col])
+                if not trans_date:
+                    continue
+
+                # Get description
+                description = str(row[desc_col]) if len(row) > desc_col and row[desc_col] else ""
+
+                # Extract all values
+                row_data = {
+                    'date': trans_date,
+                    'description': description,
+                    'expenses': {},
+                    'savings_goals': {},
+                    'accounts': {}
+                }
+
+                # Extract expenses
+                for category, col_idx in expense_cols.items():
+                    if col_idx < len(row) and row[col_idx]:
+                        try:
+                            value = float(row[col_idx])
+                            row_data['expenses'][category] = value
+                        except:
+                            pass
+
+                # Extract savings goals
+                for category, col_idx in savings_cols.items():
+                    if col_idx < len(row) and row[col_idx]:
+                        try:
+                            value = float(row[col_idx])
+                            row_data['savings_goals'][category] = value
+                        except:
+                            pass
+
+                # Extract account tracking
+                for category, col_idx in account_cols.items():
+                    if col_idx < len(row) and row[col_idx]:
+                        try:
+                            value = float(row[col_idx])
+                            row_data['accounts'][category] = value
+                        except:
+                            pass
+
+                # Group by month
+                month_key = trans_date.strftime('%Y-%m')
+                if month_key not in self.monthly_data:
+                    self.monthly_data[month_key] = []
+
+                self.monthly_data[month_key].append(row_data)
+                row_count += 1
+
+            print(f"   ✅ Processed {row_count} rows across {len(self.monthly_data)} months")
+            return True
 
     def calculate_monthly_totals(self):
         """Calculate totals for each month"""
@@ -611,20 +743,24 @@ class BudgetManager:
         print("🚀 MOM'S BUDGET MANAGER")
         print("=" * 70)
 
-        # Find Excel files
-        excel_files = self.find_excel_files()
+        # Find input files (Excel or CSV)
+        input_files = self.find_input_files()
 
-        if not excel_files:
-            print("\n❌ No Excel files found in data/inputs/")
-            print("   Drop your budget Excel file there and run again!")
+        if not input_files:
+            print("\n❌ No input files found in data/inputs/")
+            print("   Drop your budget Excel (.xlsx) or CSV file there and run again!")
             return False
 
-        # Process each Excel file
-        for excel_file in excel_files:
+        # Process each input file
+        for input_file in input_files:
             try:
-                self.process_excel_file(excel_file)
+                # Detect file type and use appropriate processor
+                if input_file.suffix.lower() == '.csv':
+                    self.process_csv_file(input_file)
+                else:  # .xlsx or .xls
+                    self.process_excel_file(input_file)
             except Exception as e:
-                print(f"❌ Error processing {excel_file.name}: {e}")
+                print(f"❌ Error processing {input_file.name}: {e}")
                 import traceback
                 traceback.print_exc()
                 continue
