@@ -247,6 +247,7 @@
             <div class="actions">
                 <button class="btn btn-primary" onclick="saveConfig()">💾 Save Config</button>
                 <button class="btn btn-secondary" onclick="loadConfig()">📂 Load Config</button>
+                <button class="btn btn-secondary" onclick="resetToDefaults()">🔄 Reset to Defaults</button>
             </div>
         </div>
 
@@ -424,7 +425,23 @@
                 const reader = new FileReader();
                 reader.onload = (event) => {
                     try {
-                        currentConfig = JSON.parse(event.target.result);
+                        const loadedConfig = JSON.parse(event.target.result);
+
+                        // Validate required properties exist
+                        if (!loadedConfig.expenses || !loadedConfig.savings_goals || !loadedConfig.accounts) {
+                            alert('❌ Invalid config file! Missing required sections (expenses, savings_goals, or accounts).');
+                            return;
+                        }
+
+                        // Ensure all properties are objects
+                        if (typeof loadedConfig.expenses !== 'object' ||
+                            typeof loadedConfig.savings_goals !== 'object' ||
+                            typeof loadedConfig.accounts !== 'object') {
+                            alert('❌ Invalid config file! All sections must be objects.');
+                            return;
+                        }
+
+                        currentConfig = loadedConfig;
                         renderExpenses();
                         renderSavingsGoals();
                         renderAccounts();
@@ -436,6 +453,16 @@
                 reader.readAsText(file);
             };
             input.click();
+        }
+
+        function resetToDefaults() {
+            if (confirm('⚠️ Reset to default categories? This will clear any custom categories you added.')) {
+                currentConfig = JSON.parse(JSON.stringify(defaultConfig));
+                renderExpenses();
+                renderSavingsGoals();
+                renderAccounts();
+                alert('✅ Reset to defaults! Click "Save Config" to download the default config.json file.');
+            }
         }
 
         // Initialize on page load
