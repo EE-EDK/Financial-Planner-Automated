@@ -1,12 +1,12 @@
-HOW TO USE YOUR EXCEL BUDGET FILE
-==================================
+HOW TO USE YOUR BUDGET FILE
+============================
 
 Simple 3-Step Process:
 
-STEP 1: Place Your Excel File
-------------------------------
-Copy your Excel budget file into the "inputs" folder inside this data directory.
-That's it - just drop it in there!
+STEP 1: Place Your Budget File
+-------------------------------
+Copy your Excel (.xlsx, .xls) or CSV budget file into the "inputs" folder
+inside this data directory. That's it - just drop it in there!
 
 
 STEP 2: Run the Program
@@ -21,10 +21,10 @@ STEP 3: View Your Report
 Click "📊 Open Report" to see your beautiful budget report in your web browser!
 
 
-ABOUT YOUR EXCEL FILE
-======================
+ABOUT YOUR BUDGET FILE
+=======================
 
-Your Excel file should have this structure:
+Your Excel or CSV file should have this structure:
 
 Column A: Date (in MM/DD/YYYY format, like 12/25/2025)
 Column B: Description (what the expense was for)
@@ -67,7 +67,7 @@ Account Tracking:
 - Deposits
 - Balance
 
-Note: Column headers in your Excel file MUST match these category names exactly!
+Note: Column headers in your file MUST match these category names exactly!
 
 
 NEED TO CHANGE CATEGORIES?
@@ -79,7 +79,7 @@ NEED TO CHANGE CATEGORIES?
 4. Move the downloaded config.json file to the "tools" folder
 5. Run the program again!
 
-The program will automatically match your Excel column headers to the
+The program will automatically match your file's column headers to the
 categories in config.json, so you can add or remove columns as needed.
 
 
