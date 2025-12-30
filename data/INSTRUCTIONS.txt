@@ -1,49 +1,94 @@
-HOW TO ADD YOUR TRANSACTIONS
-=============================
+HOW TO USE YOUR EXCEL BUDGET FILE
+==================================
 
-Since you track manually in Excel, here are two ways to use this program:
+Simple 3-Step Process:
 
-OPTION 1: Keep Using Your Excel File (Simplest)
-------------------------------------------------
-1. Keep tracking in your Excel file like you always do
-2. When you want to see a report, save your Excel file as CSV:
-   - In Excel: File → Save As
-   - Choose "CSV (Comma delimited)" as the format
-   - Save it as "transactions.csv" in this folder
-3. Run the finance program
-4. View your report!
+STEP 1: Place Your Excel File
+------------------------------
+Copy your Excel budget file into the "inputs" folder inside this data directory.
+That's it - just drop it in there!
 
-OPTION 2: Use the CSV Template
--------------------------------
-1. Open "transactions_template.csv" in Excel
-2. Add your transactions following the example format:
-   - Date: YYYY-MM-DD (like 2025-12-01)
-   - Description: What you bought
-   - Category: Must match your budget categories
-   - Amount: The cost (positive numbers for expenses)
-3. Save as "transactions.csv"
-4. Run the finance program
 
-Your Budget Categories:
+STEP 2: Run the Program
+------------------------
+1. Double-click "finance_gui.exe" in the main folder
+2. Click the big "🚀 GENERATE REPORT" button
+3. Wait for it to finish (you'll see messages in the console)
+
+
+STEP 3: View Your Report
+-------------------------
+Click "📊 Open Report" to see your beautiful budget report in your web browser!
+
+
+ABOUT YOUR EXCEL FILE
+======================
+
+Your Excel file should have this structure:
+
+Column A: Date (in MM/DD/YYYY format, like 12/25/2025)
+Column B: Description (what the expense was for)
+
+Columns C onward: Your budget categories
+  - Monthly Expenses (Auto, Car Ins., Medical, Utilities, etc.)
+  - Savings Goals (Moms money, Interest, Mower saving, etc.)
+  - Account Tracking (Savings, Deposits, Balance)
+
+Important: Put "Totals" in Column A when you're done with your data.
+The program stops reading when it sees "Totals".
+
+
+YOUR BUDGET CATEGORIES
+======================
+
+Monthly Expenses:
 - Auto
 - B-Day
 - Car Ins.
 - Clothes
 - Cycle Ins.
-- Extra TSP
-- Furniture
 - Home Insurance
-- Interest
-- Janet $
 - Medical
-- Mower
 - Property Taxes
-- Savings
 - Utilities
 - Vacation
 - X-mas
 - Xtra Car
 
-Remember: The category names must match exactly!
+Savings Goals:
+- Moms money
+- Interest
+- Mower saving
+- Furniture Saving
+- Extra TSP
 
-Need help? Ask Ethan!
+Account Tracking:
+- Savings
+- Deposits
+- Balance
+
+Note: Column headers in your Excel file MUST match these category names exactly!
+
+
+NEED TO CHANGE CATEGORIES?
+===========================
+
+1. Double-click "budget_editor.html"
+2. Add or remove categories in each section
+3. Click "Save Config"
+4. Move the downloaded config.json file to the "tools" folder
+5. Run the program again!
+
+The program will automatically match your Excel column headers to the
+categories in config.json, so you can add or remove columns as needed.
+
+
+PRIVACY
+=======
+All your financial data stays on YOUR computer only. Nothing is sent
+to the internet or shared anywhere.
+
+
+NEED HELP?
+==========
+Call Ethan! 📞
